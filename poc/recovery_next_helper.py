@@ -174,7 +174,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Thin helper: map guard stop_reasons to recovery playbook branches",
     )
-    parser.add_argument("--input-json", required=True, help="one_shot_orchestrator output json path")
+    parser.add_argument("--input-json", default="", help="one_shot_orchestrator output json path")
+    parser.add_argument("--from-compact", default="", help="compact_state_helper output json; auto-resolves orchestrator path")
     parser.add_argument(
         "--recovery-playbook-path",
         default="/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md",
@@ -186,9 +187,24 @@ def main() -> int:
     output: Dict[str, Any]
     ok = True
     try:
-        source_path = Path(args.input_json)
-        if not source_path.exists():
-            raise ValueError(f"input json not found: {args.input_json}")
+        # Resolve input: --from-compact takes priority
+        if args.from_compact:
+            compact_path = Path(args.from_compact)
+            if not compact_path.exists():
+                raise ValueError(f"compact json not found: {args.from_compact}")
+            compact = parse_json_file(compact_path)
+            orch_path_str = compact.get("input", {}).get("orchestrator_json")
+            if not orch_path_str:
+                raise ValueError("compact json missing input.orchestrator_json")
+            source_path = Path(orch_path_str)
+            if not source_path.exists():
+                raise ValueError(f"orchestrator json (from compact) not found: {orch_path_str}")
+        elif args.input_json:
+            source_path = Path(args.input_json)
+            if not source_path.exists():
+                raise ValueError(f"input json not found: {args.input_json}")
+        else:
+            raise ValueError("either --input-json or --from-compact is required")
 
         source = parse_json_file(source_path)
         guard_summary, details = summarize_guards(source)

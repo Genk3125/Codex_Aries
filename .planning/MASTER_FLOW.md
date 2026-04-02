@@ -63,11 +63,11 @@ _Updated: 2026-04-03_
 |-------|--------|------|
 | now-1 | `done` | --output-markdown 実装・E2E 3パターン通過 |
 | now-2 | `done` | write_markdown を 6 セクション対応に書き換え・E2E 通過 |
-| now-3 | `not_started` | dogfood journal 未作成。実タスク使用記録なし |
-| safety | `not_started` | guard パラメータ実装済みだが playbook との diff 未確認 |
-| next-1 | `not_started` | resume_input_helper / --from-compact いずれも未実装 |
-| next-2 | `not_started` | notify_helper 未実装 |
-| next-3 | `not_started` | verifier exit code 規約未文書化。PARTIAL=2 の区別未実装 |
+| now-3 | `done` | dogfood 3 タスク完走、介入パターン 3 種類型化 |
+| safety | `done` | パラメータ整合確認、auto-retry 混入なし、実地 PASS |
+| next-1 | `done` | --from-compact を recovery_next + handoff に追加 |
+| next-2 | `done` | notify_helper 新規実装 (214行)、fail-open 動作確認 |
+| next-3 | `done` | exit code 規約実装 (0/1/2/3+)、verifier-contract に追記 |
 
-**最優先**: `now-1_compact-state-integration`（依存先なし、単独着手可能）
+**全 Phase 完了。** Now / Next / Safety の全 7 subplan が done。
 

@@ -81,3 +81,42 @@ PASS | PARTIAL | FAIL
 1. `<next action>`
 2. `<next action>`
 ````
+
+---
+
+## verifier-cmd インターフェース規約
+
+_Added: 2026-04-03_
+
+### Exit Code 規約
+
+| Exit Code | Verdict | 意味 |
+|-----------|---------|------|
+| `0` | PASS | 全チェック通過 |
+| `1` | FAIL | 致命的な不一致を検出 |
+| `2` | PARTIAL | 一部通過・一部未検証。未検証項目を Unverified Items に記録 |
+| `3+` | UNKNOWN | verifier 自体の実行異常（クラッシュ、設定ミス等） |
+
+### stdout 規約
+
+- **1 行目**: `PASS` / `PARTIAL` / `FAIL`（verdict 判定に使用）
+- **2 行目以降**: 自由形式（人間向け詳細。パースされない）
+
+### stderr 規約
+
+- デバッグ専用。verdict 判定には使用しない
+
+### Verdict 分岐ルール
+
+| Verdict | fail-open モード | strict モード |
+|---------|-----------------|--------------|
+| PASS | 続行 | 続行 |
+| PARTIAL | **続行**（未検証項目を記録） | **停止**（全項目検証完了まで） |
+| FAIL | **停止** | **停止** |
+| UNKNOWN | **続行**（verifier 異常として記録） | **停止** |
+
+### Decision Record
+
+- PARTIAL を fail-open で「続行」とした理由: dogfood 実験で PARTIAL の多くがランタイム未接続による RECONCILE_FAILED であり、開発中は続行が実用的
+- UNKNOWN を fail-open で「続行」とした理由: verifier 自体の不具合で本体を止めるべきではない
+

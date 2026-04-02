@@ -236,7 +236,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Thin helper: build verifier/coordinator handoff draft from escalation draft JSON",
     )
-    parser.add_argument("--escalation-draft-json", required=True)
+    parser.add_argument("--escalation-draft-json", default="")
+    parser.add_argument("--from-compact", default="", help="compact_state_helper output json; synthesizes escalation draft from compact state")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--output-json", default="")
     parser.add_argument("--output-markdown", default="")
@@ -245,10 +246,43 @@ def main() -> int:
     ok = True
     output: Dict[str, Any]
     try:
-        source_path = Path(args.escalation_draft_json)
-        if not source_path.exists():
-            raise ValueError(f"escalation draft json not found: {args.escalation_draft_json}")
-        source = parse_json_file(source_path)
+        # Resolve input: --from-compact synthesizes escalation_draft from compact state
+        if args.from_compact:
+            compact_path = Path(args.from_compact)
+            if not compact_path.exists():
+                raise ValueError(f"compact json not found: {args.from_compact}")
+            compact = parse_json_file(compact_path)
+            cs = compact.get("compact_state", {})
+            # Synthesize an escalation_draft from compact_state fields
+            source = {
+                "mode": compact.get("mode", "fail-open"),
+                "escalation_draft": {
+                    "required": cs.get("current_status", "").startswith("failed") or bool(cs.get("stop_reasons")),
+                    "executed": True,
+                    "failed_step": cs.get("failed_step"),
+                    "stop_reasons": cs.get("stop_reasons", []),
+                    "executed_commands": cs.get("executed_commands_summary", {}).get("items", []),
+                    "actual_outputs": {
+                        "step_summaries": [
+                            {"step": s, "status": "failed"}
+                            for s in cs.get("actual_outputs_summary", {}).get("failed_steps", [])
+                        ],
+                        "failed_count": len(cs.get("actual_outputs_summary", {}).get("failed_steps", [])),
+                        "skipped_count": len(cs.get("actual_outputs_summary", {}).get("skipped_steps", [])),
+                    },
+                    "suggested_next_action": {
+                        "action_items": cs.get("next_action", {}).get("action_items", []),
+                    },
+                },
+            }
+            source_path = compact_path
+        elif args.escalation_draft_json:
+            source_path = Path(args.escalation_draft_json)
+            if not source_path.exists():
+                raise ValueError(f"escalation draft json not found: {args.escalation_draft_json}")
+            source = parse_json_file(source_path)
+        else:
+            raise ValueError("either --escalation-draft-json or --from-compact is required")
         mode = pick_mode(source, args.strict)
 
         escalation_draft = source.get("escalation_draft")

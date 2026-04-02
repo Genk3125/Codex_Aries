@@ -270,8 +270,25 @@ def run_verifier(
         "stdout": stdout_text,
         "stderr": stderr_text,
         "parsed_json": parsed_json,
-        "ok": process.returncode == 0,
     }
+
+    # Exit code convention: 0=PASS, 1=FAIL, 2=PARTIAL, 3+=UNKNOWN
+    if process.returncode == 0:
+        result["ok"] = True
+        result["exit_code_meaning"] = "PASS"
+    elif process.returncode == 1:
+        result["ok"] = False
+        result["exit_code_meaning"] = "FAIL"
+    elif process.returncode == 2:
+        # PARTIAL: ok in fail-open, not ok in strict
+        result["ok"] = not strict
+        result["exit_code_meaning"] = "PARTIAL"
+    else:
+        # 3+ = verifier itself is broken
+        result["ok"] = False
+        result["exit_code_meaning"] = "UNKNOWN (verifier error)"
+
+    # reported_verdict override: if strict and verdict says PARTIAL/FAIL, force not ok
     if strict and reported_verdict in {"PARTIAL", "FAIL"}:
         result["ok"] = False
     return result
