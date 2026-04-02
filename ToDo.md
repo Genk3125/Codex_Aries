@@ -6,6 +6,7 @@ _Updated: 2026-04-03_
 
 参照先:
 - 上位方針: `/Users/kondogenki/AI Agent Maximizer/docs/CODEX_MAX_COMBINED_PLAN.md`
+- 実行フローの親: `/Users/kondogenki/AI Agent Maximizer/.planning/MASTER_FLOW.md`
 - 実行粒度の旧タスク分解: `/Users/kondogenki/AI Agent Maximizer/docs/EXECUTION_TASK_BREAKDOWN.md`
 - 初期の次タスク一覧: `/Users/kondogenki/AI Agent Maximizer/docs/NEXT_TASKS.md`
 
