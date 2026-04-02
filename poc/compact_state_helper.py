@@ -271,6 +271,81 @@ def infer_next_action(
     }
 
 
+def render_markdown(compact: Dict[str, Any], mode: str) -> str:
+    """Render compact_state as a human-readable Markdown resume template."""
+    cs = compact.get("compact_state", {})
+    status = cs.get("current_status", "unknown")
+    last_ok = cs.get("last_successful_step") or "(なし)"
+    failed = cs.get("failed_step")
+    stop_reasons = cs.get("stop_reasons", [])
+    cmds = cs.get("executed_commands_summary", {})
+    outputs = cs.get("actual_outputs_summary", {})
+    next_act = cs.get("next_action", {})
+    ids = cs.get("ids", {})
+    meta = cs.get("meta", {})
+
+    lines: List[str] = []
+    lines.append("# Resume Context")
+    lines.append("")
+
+    # Status section
+    lines.append("## Status")
+    lines.append(f"- **現在の状態**: `{status}`")
+    lines.append(f"- **最終成功ステップ**: `{last_ok}`")
+    if failed and isinstance(failed, dict):
+        step_name = failed.get("step", "unknown")
+        exit_code = failed.get("exit_code", "?")
+        lines.append(f"- **失敗ステップ**: `{step_name}` (exit_code: {exit_code})")
+    reasons_text = ", ".join(stop_reasons) if stop_reasons else "なし"
+    lines.append(f"- **停止理由**: {reasons_text}")
+    lines.append("")
+
+    # Evidence section
+    lines.append("## Evidence Summary")
+    cmd_count = cmds.get("count", 0)
+    total = outputs.get("total_steps", 0)
+    succeeded = outputs.get("succeeded_steps", 0)
+    failed_list = outputs.get("failed_steps", [])
+    skipped_list = outputs.get("skipped_steps", [])
+    lines.append(f"- **実行コマンド数**: {cmd_count}")
+    lines.append(f"- **ステップ数**: {total} (成功: {succeeded}, 失敗: {len(failed_list)}, スキップ: {len(skipped_list)})")
+    if failed_list:
+        lines.append(f"- **失敗ステップ一覧**: {', '.join(f'`{s}`' for s in failed_list)}")
+    lines.append("")
+
+    # Next Action section
+    lines.append("## Next Action")
+    act_type = next_act.get("type", "unknown")
+    hint = next_act.get("hint", "")
+    action_items = next_act.get("action_items", [])
+    lines.append(f"- **種別**: `{act_type}`")
+    if hint:
+        lines.append(f"- **ヒント**: {hint}")
+    if action_items:
+        lines.append("- **アクション**:")
+        for item in action_items:
+            lines.append(f"  - {item}")
+    else:
+        lines.append("- **アクション**: （なし — 次タスクへ進行）")
+    lines.append("")
+
+    # IDs section
+    lines.append("## IDs")
+    for key in ["team_id", "task_id", "member_id", "leader_id"]:
+        val = ids.get(key) or "(未取得)"
+        lines.append(f"- {key}: `{val}`")
+    lines.append("")
+
+    # Meta section
+    lines.append("## Meta")
+    lines.append(f"- run_id: `{meta.get('run_id') or '(なし)'}`")
+    lines.append(f"- flow_mode: `{meta.get('flow_mode') or '(なし)'}`")
+    lines.append(f"- mode: `{mode}`")
+    lines.append("")
+
+    return "\n".join(lines)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Thin helper: compact orchestrator/handoff outputs into minimal next-turn state",
@@ -281,6 +356,7 @@ def main() -> int:
     parser.add_argument("--max-commands", type=int, default=6)
     parser.add_argument("--max-command-chars", type=int, default=180)
     parser.add_argument("--output-json", default="")
+    parser.add_argument("--output-markdown", default="")
     args = parser.parse_args()
 
     ok = True
@@ -383,6 +459,12 @@ def main() -> int:
         out_path = Path(args.output_json)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(text + "\n", encoding="utf-8")
+    if args.output_markdown:
+        md_path = Path(args.output_markdown)
+        md_path.parent.mkdir(parents=True, exist_ok=True)
+        md_text = render_markdown(output, output.get("mode", "fail-open"))
+        md_path.write_text(md_text, encoding="utf-8")
+        print(f"[compact_state] markdown written to {md_path}", file=sys.stderr)
 
     if args.strict and not ok:
         return 2

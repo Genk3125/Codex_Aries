@@ -127,14 +127,107 @@ def write_markdown(path: Path, verifier: Dict[str, Any], coordinator: Dict[str, 
     lines: List[str] = []
     lines.append("# Handoff Draft")
     lines.append("")
-    lines.append("## Verifier")
-    lines.append(f"- title: {verifier.get('title')}")
-    lines.append(f"- summary: {verifier.get('summary')}")
+
+    # --- Verifier Section ---
+    lines.append("---")
     lines.append("")
-    lines.append("## Coordinator")
-    lines.append(f"- title: {coordinator.get('title')}")
-    lines.append(f"- summary: {coordinator.get('summary')}")
+    lines.append("## Verifier: Read-Only Check Request")
     lines.append("")
+
+    # 1) Verification Result
+    lines.append("### Verification Result")
+    failed_step = verifier.get("failed_step")
+    stop_reasons = verifier.get("stop_reasons", [])
+    if failed_step and isinstance(failed_step, dict):
+        step_name = failed_step.get("step", "unknown")
+        lines.append(f"PARTIAL")
+        lines.append(f"Escalation triggered at `{step_name}`. stop_reasons: {', '.join(stop_reasons) if stop_reasons else 'none'}.")
+    else:
+        lines.append("PARTIAL")
+        lines.append(f"Escalation handoff generated. stop_reasons: {', '.join(stop_reasons) if stop_reasons else 'none'}.")
+    lines.append("")
+
+    # 2) Executed Commands
+    lines.append("### Executed Commands")
+    executed_commands = verifier.get("executed_commands", [])
+    if executed_commands and isinstance(executed_commands, list):
+        for cmd in executed_commands:
+            if isinstance(cmd, dict):
+                lines.append(f"- command: `{cmd.get('command', 'N/A')}`")
+                lines.append(f"  cwd: `{cmd.get('cwd', 'N/A')}`")
+                lines.append(f"  exit_code: `{cmd.get('exit_code', 'N/A')}`")
+                lines.append(f"  purpose: `{cmd.get('purpose', 'N/A')}`")
+            elif isinstance(cmd, str):
+                lines.append(f"- command: `{cmd}`")
+    else:
+        lines.append("None (commands not captured in escalation draft)")
+    lines.append("")
+
+    # 3) Actual Output (Evidence)
+    lines.append("### Actual Output (Evidence)")
+    outputs_summary = verifier.get("actual_outputs_summary", {})
+    if outputs_summary and isinstance(outputs_summary, dict):
+        failed_count = outputs_summary.get("failed_count", 0)
+        step_count = outputs_summary.get("step_count", 0)
+        skipped_count = outputs_summary.get("skipped_count", 0)
+        failed_steps_list = outputs_summary.get("failed_steps", [])
+        lines.append(f"- total_steps: {step_count}")
+        lines.append(f"- failed_count: {failed_count}")
+        lines.append(f"- skipped_count: {skipped_count}")
+        if failed_steps_list:
+            lines.append(f"- failed_steps: {', '.join(f'`{s}`' for s in failed_steps_list)}")
+    else:
+        lines.append("None (output summary not available)")
+    lines.append("")
+
+    # 4) Unverified Items
+    lines.append("### Unverified Items")
+    lines.append("- item: `full runtime reconcile`")
+    lines.append("  reason: `escalation path — verifier has not run independent check yet`")
+    lines.append("  what_is_needed_to_verify: `verifier runs read-only checks against runtime state`")
+    lines.append("")
+
+    # 5) Residual Risks
+    lines.append("### Residual Risks")
+    if stop_reasons:
+        for reason in stop_reasons:
+            lines.append(f"- `{reason}` (severity: Medium)")
+    else:
+        lines.append("None")
+    lines.append("")
+
+    # 6) Next Actions
+    lines.append("### Next Actions")
+    suggested = verifier.get("suggested_next_action", {})
+    if isinstance(suggested, dict):
+        action_items = suggested.get("action_items", [])
+        branch_ids = suggested.get("branch_ids", [])
+        if action_items and isinstance(action_items, list):
+            for i, item in enumerate(action_items, 1):
+                lines.append(f"{i}. {item}")
+        elif branch_ids and isinstance(branch_ids, list):
+            for i, bid in enumerate(branch_ids, 1):
+                lines.append(f"{i}. Follow branch: `{bid}`")
+        else:
+            lines.append("1. Run verifier read-only check")
+            lines.append("2. Report PASS/PARTIAL/FAIL to coordinator")
+    else:
+        lines.append("1. Run verifier read-only check")
+        lines.append("2. Report PASS/PARTIAL/FAIL to coordinator")
+    lines.append("")
+
+    # --- Coordinator Section ---
+    lines.append("---")
+    lines.append("")
+    lines.append("## Coordinator: Escalation Packet")
+    lines.append("")
+    lines.append(f"- **summary**: {coordinator.get('summary', 'N/A')}")
+    lines.append(f"- **scope**: {coordinator.get('scope', 'N/A')}")
+    if failed_step and isinstance(failed_step, dict):
+        lines.append(f"- **failed_step**: `{failed_step.get('step', 'unknown')}`")
+    lines.append(f"- **stop_reasons**: {', '.join(stop_reasons) if stop_reasons else 'none'}")
+    lines.append("")
+
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

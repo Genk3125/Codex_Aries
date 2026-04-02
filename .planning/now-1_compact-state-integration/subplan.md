@@ -8,7 +8,7 @@
 - **主対象ファイル**: `poc/compact_state_helper.py`
 - **副対象**: `poc/one_shot_orchestrator.py`, `docs/compact-state-helper.md`
 - **推定ワークロード**: 1-2 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -107,19 +107,22 @@ compact_state_helper --orchestrator-json /tmp/out.json --output-json /tmp/compac
 
 ## 5. 完了判定（Exit Criteria）
 
-- [ ] orchestrator 出力 JSON の全キーが compact_state で消費可能
-- [ ] compact_state が `--output-markdown` でテンプレートを出力する
-- [ ] small / medium / recovery の 3 パターンで E2E が通る
-- [ ] 生成された Markdown を読んで次アクションが 10 秒以内に判断可能
+- [x] orchestrator 出力 JSON の全キーが compact_state で消費可能
+- [x] compact_state が `--output-markdown` でテンプレートを出力する
+- [x] small / medium / recovery の 3 パターンで E2E が通る
+- [x] 生成された Markdown を読んで次アクションが 10 秒以内に判断可能
 
 ## 6. リスク・注意
 
-- orchestrator の出力 JSON スキーマが flow-mode（gate/chain）で異なる可能性 → Step 1 で洗い出す
-- recovery パターンでは 2 回分の JSON があるため、「どちらの JSON を compact に渡すか」の判断が必要
-- strict 失敗時は orchestrator の JSON が不完全な可能性がある → fail-safe デフォルト値を用意
+- orchestrator の出力 JSON スキーマが flow-mode（gate/chain）で異なる可能性 → Step 1 で確認済み、差分ゼロ
+- recovery パターンでは 2 回分の JSON があるため、「どちらの JSON を compact に渡すか」の判断が必要 → 最新のものを渡す運用
+- strict 失敗時は orchestrator の JSON が不完全な可能性がある → fail-safe デフォルト値を用意済み
 
-## 7. 実行ログ（着手後に記入）
+## 7. 実行ログ
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 04:15 | Step 1: キー棚卸し | 差分ゼロ確認 | Step 2 へ |
+| 2026-04-03 04:15 | Step 2: テンプレート仕様固定 | next-turn-template.md 作成 | Step 3 へ |
+| 2026-04-03 04:15 | Step 3: --output-markdown 実装 | render_markdown 関数追加 | Step 4 へ |
+| 2026-04-03 04:16 | Step 4: E2E 3パターン | small/medium/recovery 全通過 | now-1 完了 |

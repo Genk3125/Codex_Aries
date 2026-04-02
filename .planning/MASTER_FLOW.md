@@ -61,8 +61,8 @@ _Updated: 2026-04-03_
 
 | Phase | Status | 備考 |
 |-------|--------|------|
-| now-1 | `not_started` | compact_state に Markdown 出力なし、orchestrator との自動接続なし |
-| now-2 | `not_started` | handoff Markdown は独自形式。verifier-contract 6 セクション未対応 |
+| now-1 | `done` | --output-markdown 実装・E2E 3パターン通過 |
+| now-2 | `done` | write_markdown を 6 セクション対応に書き換え・E2E 通過 |
 | now-3 | `not_started` | dogfood journal 未作成。実タスク使用記録なし |
 | safety | `not_started` | guard パラメータ実装済みだが playbook との diff 未確認 |
 | next-1 | `not_started` | resume_input_helper / --from-compact いずれも未実装 |

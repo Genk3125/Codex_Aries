@@ -4,7 +4,7 @@
 
 - **Phase ID**: `next-2_notification-layer`
 - **Master Flow 位置**: Next
-- **依存先**: `next-1`（resume-input が安定していること — 通知後の resume フローに使う）
+- **依存先**: なし（単独着手可能。`next-1` とは独立）
 - **主対象ファイル**: 新規 `poc/notify_helper.py`（仮称）
 - **副対象**: `poc/loop_guard.py`, `poc/post_step_check_helper.py`, `docs/preflight-guard-check.md`
 - **推定ワークロード**: 1 セッション

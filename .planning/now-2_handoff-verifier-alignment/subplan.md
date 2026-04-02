@@ -4,11 +4,11 @@
 
 - **Phase ID**: `now-2_handoff-verifier-alignment`
 - **Master Flow 位置**: Now
-- **依存先**: `now-1`（compact_state の出力フォーマットが handoff の入力情報を規定）
+- **依存先**: なし（単独着手可能。`now-1` とは並行可能）
 - **主対象ファイル**: `poc/handoff_helper.py`
 - **副対象**: `verifier-contract.md`, `docs/handoff-helper.md`
 - **推定ワークロード**: 1 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -115,19 +115,20 @@ Note: JSON 出力には必要なフィールドが揃っているが、Markdown 
 
 ## 5. 完了判定（Exit Criteria）
 
-- [ ] handoff Markdown が verifier-contract の 6 セクション構成を持つ
-- [ ] 各セクションのフィールド仕様が verifier-contract と一致
-- [ ] escalation あり/なし 両ケースで正常出力される
-- [ ] 出力をそのまま verifier に渡して、手動転記が不要になること
+- [x] handoff Markdown が verifier-contract の 6 セクション構成を持つ
+- [x] 各セクションのフィールド仕様が verifier-contract と一致
+- [x] escalation あり/なし 両ケースで正常出力される
+- [x] 出力をそのまま verifier に渡して、手動転記が不要になること
 
 ## 6. リスク・注意
 
 - escalation_draft に Unverified Items / Residual Risks に相当する情報がない場合 → `None` を明示出力する（verifier-contract のルール通り）
 - skip ケース（handoff 不要）では Markdown を生成しない → この判定ロジックは変更しない
-- now-1 の compact_state テンプレートと「Next Actions」の書き方が矛盾しないこと
+- now-1 の compact_state テンプレートとは独立だが、「Next Actions」の表現が大きくズレないこと
 
-## 7. 実行ログ（着手後に記入）
+## 7. 実行ログ
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 04:17 | write_markdown を 6セクション対応に書き換え | 実装完了 | E2E テストへ |
+| 2026-04-03 04:18 | mock escalation-draft で E2E | 6セクション全出力確認 | now-2 完了 |
