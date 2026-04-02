@@ -29,18 +29,30 @@ handoff_helper の Markdown 出力を verifier-contract.md の 6 セクション
 - 現状は handoff の Markdown を手動で verifier-contract テンプレートに転記している
 - **課題**: 転記作業が手動介入点になっている
 
-### フィールドマッピング（予想）
+### 現在の handoff Markdown フォーマット（コード確認済み）
 ```
-handoff              → verifier-contract
-─────────────────────────────────────────
-summary              → Verification Result (1文要約)
-failed_step          → Verification Result (判定根拠)
-executed_commands     → Executed Commands
-actual_outputs_summary → Actual Output (Evidence)
-(未実装)             → Unverified Items
-(未実装)             → Residual Risks
-suggested_next_action → Next Actions
+# Handoff Draft
+## Verifier
+- title: Verifier Read-Only Check Request
+- summary: <1文要約>
+## Coordinator
+- title: Coordinator Escalation Packet
+- summary: <1文要約>
 ```
+
+### 必要な変換（verifier-contract 準拠）
+```
+現 handoff                → verifier-contract
+──────────────────────────────────────────────
+summary                   → ### Verification Result (1文要約)
+failed_step (JSON にはある) → ### Verification Result (判定根拠)
+executed_commands (JSON)   → ### Executed Commands
+actual_outputs_summary (JSON) → ### Actual Output (Evidence)
+(未実装)                  → ### Unverified Items
+(未実装)                  → ### Residual Risks
+suggested_next_action (JSON) → ### Next Actions
+```
+Note: JSON 出力には必要なフィールドが揃っているが、Markdown 出力はtitle+summary のみで大幅に不足している。
 
 ## 3. 具体的な作業ステップ
 
