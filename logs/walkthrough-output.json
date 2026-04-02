@@ -1,0 +1,436 @@
+{
+  "generated_at": "2026-04-02T15:21:30.295847+00:00",
+  "walkthrough_scope": "control-plane + message-bus + task-bus",
+  "flow_ids": {
+    "team_id": "team_475cc3e03133",
+    "leader_id": "leader_99719257",
+    "task_id": "task_8529da379f6f",
+    "message_id": "msg_d8b6520abf9a"
+  },
+  "steps": [
+    {
+      "step": "team_create",
+      "result": {
+        "team_id": "team_475cc3e03133",
+        "team_name": "walkthrough-team",
+        "leader_agent_id": "leader_99719257",
+        "status": "active",
+        "created_at": "2026-04-02T15:21:30.291351+00:00"
+      }
+    },
+    {
+      "step": "task_create",
+      "result": {
+        "task_id": "task_8529da379f6f",
+        "team_id": "team_475cc3e03133",
+        "title": "walkthrough task",
+        "owner_member_id": "leader_99719257",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-02T15:21:30.292203+00:00"
+      }
+    },
+    {
+      "step": "direct_message_send",
+      "result": {
+        "message_id": "msg_d8b6520abf9a",
+        "team_id": "team_475cc3e03133",
+        "type": "direct",
+        "subtype": "text",
+        "status": "pending",
+        "delivery": {
+          "leader_99719257": {
+            "attempt_count": 0,
+            "delivered_at": null,
+            "error": null,
+            "last_attempt_at": null,
+            "state": "pending"
+          }
+        },
+        "created_at": "2026-04-02T15:21:30.292720+00:00"
+      }
+    },
+    {
+      "step": "task_state_update",
+      "result": {
+        "task_id": "task_8529da379f6f",
+        "team_id": "team_475cc3e03133",
+        "title": "walkthrough task",
+        "owner_member_id": "leader_99719257",
+        "state": "in_progress",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 2,
+        "updated_at": "2026-04-02T15:21:30.293163+00:00"
+      }
+    },
+    {
+      "step": "team_delete_marked_deleting",
+      "result": {
+        "team_id": "team_475cc3e03133",
+        "status": "deleting",
+        "note": "simulated crash point reached; run startup_reconcile to continue cleanup"
+      }
+    },
+    {
+      "step": "startup_reconcile",
+      "result": {
+        "control_plane": {
+          "reconciled_at": "2026-04-02T15:21:30.294290+00:00",
+          "cleaned_count": 1,
+          "error_count": 0,
+          "cleaned": [
+            {
+              "team_id": "team_475cc3e03133",
+              "status": "deleted",
+              "deleted_at": "2026-04-02T15:21:30.293921+00:00",
+              "cleanup_summary": {
+                "members_closed": 1,
+                "orphans_detected": 0,
+                "errors": [],
+                "mode": "graceful"
+              }
+            }
+          ],
+          "errors": []
+        },
+        "message_bus": {
+          "reconciled_at": "2026-04-02T15:21:30.294708+00:00",
+          "updated_message_count": 1,
+          "pending_before": 1,
+          "pending_after": 0,
+          "delivered_count": 0,
+          "failed_or_rejected_count": 1,
+          "updated_messages": [
+            "msg_d8b6520abf9a"
+          ]
+        },
+        "task_bus": {
+          "reconciled_at": "2026-04-02T15:21:30.295611+00:00",
+          "scanned": 1,
+          "orphaned": 1,
+          "moved_to_ready": 1,
+          "updated_tasks": [
+            "task_8529da379f6f"
+          ],
+          "errors": []
+        }
+      }
+    }
+  ],
+  "snapshots": {
+    "teams": {
+      "count": 1,
+      "teams": [
+        {
+          "cleanup_summary": {
+            "errors": [],
+            "members_closed": 1,
+            "mode": "graceful",
+            "orphans_detected": 0
+          },
+          "created_at": "2026-04-02T15:21:30.291351+00:00",
+          "deleted_at": "2026-04-02T15:21:30.293921+00:00",
+          "description": "runtime walkthrough spike",
+          "last_delete_reason": "startup_reconcile",
+          "leader_agent_id": "leader_99719257",
+          "members": [
+            {
+              "agent_id": "leader_99719257",
+              "joined_at": "2026-04-02T15:21:30.291351+00:00",
+              "lifecycle": "shutdown",
+              "role": "leader"
+            }
+          ],
+          "schema_version": 1,
+          "status": "deleted",
+          "team_id": "team_475cc3e03133",
+          "team_name": "walkthrough-team",
+          "updated_at": "2026-04-02T15:21:30.293922+00:00",
+          "version": 3
+        }
+      ]
+    },
+    "messages": {
+      "count": 1,
+      "messages": [
+        {
+          "created_at": "2026-04-02T15:21:30.292720+00:00",
+          "delivery": {
+            "leader_99719257": {
+              "attempt_count": 1,
+              "delivered_at": null,
+              "error": "TEAM_NOT_SENDABLE:deleted",
+              "last_attempt_at": "2026-04-02T15:21:30.294475+00:00",
+              "state": "rejected"
+            }
+          },
+          "from_member_id": "leader_99719257",
+          "idempotency_key": "walkthrough-message-direct-1",
+          "message_id": "msg_d8b6520abf9a",
+          "payload": {
+            "text": "walkthrough hello"
+          },
+          "schema_version": 1,
+          "status": "rejected",
+          "subtype": "text",
+          "team_id": "team_475cc3e03133",
+          "to_member_ids": [
+            "leader_99719257"
+          ],
+          "type": "direct",
+          "updated_at": "2026-04-02T15:21:30.294479+00:00",
+          "version": 2
+        }
+      ]
+    },
+    "tasks": {
+      "count": 1,
+      "tasks": [
+        {
+          "task_id": "task_8529da379f6f",
+          "team_id": "team_475cc3e03133",
+          "title": "walkthrough task",
+          "owner_member_id": null,
+          "state": "ready",
+          "blocked_reason": null,
+          "result_reference": null,
+          "version": 3,
+          "updated_at": "2026-04-02T15:21:30.294957+00:00"
+        }
+      ]
+    }
+  },
+  "component_linkage_points": [
+    "task_bus -> control_plane: owner/team status validation",
+    "message_bus -> control_plane: send gate and recipient lifecycle check",
+    "task_bus -> message_bus: optional external hint event (fail-open)",
+    "startup_reconcile order: control_plane -> message_bus -> task_bus"
+  ],
+  "persistence": {
+    "store_root": "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough",
+    "files": [
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/control-plane/active-team-index.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/control-plane/idempotency.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/control-plane/team-events.log",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/control-plane/teams/team-team_475cc3e03133.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/message-bus/idempotency.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/message-bus/message-events.log",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/message-bus/messages/message-msg_d8b6520abf9a.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/task-bus/idempotency.json",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/task-bus/task-events.log",
+      "/Users/kondogenki/AI Agent Maximizer/.runtime/walkthrough/task-bus/tasks/task-task_8529da379f6f.json"
+    ],
+    "event_tail": {
+      "control_plane": [
+        {
+          "ts": "2026-04-02T15:21:30.293771+00:00",
+          "event_type": "team_delete_marked_deleting",
+          "payload": {
+            "team_id": "team_475cc3e03133",
+            "mode": "graceful",
+            "reason": "walkthrough_delete"
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.294215+00:00",
+          "event_type": "message_bus_stub",
+          "payload": {
+            "team_id": "team_475cc3e03133",
+            "event_type": "team_delete",
+            "todo": "Connect to Message Bus RFC implementation."
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.294245+00:00",
+          "event_type": "task_bus_stub",
+          "payload": {
+            "team_id": "team_475cc3e03133",
+            "event_type": "team_delete",
+            "todo": "Connect to Task Bus RFC implementation."
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.294266+00:00",
+          "event_type": "team_delete_finalized",
+          "payload": {
+            "team_id": "team_475cc3e03133",
+            "status": "deleted",
+            "deleted_at": "2026-04-02T15:21:30.293921+00:00",
+            "cleanup_summary": {
+              "members_closed": 1,
+              "orphans_detected": 0,
+              "errors": [],
+              "mode": "graceful"
+            }
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.294292+00:00",
+          "event_type": "startup_reconcile",
+          "payload": {
+            "reconciled_at": "2026-04-02T15:21:30.294290+00:00",
+            "cleaned_count": 1,
+            "error_count": 0,
+            "cleaned": [
+              {
+                "team_id": "team_475cc3e03133",
+                "status": "deleted",
+                "deleted_at": "2026-04-02T15:21:30.293921+00:00",
+                "cleanup_summary": {
+                  "members_closed": 1,
+                  "orphans_detected": 0,
+                  "errors": [],
+                  "mode": "graceful"
+                }
+              }
+            ],
+            "errors": []
+          }
+        }
+      ],
+      "message_bus": [
+        {
+          "ts": "2026-04-02T15:21:30.292846+00:00",
+          "event_type": "message_delivery_deferred",
+          "payload": {
+            "message_id": "msg_d8b6520abf9a",
+            "team_id": "team_475cc3e03133",
+            "to_member_id": "leader_99719257"
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.293047+00:00",
+          "event_type": "message_send",
+          "payload": {
+            "message_id": "msg_d8b6520abf9a",
+            "team_id": "team_475cc3e03133",
+            "type": "direct",
+            "subtype": "text",
+            "status": "pending",
+            "delivery": {
+              "leader_99719257": {
+                "attempt_count": 0,
+                "delivered_at": null,
+                "error": null,
+                "last_attempt_at": null,
+                "state": "pending"
+              }
+            },
+            "created_at": "2026-04-02T15:21:30.292720+00:00"
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.293550+00:00",
+          "event_type": "external_event",
+          "payload": {
+            "source": "external",
+            "event_type": "task_updated",
+            "payload": {
+              "team_id": "team_475cc3e03133",
+              "task_id": "task_8529da379f6f",
+              "state": "in_progress"
+            }
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.294709+00:00",
+          "event_type": "startup_reconcile",
+          "payload": {
+            "reconciled_at": "2026-04-02T15:21:30.294708+00:00",
+            "updated_message_count": 1,
+            "pending_before": 1,
+            "pending_after": 0,
+            "delivered_count": 0,
+            "failed_or_rejected_count": 1,
+            "updated_messages": [
+              "msg_d8b6520abf9a"
+            ]
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.295512+00:00",
+          "event_type": "external_event",
+          "payload": {
+            "source": "external",
+            "event_type": "task_owner_orphaned",
+            "payload": {
+              "team_id": "team_475cc3e03133",
+              "task_id": "task_8529da379f6f",
+              "reason": "OWNER_LIFECYCLE:shutdown"
+            }
+          }
+        }
+      ],
+      "task_bus": [
+        {
+          "ts": "2026-04-02T15:21:30.293490+00:00",
+          "event_type": "task_update",
+          "payload": {
+            "task_id": "task_8529da379f6f",
+            "response": {
+              "task_id": "task_8529da379f6f",
+              "team_id": "team_475cc3e03133",
+              "title": "walkthrough task",
+              "owner_member_id": "leader_99719257",
+              "state": "in_progress",
+              "blocked_reason": null,
+              "result_reference": null,
+              "version": 2,
+              "updated_at": "2026-04-02T15:21:30.293163+00:00"
+            }
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.293579+00:00",
+          "event_type": "message_bus_hint_emitted",
+          "payload": {
+            "event_type": "task_updated",
+            "payload": {
+              "team_id": "team_475cc3e03133",
+              "task_id": "task_8529da379f6f",
+              "state": "in_progress"
+            }
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.295318+00:00",
+          "event_type": "task_orphan_owner_reconciled",
+          "payload": {
+            "task_id": "task_8529da379f6f",
+            "previous_owner_member_id": "leader_99719257",
+            "reason": "OWNER_LIFECYCLE:shutdown"
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.295568+00:00",
+          "event_type": "message_bus_hint_emitted",
+          "payload": {
+            "event_type": "task_owner_orphaned",
+            "payload": {
+              "team_id": "team_475cc3e03133",
+              "task_id": "task_8529da379f6f",
+              "reason": "OWNER_LIFECYCLE:shutdown"
+            }
+          }
+        },
+        {
+          "ts": "2026-04-02T15:21:30.295613+00:00",
+          "event_type": "startup_reconcile_orphan_owners",
+          "payload": {
+            "reconciled_at": "2026-04-02T15:21:30.295611+00:00",
+            "scanned": 1,
+            "orphaned": 1,
+            "moved_to_ready": 1,
+            "updated_tasks": [
+              "task_8529da379f6f"
+            ],
+            "errors": []
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,579 @@
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime ops
+{
+  "ts": "2026-04-02T15:38:57.459202+00:00",
+  "operation": "runtime_info",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "store_root": "/Users/kondogenki/.codex/runtime-spike-exp-20260403",
+    "control_plane_store": "/Users/kondogenki/.codex/runtime-spike-exp-20260403/control-plane",
+    "message_bus_store": "/Users/kondogenki/.codex/runtime-spike-exp-20260403/message-bus",
+    "task_bus_store": "/Users/kondogenki/.codex/runtime-spike-exp-20260403/task-bus",
+    "supported_operations": [
+      "message_list",
+      "message_startup_reconcile",
+      "runtime_info",
+      "runtime_reconcile_all",
+      "send_message",
+      "task_create",
+      "task_get",
+      "task_list",
+      "task_startup_reconcile_orphans",
+      "task_update",
+      "team_create",
+      "team_delete",
+      "team_list",
+      "team_startup_reconcile"
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime team-create exp-20260403 exp-team-20260403-1
+{
+  "ts": "2026-04-02T15:38:57.510753+00:00",
+  "operation": "team_create",
+  "args": {
+    "team_name": "exp-20260403",
+    "idempotency_key": "exp-team-20260403-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "team_id": "team_6a3e8ab07b48",
+    "team_name": "exp-20260403",
+    "leader_agent_id": "leader_7199020b",
+    "status": "active",
+    "created_at": "2026-04-02T15:38:57.509801+00:00"
+  },
+  "error": null
+}
+TEAM_ID=team_6a3e8ab07b48
+LEADER_ID=leader_7199020b
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime task-create team_6a3e8ab07b48 implement-minimal-change leader_7199020b ready exp-task-impl-1
+{
+  "ts": "2026-04-02T15:38:57.593826+00:00",
+  "operation": "task_create",
+  "args": {
+    "team_id": "team_6a3e8ab07b48",
+    "title": "implement-minimal-change",
+    "owner_member_id": "leader_7199020b",
+    "state": "ready",
+    "idempotency_key": "exp-task-impl-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_1ed8b2364df7",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "implement-minimal-change",
+    "owner_member_id": "leader_7199020b",
+    "state": "ready",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 1,
+    "updated_at": "2026-04-02T15:38:57.593146+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime task-create team_6a3e8ab07b48 run-verifier leader_7199020b ready exp-task-verify-1
+{
+  "ts": "2026-04-02T15:38:57.638172+00:00",
+  "operation": "task_create",
+  "args": {
+    "team_id": "team_6a3e8ab07b48",
+    "title": "run-verifier",
+    "owner_member_id": "leader_7199020b",
+    "state": "ready",
+    "idempotency_key": "exp-task-verify-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_e84f4c242d7c",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "run-verifier",
+    "owner_member_id": "leader_7199020b",
+    "state": "ready",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 1,
+    "updated_at": "2026-04-02T15:38:57.637491+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime send-message team_6a3e8ab07b48 leader_7199020b leader_7199020b Start implementation: add one minimal README line and report diff exp-msg-impl-1
+{
+  "ts": "2026-04-02T15:38:57.682362+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_6a3e8ab07b48",
+    "from_member_id": "leader_7199020b",
+    "to_member_id": "leader_7199020b",
+    "message_type": "direct",
+    "payload": {
+      "text": "Start implementation: add one minimal README line and report diff"
+    },
+    "idempotency_key": "exp-msg-impl-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "message_id": "msg_e0d590087d3e",
+    "team_id": "team_6a3e8ab07b48",
+    "type": "direct",
+    "subtype": "text",
+    "status": "delivered",
+    "delivery": {
+      "leader_7199020b": {
+        "state": "delivered",
+        "attempt_count": 1,
+        "last_attempt_at": "2026-04-02T15:38:57.681966+00:00",
+        "delivered_at": "2026-04-02T15:38:57.681970+00:00",
+        "error": null
+      }
+    },
+    "created_at": "2026-04-02T15:38:57.681560+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_list --args-json {"team_id":"team_6a3e8ab07b48"}
+{
+  "ts": "2026-04-02T15:39:41.958624+00:00",
+  "operation": "task_list",
+  "args": {
+    "team_id": "team_6a3e8ab07b48"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 2,
+    "tasks": [
+      {
+        "task_id": "task_1ed8b2364df7",
+        "team_id": "team_6a3e8ab07b48",
+        "title": "implement-minimal-change",
+        "owner_member_id": "leader_7199020b",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-02T15:38:57.593146+00:00"
+      },
+      {
+        "task_id": "task_e84f4c242d7c",
+        "team_id": "team_6a3e8ab07b48",
+        "title": "run-verifier",
+        "owner_member_id": "leader_7199020b",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-02T15:38:57.637491+00:00"
+      }
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_1ed8b2364df7","state":"in_progress","idempotency_key":"exp-task-impl-progress-1"}
+{
+  "ts": "2026-04-02T15:41:56.423614+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_1ed8b2364df7",
+    "state": "in_progress",
+    "idempotency_key": "exp-task-impl-progress-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_1ed8b2364df7",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "implement-minimal-change",
+    "owner_member_id": "leader_7199020b",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 2,
+    "updated_at": "2026-04-02T15:41:56.422645+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_1ed8b2364df7","state":"done","result_reference":"README.md:31","idempotency_key":"exp-task-impl-done-1"}
+{
+  "ts": "2026-04-02T15:41:56.462057+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_1ed8b2364df7",
+    "state": "done",
+    "result_reference": "README.md:31",
+    "idempotency_key": "exp-task-impl-done-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_1ed8b2364df7",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "implement-minimal-change",
+    "owner_member_id": "leader_7199020b",
+    "state": "done",
+    "blocked_reason": null,
+    "result_reference": "README.md:31",
+    "version": 3,
+    "updated_at": "2026-04-02T15:41:56.461186+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime send-message team_6a3e8ab07b48 leader_7199020b leader_7199020b Implementation done. Please run verifier with contract and record verdict. exp-msg-verify-1
+{
+  "ts": "2026-04-02T15:41:56.513269+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_6a3e8ab07b48",
+    "from_member_id": "leader_7199020b",
+    "to_member_id": "leader_7199020b",
+    "message_type": "direct",
+    "payload": {
+      "text": "Implementation done. Please run verifier with contract and record verdict."
+    },
+    "idempotency_key": "exp-msg-verify-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "message_id": "msg_26bde0af8d97",
+    "team_id": "team_6a3e8ab07b48",
+    "type": "direct",
+    "subtype": "text",
+    "status": "delivered",
+    "delivery": {
+      "leader_7199020b": {
+        "state": "delivered",
+        "attempt_count": 1,
+        "last_attempt_at": "2026-04-02T15:41:56.512840+00:00",
+        "delivered_at": "2026-04-02T15:41:56.512843+00:00",
+        "error": null
+      }
+    },
+    "created_at": "2026-04-02T15:41:56.512424+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_e84f4c242d7c","state":"in_progress","idempotency_key":"exp-task-verify-progress-1"}
+{
+  "ts": "2026-04-02T15:41:56.547712+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_e84f4c242d7c",
+    "state": "in_progress",
+    "idempotency_key": "exp-task-verify-progress-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_e84f4c242d7c",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "run-verifier",
+    "owner_member_id": "leader_7199020b",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 2,
+    "updated_at": "2026-04-02T15:41:56.546936+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name send_message --args-json '{"team_id":"team_missing","from_member_id":"leader_7199020b","to_member_id":"leader_7199020b","message_type":"direct","payload":{"text":"probe fail-open"},"idempotency_key":"exp-msg-failopen-check-1"}'
+{
+  "ts": "2026-04-02T15:41:56.577821+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_missing",
+    "from_member_id": "leader_7199020b",
+    "to_member_id": "leader_7199020b",
+    "message_type": "direct",
+    "payload": {
+      "text": "probe fail-open"
+    },
+    "idempotency_key": "exp-msg-failopen-check-1"
+  },
+  "ok": false,
+  "fail_open": true,
+  "result": null,
+  "error": {
+    "code": "TEAM_NOT_FOUND",
+    "message": "team not found: team_missing"
+  }
+}
+EXIT_CODE=0
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime --strict op --name send_message --args-json '{"team_id":"team_missing","from_member_id":"leader_7199020b","to_member_id":"leader_7199020b","message_type":"direct","payload":{"text":"probe strict"},"idempotency_key":"exp-msg-strict-check-1"}'
+{
+  "ts": "2026-04-02T15:41:56.607181+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_missing",
+    "from_member_id": "leader_7199020b",
+    "to_member_id": "leader_7199020b",
+    "message_type": "direct",
+    "payload": {
+      "text": "probe strict"
+    },
+    "idempotency_key": "exp-msg-strict-check-1"
+  },
+  "ok": false,
+  "fail_open": false,
+  "result": null,
+  "error": {
+    "code": "TEAM_NOT_FOUND",
+    "message": "team not found: team_missing"
+  }
+}
+EXIT_CODE=2
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_1ed8b2364df7","result_reference":"README.md:24","idempotency_key":"exp-task-impl-ref-fix-1"}
+{
+  "ts": "2026-04-02T15:47:56.805313+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_1ed8b2364df7",
+    "result_reference": "README.md:24",
+    "idempotency_key": "exp-task-impl-ref-fix-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_1ed8b2364df7",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "implement-minimal-change",
+    "owner_member_id": "leader_7199020b",
+    "state": "done",
+    "blocked_reason": null,
+    "result_reference": "README.md:24",
+    "version": 4,
+    "updated_at": "2026-04-02T15:47:56.803692+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name runtime_reconcile_all --args-json {}
+{
+  "ts": "2026-04-02T15:47:56.855739+00:00",
+  "operation": "runtime_reconcile_all",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "control_plane": {
+      "reconciled_at": "2026-04-02T15:47:56.853834+00:00",
+      "cleaned_count": 0,
+      "error_count": 0,
+      "cleaned": [],
+      "errors": []
+    },
+    "message_bus": {
+      "reconciled_at": "2026-04-02T15:47:56.855031+00:00",
+      "updated_message_count": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "delivered_count": 0,
+      "failed_or_rejected_count": 0,
+      "updated_messages": []
+    },
+    "task_bus": {
+      "reconciled_at": "2026-04-02T15:47:56.855614+00:00",
+      "scanned": 2,
+      "orphaned": 0,
+      "moved_to_ready": 0,
+      "updated_tasks": [],
+      "errors": []
+    }
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_e84f4c242d7c","state":"done","result_reference":"logs/experiment-verifier-report-2026-04-03.md:1","idempotency_key":"exp-task-verify-done-1"}
+{
+  "ts": "2026-04-02T15:47:56.918330+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_e84f4c242d7c",
+    "state": "done",
+    "result_reference": "logs/experiment-verifier-report-2026-04-03.md:1",
+    "idempotency_key": "exp-task-verify-done-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_e84f4c242d7c",
+    "team_id": "team_6a3e8ab07b48",
+    "title": "run-verifier",
+    "owner_member_id": "leader_7199020b",
+    "state": "done",
+    "blocked_reason": null,
+    "result_reference": "logs/experiment-verifier-report-2026-04-03.md:1",
+    "version": 3,
+    "updated_at": "2026-04-02T15:47:56.917465+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name team_list --args-json {}
+{
+  "ts": "2026-04-02T15:47:56.959763+00:00",
+  "operation": "team_list",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 1,
+    "teams": [
+      {
+        "cleanup_summary": null,
+        "created_at": "2026-04-02T15:38:57.509801+00:00",
+        "deleted_at": null,
+        "description": "",
+        "last_delete_reason": null,
+        "leader_agent_id": "leader_7199020b",
+        "members": [
+          {
+            "agent_id": "leader_7199020b",
+            "joined_at": "2026-04-02T15:38:57.509801+00:00",
+            "lifecycle": "running",
+            "role": "leader"
+          }
+        ],
+        "schema_version": 1,
+        "status": "active",
+        "team_id": "team_6a3e8ab07b48",
+        "team_name": "exp-20260403",
+        "updated_at": "2026-04-02T15:38:57.509915+00:00",
+        "version": 1
+      }
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_list --args-json {"team_id":"team_6a3e8ab07b48"}
+{
+  "ts": "2026-04-02T15:47:57.017180+00:00",
+  "operation": "task_list",
+  "args": {
+    "team_id": "team_6a3e8ab07b48"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 2,
+    "tasks": [
+      {
+        "task_id": "task_1ed8b2364df7",
+        "team_id": "team_6a3e8ab07b48",
+        "title": "implement-minimal-change",
+        "owner_member_id": "leader_7199020b",
+        "state": "done",
+        "blocked_reason": null,
+        "result_reference": "README.md:24",
+        "version": 4,
+        "updated_at": "2026-04-02T15:47:56.803692+00:00"
+      },
+      {
+        "task_id": "task_e84f4c242d7c",
+        "team_id": "team_6a3e8ab07b48",
+        "title": "run-verifier",
+        "owner_member_id": "leader_7199020b",
+        "state": "done",
+        "blocked_reason": null,
+        "result_reference": "logs/experiment-verifier-report-2026-04-03.md:1",
+        "version": 3,
+        "updated_at": "2026-04-02T15:47:56.917465+00:00"
+      }
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name message_list --args-json {"team_id":"team_6a3e8ab07b48"}
+{
+  "ts": "2026-04-02T15:47:57.073471+00:00",
+  "operation": "message_list",
+  "args": {
+    "team_id": "team_6a3e8ab07b48"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 2,
+    "messages": [
+      {
+        "created_at": "2026-04-02T15:41:56.512424+00:00",
+        "delivery": {
+          "leader_7199020b": {
+            "attempt_count": 1,
+            "delivered_at": "2026-04-02T15:41:56.512843+00:00",
+            "error": null,
+            "last_attempt_at": "2026-04-02T15:41:56.512840+00:00",
+            "state": "delivered"
+          }
+        },
+        "from_member_id": "leader_7199020b",
+        "idempotency_key": "exp-msg-verify-1",
+        "message_id": "msg_26bde0af8d97",
+        "payload": {
+          "text": "Implementation done. Please run verifier with contract and record verdict."
+        },
+        "schema_version": 1,
+        "status": "delivered",
+        "subtype": "text",
+        "team_id": "team_6a3e8ab07b48",
+        "to_member_ids": [
+          "leader_7199020b"
+        ],
+        "type": "direct",
+        "updated_at": "2026-04-02T15:41:56.512847+00:00",
+        "version": 2
+      },
+      {
+        "created_at": "2026-04-02T15:38:57.681560+00:00",
+        "delivery": {
+          "leader_7199020b": {
+            "attempt_count": 1,
+            "delivered_at": "2026-04-02T15:38:57.681970+00:00",
+            "error": null,
+            "last_attempt_at": "2026-04-02T15:38:57.681966+00:00",
+            "state": "delivered"
+          }
+        },
+        "from_member_id": "leader_7199020b",
+        "idempotency_key": "exp-msg-impl-1",
+        "message_id": "msg_e0d590087d3e",
+        "payload": {
+          "text": "Start implementation: add one minimal README line and report diff"
+        },
+        "schema_version": 1,
+        "status": "delivered",
+        "subtype": "text",
+        "team_id": "team_6a3e8ab07b48",
+        "to_member_ids": [
+          "leader_7199020b"
+        ],
+        "type": "direct",
+        "updated_at": "2026-04-02T15:38:57.681972+00:00",
+        "version": 2
+      }
+    ]
+  },
+  "error": null
+}

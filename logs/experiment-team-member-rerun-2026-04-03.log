@@ -1,0 +1,423 @@
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime ops
+{
+  "ts": "2026-04-02T16:16:46.212610+00:00",
+  "operation": "runtime_info",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "store_root": "/Users/kondogenki/.codex/runtime-spike-team-member-rerun-20260403",
+    "control_plane_store": "/Users/kondogenki/.codex/runtime-spike-team-member-rerun-20260403/control-plane",
+    "message_bus_store": "/Users/kondogenki/.codex/runtime-spike-team-member-rerun-20260403/message-bus",
+    "task_bus_store": "/Users/kondogenki/.codex/runtime-spike-team-member-rerun-20260403/task-bus",
+    "supported_operations": [
+      "message_list",
+      "message_startup_reconcile",
+      "runtime_info",
+      "runtime_reconcile_all",
+      "send_message",
+      "task_create",
+      "task_get",
+      "task_list",
+      "task_startup_reconcile_orphans",
+      "task_update",
+      "team_create",
+      "team_delete",
+      "team_list",
+      "team_member_add",
+      "team_member_remove",
+      "team_startup_reconcile"
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime team-create member-rerun-20260403 member-rerun-1
+{
+  "ts": "2026-04-02T16:16:46.262871+00:00",
+  "operation": "team_create",
+  "args": {
+    "team_name": "member-rerun-20260403",
+    "idempotency_key": "member-rerun-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "team_id": "team_f01374473d70",
+    "team_name": "member-rerun-20260403",
+    "leader_agent_id": "leader_8aaee6c2",
+    "status": "active",
+    "created_at": "2026-04-02T16:16:46.261794+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name team_member_add --args-json {"team_id":"team_f01374473d70","agent_id":"worker_member_1","role":"member","idempotency_key":"rerun-member-add-1"}
+{
+  "ts": "2026-04-02T16:16:46.330272+00:00",
+  "operation": "team_member_add",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "agent_id": "worker_member_1",
+    "role": "member",
+    "idempotency_key": "rerun-member-add-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "team_id": "team_f01374473d70",
+    "agent_id": "worker_member_1",
+    "role": "member",
+    "lifecycle": "running",
+    "joined_at": "2026-04-02T16:16:46.329533+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime send-message team_f01374473d70 leader_8aaee6c2 worker_member_1 hello new member rerun-msg-1
+{
+  "ts": "2026-04-02T16:16:46.376542+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "from_member_id": "leader_8aaee6c2",
+    "to_member_id": "worker_member_1",
+    "message_type": "direct",
+    "payload": {
+      "text": "hello new member"
+    },
+    "idempotency_key": "rerun-msg-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "message_id": "msg_400a1557f6ff",
+    "team_id": "team_f01374473d70",
+    "type": "direct",
+    "subtype": "text",
+    "status": "delivered",
+    "delivery": {
+      "worker_member_1": {
+        "state": "delivered",
+        "attempt_count": 1,
+        "last_attempt_at": "2026-04-02T16:16:46.375963+00:00",
+        "delivered_at": "2026-04-02T16:16:46.375967+00:00",
+        "error": null
+      }
+    },
+    "created_at": "2026-04-02T16:16:46.375276+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime task-create team_f01374473d70 verify-member-message-flow worker_member_1 ready rerun-task-1
+{
+  "ts": "2026-04-02T16:16:46.449960+00:00",
+  "operation": "task_create",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "title": "verify-member-message-flow",
+    "owner_member_id": "worker_member_1",
+    "state": "ready",
+    "idempotency_key": "rerun-task-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_468f4044a5fa",
+    "team_id": "team_f01374473d70",
+    "title": "verify-member-message-flow",
+    "owner_member_id": "worker_member_1",
+    "state": "ready",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 1,
+    "updated_at": "2026-04-02T16:16:46.449321+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_update --args-json {"task_id":"task_468f4044a5fa","state":"in_progress","idempotency_key":"rerun-task-update-1"}
+{
+  "ts": "2026-04-02T16:16:46.497438+00:00",
+  "operation": "task_update",
+  "args": {
+    "task_id": "task_468f4044a5fa",
+    "state": "in_progress",
+    "idempotency_key": "rerun-task-update-1"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "task_id": "task_468f4044a5fa",
+    "team_id": "team_f01374473d70",
+    "title": "verify-member-message-flow",
+    "owner_member_id": "worker_member_1",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "version": 2,
+    "updated_at": "2026-04-02T16:16:46.496584+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name team_member_remove --args-json {"team_id":"team_f01374473d70","agent_id":"worker_member_1","reason":"rerun-check"}
+{
+  "ts": "2026-04-02T16:16:46.530760+00:00",
+  "operation": "team_member_remove",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "agent_id": "worker_member_1",
+    "reason": "rerun-check"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "team_id": "team_f01374473d70",
+    "agent_id": "worker_member_1",
+    "lifecycle": "shutdown",
+    "removed_at": "2026-04-02T16:16:46.530317+00:00",
+    "is_leader": false
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime send-message team_f01374473d70 leader_8aaee6c2 worker_member_1 hello after removal rerun-msg-2
+{
+  "ts": "2026-04-02T16:16:46.576091+00:00",
+  "operation": "send_message",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "from_member_id": "leader_8aaee6c2",
+    "to_member_id": "worker_member_1",
+    "message_type": "direct",
+    "payload": {
+      "text": "hello after removal"
+    },
+    "idempotency_key": "rerun-msg-2"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "message_id": "msg_99ac35347b72",
+    "team_id": "team_f01374473d70",
+    "type": "direct",
+    "subtype": "text",
+    "status": "failed",
+    "delivery": {
+      "worker_member_1": {
+        "state": "failed",
+        "attempt_count": 1,
+        "last_attempt_at": "2026-04-02T16:16:46.575465+00:00",
+        "delivered_at": null,
+        "error": "RECIPIENT_NOT_DELIVERABLE:shutdown"
+      }
+    },
+    "created_at": "2026-04-02T16:16:46.574557+00:00"
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime --strict op --name team_member_remove --args-json {"team_id":"team_f01374473d70","agent_id":"leader_8aaee6c2","reason":"strict-gate"}
+{
+  "ts": "2026-04-02T16:16:46.648184+00:00",
+  "operation": "team_member_remove",
+  "args": {
+    "team_id": "team_f01374473d70",
+    "agent_id": "leader_8aaee6c2",
+    "reason": "strict-gate"
+  },
+  "ok": false,
+  "fail_open": false,
+  "result": null,
+  "error": {
+    "code": "LEADER_REMOVAL_NOT_ALLOWED",
+    "message": "leader removal is blocked to preserve leader invariants; use team_delete or leader handoff flow"
+  }
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime reconcile-all
+{
+  "ts": "2026-04-02T16:16:46.695318+00:00",
+  "operation": "runtime_reconcile_all",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "control_plane": {
+      "reconciled_at": "2026-04-02T16:16:46.694255+00:00",
+      "cleaned_count": 0,
+      "error_count": 0,
+      "cleaned": [],
+      "errors": []
+    },
+    "message_bus": {
+      "reconciled_at": "2026-04-02T16:16:46.694639+00:00",
+      "updated_message_count": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "delivered_count": 0,
+      "failed_or_rejected_count": 0,
+      "updated_messages": []
+    },
+    "task_bus": {
+      "reconciled_at": "2026-04-02T16:16:46.695283+00:00",
+      "scanned": 1,
+      "orphaned": 1,
+      "moved_to_ready": 1,
+      "updated_tasks": [
+        "task_468f4044a5fa"
+      ],
+      "errors": []
+    }
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name message_list --args-json {"team_id":"team_f01374473d70"}
+{
+  "ts": "2026-04-02T16:16:46.766123+00:00",
+  "operation": "message_list",
+  "args": {
+    "team_id": "team_f01374473d70"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 2,
+    "messages": [
+      {
+        "created_at": "2026-04-02T16:16:46.375276+00:00",
+        "delivery": {
+          "worker_member_1": {
+            "attempt_count": 1,
+            "delivered_at": "2026-04-02T16:16:46.375967+00:00",
+            "error": null,
+            "last_attempt_at": "2026-04-02T16:16:46.375963+00:00",
+            "state": "delivered"
+          }
+        },
+        "from_member_id": "leader_8aaee6c2",
+        "idempotency_key": "rerun-msg-1",
+        "message_id": "msg_400a1557f6ff",
+        "payload": {
+          "text": "hello new member"
+        },
+        "schema_version": 1,
+        "status": "delivered",
+        "subtype": "text",
+        "team_id": "team_f01374473d70",
+        "to_member_ids": [
+          "worker_member_1"
+        ],
+        "type": "direct",
+        "updated_at": "2026-04-02T16:16:46.375971+00:00",
+        "version": 2
+      },
+      {
+        "created_at": "2026-04-02T16:16:46.574557+00:00",
+        "delivery": {
+          "worker_member_1": {
+            "attempt_count": 1,
+            "delivered_at": null,
+            "error": "RECIPIENT_NOT_DELIVERABLE:shutdown",
+            "last_attempt_at": "2026-04-02T16:16:46.575465+00:00",
+            "state": "failed"
+          }
+        },
+        "from_member_id": "leader_8aaee6c2",
+        "idempotency_key": "rerun-msg-2",
+        "message_id": "msg_99ac35347b72",
+        "payload": {
+          "text": "hello after removal"
+        },
+        "schema_version": 1,
+        "status": "failed",
+        "subtype": "text",
+        "team_id": "team_f01374473d70",
+        "to_member_ids": [
+          "worker_member_1"
+        ],
+        "type": "direct",
+        "updated_at": "2026-04-02T16:16:46.575479+00:00",
+        "version": 2
+      }
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name task_list --args-json {"team_id":"team_f01374473d70"}
+{
+  "ts": "2026-04-02T16:16:46.797628+00:00",
+  "operation": "task_list",
+  "args": {
+    "team_id": "team_f01374473d70"
+  },
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 1,
+    "tasks": [
+      {
+        "task_id": "task_468f4044a5fa",
+        "team_id": "team_f01374473d70",
+        "title": "verify-member-message-flow",
+        "owner_member_id": null,
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 3,
+        "updated_at": "2026-04-02T16:16:46.694825+00:00"
+      }
+    ]
+  },
+  "error": null
+}
+
+$ /Users/kondogenki/.codex/runtime-adapter/codex-runtime op --name team_list --args-json {}
+{
+  "ts": "2026-04-02T16:16:46.828880+00:00",
+  "operation": "team_list",
+  "args": {},
+  "ok": true,
+  "fail_open": true,
+  "result": {
+    "count": 1,
+    "teams": [
+      {
+        "cleanup_summary": null,
+        "created_at": "2026-04-02T16:16:46.261794+00:00",
+        "deleted_at": null,
+        "description": "",
+        "last_delete_reason": null,
+        "leader_agent_id": "leader_8aaee6c2",
+        "members": [
+          {
+            "agent_id": "leader_8aaee6c2",
+            "joined_at": "2026-04-02T16:16:46.261794+00:00",
+            "lifecycle": "running",
+            "role": "leader"
+          },
+          {
+            "agent_id": "worker_member_1",
+            "joined_at": "2026-04-02T16:16:46.329533+00:00",
+            "lifecycle": "shutdown",
+            "remove_reason": "rerun-check",
+            "removed_at": "2026-04-02T16:16:46.530317+00:00",
+            "role": "member"
+          }
+        ],
+        "schema_version": 1,
+        "status": "active",
+        "team_id": "team_f01374473d70",
+        "team_name": "member-rerun-20260403",
+        "updated_at": "2026-04-02T16:16:46.530426+00:00",
+        "version": 3
+      }
+    ]
+  },
+  "error": null
+}

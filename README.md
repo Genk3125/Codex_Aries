@@ -1,0 +1,40 @@
+# AI Agent Maximizer
+
+## Master Goal
+Claude Code でオープンソース化されたデータ・コード資産を活用し、`codex CLI` の実運用能力（正確性・速度・自律性・再現性）を最大化する。
+
+## Definition of “Maximize”
+以下の 4 指標を継続改善する。
+- **Quality**: タスク完了率、修正往復回数、レビュー指摘数
+- **Speed**: 要件受領から初回有効アウトプットまでの時間
+- **Reliability**: 失敗時の自己復旧率、再現可能な実行率
+- **Leverage**: Skill/Automation 再利用率、横展開可能なテンプレート数
+
+## Strategy
+1. **Asset Ingestion**: Claude 側の公開資産を収集・分類・正規化  
+2. **Capability Mapping**: Claude 資産 → Codex CLI 機能へ対応表を作成  
+3. **Execution System**: Skill、テンプレート、評価ハーネスを実装  
+4. **Closed-loop Improvement**: 実行ログに基づき改善を継続
+
+## Immediate Next Actions
+- 収集対象リポジトリ・データセットのインベントリ作成
+- ライセンス/利用条件の確認基準を定義
+- ベースライン評価タスク（10〜20件）を設計
+- Codex CLI 用 Skill とプロンプト規約を初期化
+- 実セッション最小オーケストレーション実験を実施して運用ログを蓄積
+
+## Current Source Dataset
+- Claude snapshot path: `/Users/kondogenki/Downloads/claude-code-main`
+- 最新インテイク結果: `data/raw/claude-source-intake-latest.md`
+- 変換優先度定義: `docs/CLAUDE_TO_CODEX_MIGRATION.md`
+
+## Intake Command
+```bash
+./scripts/intake_claude_source.sh /Users/kondogenki/Downloads/claude-code-main data/raw/claude-source-intake-latest.md
+```
+
+## Project Artifacts
+- `README.md`: プロジェクト全体方針
+- `MASTER_PLAN.md`: 実行ロードマップと成果物定義
+- `scripts/intake_claude_source.sh`: 公開コードの構造インテイク
+- `docs/CLAUDE_TO_CODEX_MIGRATION.md`: 移植優先順位
