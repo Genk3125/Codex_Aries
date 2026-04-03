@@ -1,0 +1,50 @@
+{
+  "ts": "2026-04-03T20:48:31.091401+00:00",
+  "helper": "chain_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/07-loopback-helper.json",
+    "task_id": null,
+    "task_id_source": null,
+    "team_id": null,
+    "team_id_source": null,
+    "verifier_gate_script": "/Users/kondogenki/Codex_Aries/poc/verifier_gate_helper.py",
+    "verifier_cmd": null,
+    "expected_task_state": null,
+    "computer_use_evidence_json": null
+  },
+  "loopback_result": {
+    "ts": "2026-04-03T20:48:31.067222+00:00",
+    "helper": "loopback_helper",
+    "mode": "fail-open",
+    "ok": true,
+    "input": {
+      "input_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/06-bridge-helper.json",
+      "task_id": null,
+      "task_id_source": null,
+      "team_id": null,
+      "team_id_source": null,
+      "post_check_script": "/Users/kondogenki/Codex_Aries/poc/post_step_check_helper.py",
+      "store_root": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/store"
+    },
+    "bridge_result": {
+      "executed": false,
+      "skipped_reason": "missing_task_or_team_id",
+      "ok": false
+    },
+    "post_check_result": {
+      "executed": false,
+      "skipped_reason": "bridge_not_executed",
+      "ok": true
+    }
+  },
+  "verifier_gate_result": {
+    "executed": false,
+    "skipped_reason": "post_check_not_executed",
+    "ok": true
+  },
+  "tmp": {
+    "gate_input_json": null
+  }
+}

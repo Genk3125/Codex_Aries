@@ -1,0 +1,19 @@
+{
+  "ts": "2026-04-03T20:48:28.054547+00:00",
+  "helper": "escalation_draft_helper",
+  "mode": "strict",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-27/orch.json",
+    "recovery_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-27/recovery-next.json"
+  },
+  "escalation_draft": {
+    "required": false,
+    "executed": false,
+    "skipped_reason": "no_escalation_branch",
+    "stop_reasons": [
+      "strict_failure"
+    ],
+    "note": "Recovery mapping indicates no escalation branch. Draft generation is skipped."
+  }
+}

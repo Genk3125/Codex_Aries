@@ -6,8 +6,9 @@
 - **Master Flow 位置**: Milestone 3 / Phase 20
 - **依存先**: `m3-1_real-world-30day-dogfood`（並走可だが finalization 後に統合）
 - **主対象ファイル**: `src/team_runtime/trigger_layer.py`（新規）, `poc/codex_runtime_adapter.py`, `docs/rfc-trigger-layer.md`, `tests/e2e/trigger_layer_mvp.py`（新規）
+- **共通契約参照**: `docs/runtime-shared-contract.md`, `docs/schemas/runtime-shared-contract.v1.json`
 - **推定ワークロード**: 2-3 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -20,14 +21,25 @@ cron / remote trigger / sleep を 1 つの薄い runtime 層で扱い、既存 a
 - RFC (`docs/rfc-trigger-layer.md`) は存在
 - 現在は手動実行中心で、非同期起動の入口が不足
 - 新しい判断主体は導入しない（実行判定のみ）
+- shared contract freeze（Phase 20-22 共通）を先に固定してから実装に入る
+
+### 2.1 Shared Contract Freeze（実装前提）
+
+- store layout は `trigger-layer/` 配下に固定（`docs/runtime-shared-contract.md`）
+- schema version は `schema_version=1` に固定
+- idempotency key 形式は共通 regex に固定
+- strict/fail-open は adapter 共通 envelope 規約に従う
+- operation 名は `trigger_create|trigger_list|trigger_delete|trigger_fire_due` で固定
+- `trigger_fire_due` はまず I/O 契約固定を優先し、実行スケジューラの作り込みは後段
 
 ## 3. 具体的な作業ステップ
 
 ### Step 1: Trigger state schema を固定
 - **対象**: `src/team_runtime/trigger_layer.py`
 - **やること**:
-  - `trigger_id`, `kind`, `schedule`, `status`, `last_run_at`, `next_run_at` を固定
-  - idempotency key を create/update に追加
+  - `trigger_id`, `kind`, `schedule`, `status`, `last_run_at`, `next_run_at`, `schema_version` を固定
+  - store layout を `store_root/trigger-layer/` に固定
+  - idempotency key 形式を shared contract に固定（create/fire_due）
 - **検証**: schema バージョン付き JSON が保存される
 
 ### Step 2: 最小 API を実装
@@ -35,6 +47,7 @@ cron / remote trigger / sleep を 1 つの薄い runtime 層で扱い、既存 a
 - **やること**:
   - `trigger_create`, `trigger_list`, `trigger_delete`, `trigger_fire_due`
   - strict/fail-open を adapter で透過
+  - `trigger_fire_due` は contract 準拠の最小挙動に留める（深い scheduler は未実装）
 - **検証**: CLI から 4 操作が呼べる
 
 ### Step 3: startup reconcile を追加
@@ -49,6 +62,7 @@ cron / remote trigger / sleep を 1 つの薄い runtime 層で扱い、既存 a
 - **やること**:
   - one-shot / recurring / sleep の 3 ケース検証
   - 失敗時の手動回復手順を追記
+  - shared contract 参照を runbook に追記
 - **検証**: E2E が PASS、runbook から再現可能
 
 ## 4. デバッグ挿入ポイント
@@ -61,19 +75,22 @@ cron / remote trigger / sleep を 1 つの薄い runtime 層で扱い、既存 a
 
 ## 5. 完了判定（Exit Criteria）
 
-- [ ] Trigger schema + store が安定
-- [ ] 4 操作（create/list/delete/fire_due）が adapter から実行可能
-- [ ] reconcile 後の pending 増加がない
-- [ ] E2E 3 ケース PASS
+- [x] Trigger schema + store が安定
+- [x] 4 操作（create/list/delete/fire_due）が adapter から実行可能
+- [x] reconcile 後の pending 増加がない
+- [x] E2E 3 ケース PASS（trigger_layer_mvp.py）
+- [x] shared contract freeze（store/schema/idempotency/strict/op 名）への逸脱がない
 
 ## 6. リスク・注意
 
 - cron 精度を最初から追いすぎない（MVP は分単位で十分）
 - remote trigger を認可ロジックと混ぜない（認可は後段）
 - full auto loop を入れない
+- `trigger_fire_due` の本格スケジューラ化はこの phase では先送り
 
 ## 7. 実行ログ（着手後に記入）
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
+| 2026-04-04 | trigger_layer.py 618行実装、adapter接続、E2E PASS | 全 Exit Criteria 達成 | Phase 21 へ進む |
 | | | | |

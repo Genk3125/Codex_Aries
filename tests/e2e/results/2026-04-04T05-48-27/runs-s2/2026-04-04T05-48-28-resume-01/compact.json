@@ -1,0 +1,80 @@
+{
+  "ts": "2026-04-03T20:48:28.342675+00:00",
+  "helper": "compact_state_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-28-resume-01/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "failed",
+    "last_successful_step": null,
+    "failed_step": {
+      "step": "session_helper",
+      "exit_code": 0,
+      "detail": "helper_step_failed"
+    },
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/session_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-28-resume-0..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/task_update_notify_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/post_step_check_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-28-..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/verifier_gate_helper.py --input-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s2/2026-04-04T05-48-28-re..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 4,
+      "succeeded_steps": 0,
+      "failed_steps": [
+        "session_helper",
+        "task_update_notify_helper",
+        "post_step_check_helper",
+        "verifier_gate_helper"
+      ],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper",
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "inspect_failure",
+      "hint": "Inspect failed_step and summarize evidence before the next attempt.",
+      "action_items": [
+        "check compact_state.failed_step",
+        "collect minimal evidence"
+      ]
+    },
+    "ids": {
+      "team_id": null,
+      "task_id": null,
+      "member_id": "worker_daily_driver",
+      "leader_id": null
+    },
+    "meta": {
+      "run_id": "20260403204828",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}

@@ -22,12 +22,22 @@ try:
         TeamControlPlane,
         TeamMessageBus,
         TeamTaskBus,
+        TriggerLayer,
+        TriggerLayerError,
         utc_now_iso,
     )
+    from src.team_runtime.worktree_runtime import WorktreeRuntime, WorktreeRuntimeError
+    from poc.verifier_queue import VerifierQueue, VerifierQueueError
 except Exception:  # noqa: BLE001
     from team_control_plane import ControlPlaneError, TeamControlPlane, utc_now_iso
     from team_message_bus import MessageBusError, TeamMessageBus
     from team_task_bus import TASK_STATES, TaskBusError, TeamTaskBus, UNSET
+    TriggerLayer = None  # type: ignore[assignment]
+    TriggerLayerError = Exception  # type: ignore[assignment]
+    WorktreeRuntime = None  # type: ignore[assignment,misc]
+    WorktreeRuntimeError = Exception  # type: ignore[assignment]
+    VerifierQueue = None  # type: ignore[assignment,misc]
+    VerifierQueueError = Exception  # type: ignore[assignment]
 
 
 class AdapterError(Exception):
@@ -50,6 +60,7 @@ class CodexRuntimeAdapter:
         self.cp_store = self.store_root / "control-plane"
         self.mb_store = self.store_root / "message-bus"
         self.tb_store = self.store_root / "task-bus"
+        self.trigger_store = self.store_root / "trigger-layer"
 
         self.control_plane = TeamControlPlane(self.cp_store)
         self.message_bus = TeamMessageBus(
@@ -61,6 +72,38 @@ class CodexRuntimeAdapter:
             control_plane_store_root=self.cp_store,
             message_bus_store_root=self.mb_store,
         )
+        self.worktree_store = self.store_root / "worktree-runtime"
+        self.vq_store = self.store_root / "verifier-queue"
+
+        self.trigger_layer = None
+        self.trigger_layer_error: str | None = None
+        if TriggerLayer is not None:
+            try:
+                self.trigger_layer = TriggerLayer(self.trigger_store)
+            except Exception as error:  # noqa: BLE001
+                self.trigger_layer_error = str(error)
+        else:
+            self.trigger_layer_error = "TriggerLayer import unavailable"
+
+        self.worktree_runtime = None
+        self.worktree_runtime_error: str | None = None
+        if WorktreeRuntime is not None:
+            try:
+                self.worktree_runtime = WorktreeRuntime(self.worktree_store)
+            except Exception as error:  # noqa: BLE001
+                self.worktree_runtime_error = str(error)
+        else:
+            self.worktree_runtime_error = "WorktreeRuntime import unavailable"
+
+        self.verifier_queue = None
+        self.verifier_queue_error: str | None = None
+        if VerifierQueue is not None:
+            try:
+                self.verifier_queue = VerifierQueue(self.vq_store)
+            except Exception as error:  # noqa: BLE001
+                self.verifier_queue_error = str(error)
+        else:
+            self.verifier_queue_error = "VerifierQueue import unavailable"
 
     def _parse_payload(self, args: Dict[str, Any]) -> str:
         if "payload_json" in args and args["payload_json"] is not None:
@@ -74,6 +117,49 @@ class CodexRuntimeAdapter:
 
     def _task_update_arg(self, args: Dict[str, Any], key: str) -> Any:
         return args[key] if key in args else UNSET
+
+    def _parse_object_arg(
+        self,
+        args: Dict[str, Any],
+        *,
+        object_key: str,
+        json_key: str,
+        default_empty: bool = True,
+    ) -> Dict[str, Any]:
+        value = args.get(object_key)
+        if value is None:
+            value = args.get(json_key)
+        if value is None:
+            return {} if default_empty else {}
+        if isinstance(value, dict):
+            return value
+        if isinstance(value, str):
+            try:
+                parsed = json.loads(value)
+            except json.JSONDecodeError as error:
+                raise AdapterError("VALIDATION_ERROR", f"invalid {json_key}: {error}") from error
+            if not isinstance(parsed, dict):
+                raise AdapterError("VALIDATION_ERROR", f"{json_key} must be JSON object")
+            return parsed
+        raise AdapterError("VALIDATION_ERROR", f"{object_key} must be object or JSON object string")
+
+    def _require_trigger_layer(self) -> Any:
+        if self.trigger_layer is None:
+            detail = self.trigger_layer_error or "not initialized"
+            raise AdapterError("TRIGGER_LAYER_UNAVAILABLE", f"trigger layer unavailable: {detail}")
+        return self.trigger_layer
+
+    def _require_worktree_runtime(self) -> Any:
+        if self.worktree_runtime is None:
+            detail = self.worktree_runtime_error or "not initialized"
+            raise AdapterError("WORKTREE_RUNTIME_UNAVAILABLE", f"worktree runtime unavailable: {detail}")
+        return self.worktree_runtime
+
+    def _require_verifier_queue(self) -> Any:
+        if self.verifier_queue is None:
+            detail = self.verifier_queue_error or "not initialized"
+            raise AdapterError("VERIFIER_QUEUE_UNAVAILABLE", f"verifier queue unavailable: {detail}")
+        return self.verifier_queue
 
     def call(self, operation: str, args: Dict[str, Any]) -> Dict[str, Any]:
         if operation == "team_create":
@@ -165,6 +251,109 @@ class CodexRuntimeAdapter:
         if operation == "task_startup_reconcile_orphans":
             return self.task_bus.startup_reconcile_orphan_owners()
 
+        if operation == "trigger_create":
+            schedule = self._parse_object_arg(args, object_key="schedule", json_key="schedule_json")
+            target = self._parse_object_arg(args, object_key="target", json_key="target_json")
+            payload = self._parse_object_arg(args, object_key="payload", json_key="payload_json")
+            return self._require_trigger_layer().trigger_create(
+                kind=str(args["kind"]),
+                schedule=schedule,
+                target=target,
+                payload=payload,
+                status=str(args.get("status", "scheduled")),
+                trigger_id=args.get("trigger_id"),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "trigger_list":
+            return self._require_trigger_layer().trigger_list(
+                status=args.get("status"),
+                kind=args.get("kind"),
+                team_id=args.get("team_id"),
+                include_deleted=bool(args.get("include_deleted", False)),
+            )
+        if operation == "trigger_delete":
+            return self._require_trigger_layer().trigger_delete(
+                trigger_id=str(args["trigger_id"]),
+                reason=str(args.get("reason", "")),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "trigger_fire_due":
+            max_count_raw = args.get("max_count", 100)
+            try:
+                max_count = int(max_count_raw)
+            except (TypeError, ValueError) as error:
+                raise AdapterError("VALIDATION_ERROR", "max_count must be integer") from error
+            return self._require_trigger_layer().trigger_fire_due(
+                now_iso=args.get("now_iso"),
+                max_count=max_count,
+                idempotency_key=args.get("idempotency_key"),
+            )
+
+        if operation == "worktree_enter":
+            return self._require_worktree_runtime().worktree_enter(
+                team_id=str(args["team_id"]),
+                member_id=str(args["member_id"]),
+                repo_path=args.get("repo_path"),
+                branch_name=args.get("branch_name"),
+                base_ref=args.get("base_ref"),
+                mode=str(args.get("mode", "create")),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "worktree_exit":
+            return self._require_worktree_runtime().worktree_exit(
+                worktree_id=str(args["worktree_id"]),
+                cleanup_mode=str(args.get("cleanup_mode", "delete_if_clean")),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "worktree_cleanup":
+            return self._require_worktree_runtime().worktree_cleanup(
+                team_id=args.get("team_id"),
+                force=bool(args.get("force", False)),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "worktree_list":
+            return self._require_worktree_runtime().worktree_list(
+                team_id=args.get("team_id"),
+                status=args.get("status"),
+                include_deleted=bool(args.get("include_deleted", False)),
+            )
+        if operation == "worktree_startup_reconcile":
+            return self._require_worktree_runtime().startup_reconcile()
+
+        if operation == "verifier_request_create":
+            return self._require_verifier_queue().verifier_request_create(
+                payload_ref=str(args["payload_ref"]),
+                requester_id=args.get("requester_id"),
+                context=args.get("context"),
+                request_id=args.get("request_id"),
+                idempotency_key=args.get("idempotency_key"),
+            )
+        if operation == "verifier_request_get":
+            return self._require_verifier_queue().verifier_request_get(
+                request_id=str(args["request_id"]),
+            )
+        if operation == "verifier_request_list":
+            limit_raw = args.get("limit", 100)
+            try:
+                limit = int(limit_raw)
+            except (TypeError, ValueError) as error:
+                raise AdapterError("VALIDATION_ERROR", "limit must be integer") from error
+            return self._require_verifier_queue().verifier_request_list(
+                status=args.get("status"),
+                requester_id=args.get("requester_id"),
+                limit=limit,
+            )
+        if operation == "verifier_request_claim_once":
+            return self._require_verifier_queue().verifier_request_claim_once(
+                claimer_id=str(args["claimer_id"]),
+            )
+        if operation == "verifier_request_complete":
+            return self._require_verifier_queue().verifier_request_complete(
+                request_id=str(args["request_id"]),
+                outcome=str(args["outcome"]),
+                result_ref=args.get("result_ref"),
+            )
+
         if operation == "runtime_reconcile_all":
             return {
                 "control_plane": self.control_plane.startup_reconcile(),
@@ -173,31 +362,65 @@ class CodexRuntimeAdapter:
             }
 
         if operation == "runtime_info":
+            supported_operations = [
+                "team_create",
+                "team_member_add",
+                "team_member_remove",
+                "team_delete",
+                "team_list",
+                "team_startup_reconcile",
+                "send_message",
+                "message_list",
+                "message_startup_reconcile",
+                "task_create",
+                "task_get",
+                "task_list",
+                "task_update",
+                "task_startup_reconcile_orphans",
+                "runtime_reconcile_all",
+                "runtime_info",
+            ]
+            if self.trigger_layer is not None:
+                supported_operations.extend(
+                    [
+                        "trigger_create",
+                        "trigger_list",
+                        "trigger_delete",
+                        "trigger_fire_due",
+                    ]
+                )
+            if self.worktree_runtime is not None:
+                supported_operations.extend(
+                    [
+                        "worktree_enter",
+                        "worktree_exit",
+                        "worktree_cleanup",
+                        "worktree_list",
+                        "worktree_startup_reconcile",
+                    ]
+                )
+            if self.verifier_queue is not None:
+                supported_operations.extend(
+                    [
+                        "verifier_request_create",
+                        "verifier_request_get",
+                        "verifier_request_list",
+                        "verifier_request_claim_once",
+                        "verifier_request_complete",
+                    ]
+                )
             return {
                 "store_root": str(self.store_root),
                 "control_plane_store": str(self.cp_store),
                 "message_bus_store": str(self.mb_store),
                 "task_bus_store": str(self.tb_store),
-                "supported_operations": sorted(
-                    [
-                        "team_create",
-                        "team_member_add",
-                        "team_member_remove",
-                        "team_delete",
-                        "team_list",
-                        "team_startup_reconcile",
-                        "send_message",
-                        "message_list",
-                        "message_startup_reconcile",
-                        "task_create",
-                        "task_get",
-                        "task_list",
-                        "task_update",
-                        "task_startup_reconcile_orphans",
-                        "runtime_reconcile_all",
-                        "runtime_info",
-                    ]
-                ),
+                "trigger_layer_store": str(self.trigger_store),
+                "worktree_runtime_store": str(self.worktree_store),
+                "trigger_layer_available": self.trigger_layer is not None,
+                "trigger_layer_error": self.trigger_layer_error,
+                "worktree_runtime_available": self.worktree_runtime is not None,
+                "worktree_runtime_error": self.worktree_runtime_error,
+                "supported_operations": sorted(supported_operations),
             }
 
         raise AdapterError("UNKNOWN_OPERATION", f"unsupported operation: {operation}")
@@ -220,6 +443,8 @@ def parse_args_payload(args_json: str, args_file: str) -> Dict[str, Any]:
 def normalize_error(error: Exception) -> Tuple[str, str]:
     if isinstance(error, (ControlPlaneError, MessageBusError, TaskBusError, AdapterError)):
         return str(error.code), str(error.message)
+    if hasattr(error, "code") and hasattr(error, "message"):
+        return str(getattr(error, "code")), str(getattr(error, "message"))
     return "UNHANDLED_ERROR", str(error)
 
 

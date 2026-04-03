@@ -86,7 +86,7 @@ _Date: 2026-04-02_
 - 検証結果を比較可能なフォーマットに統一する
 
 **成果物**
-- `docs/verifier-contract.md`
+- `verifier-contract.md`
 
 **Done**
 - `PASS | PARTIAL | FAIL`

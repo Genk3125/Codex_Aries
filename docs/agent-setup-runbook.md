@@ -8,15 +8,18 @@
 `AGENTS.md` / `coordinator.toml` / `verifier.toml` / `verifier-contract.md` を実運用に載せる手順を標準化する。
 
 ## 2. 配置先
-- `AGENTS.md`: `/Users/kondogenki/AI Agent Maximizer/AGENTS.md`（repo ルート）
+- `AGENTS.md`: `<repo-root>/AGENTS.md`（repo ルート）
 - **repo-local custom agents（推奨）**:
-  - `/Users/kondogenki/AI Agent Maximizer/.codex/agents/coordinator.toml`
-  - `/Users/kondogenki/AI Agent Maximizer/.codex/agents/verifier.toml`
+  - `<repo-root>/.codex/agents/coordinator.toml`
+  - `<repo-root>/.codex/agents/verifier.toml`
 - **user-global custom agents（個人共通）**:
   - `/Users/kondogenki/.codex/agents/coordinator.toml`
   - `/Users/kondogenki/.codex/agents/verifier.toml`
 - verifier 契約:
-  - `/Users/kondogenki/AI Agent Maximizer/verifier-contract.md`
+  - `<repo-root>/verifier-contract.md`
+- runtime shared contract（Phase 20-22）:
+  - `<repo-root>/docs/runtime-shared-contract.md`
+  - `<repo-root>/docs/schemas/runtime-shared-contract.v1.json`
 
 ## 3. repo-local と user-global の使い分け
 - repo-local: プロジェクト固有の役割定義をチームで共有したい場合に使う（Git 管理対象）。
@@ -35,9 +38,13 @@
 3. verifier 出力に `PASS/PARTIAL/FAIL`、`実行コマンド`、`実出力`、`未検証項目` が含まれることを確認する。
 
 ## 6. verifier contract の参照方法
-- verifier system prompt に `/Users/kondogenki/AI Agent Maximizer/verifier-contract.md` を必読として明示する。
+- verifier system prompt に `<repo-root>/verifier-contract.md` を必読として明示する。
 - 判定時は契約の章立て順（Verdict → Commands → Outputs → Unverified → Risk → Next）を強制する。
 - 契約不一致の出力は無効とし再提出する。
+
+## 6.1 shared contract の参照方法（Phase 20-22）
+- Trigger / Worktree / Verifier Queue 実装前に `docs/runtime-shared-contract.md` を参照する。
+- operation 名、store layout、schema version、idempotency 形式、strict/fail-open は shared contract を正本とする。
 
 ## 7. 初回運用手順（推奨）
 1. Plan モードで coordinator が実施計画を作成。

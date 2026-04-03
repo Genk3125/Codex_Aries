@@ -1,0 +1,38 @@
+{
+  "ts": "2026-04-03T20:48:30.649468+00:00",
+  "helper": "computer_use_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "url": "http://127.0.0.1:8771",
+    "operation": "both",
+    "timeout_sec": 20,
+    "timeout_ms": 15000,
+    "extract_max_chars": 6000,
+    "output_dir": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s3/2026-04-04T05-48-29/work/computer-use"
+  },
+  "evidence": {
+    "screenshot": {
+      "executed": true,
+      "ok": true,
+      "output_path": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s3/2026-04-04T05-48-29/work/computer-use/computer-use-20260403T204829.png",
+      "method": "fallback_render",
+      "command": "npx -y playwright@1.53.0 screenshot --browser chromium --timeout 15000 --wait-for-timeout 7500 http://127.0.0.1:8771 /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s3/2026-04-04T05-48-29/work/computer-use/computer-use-20260403T204829.png",
+      "exit_code": 1,
+      "playwright_stderr": "Error: t.parse: Executable doesn't exist at /Users/kondogenki/Library/Caches/ms-playwright/chromium_headless_shell-1178/chrome-mac/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    "extract_text": {
+      "executed": true,
+      "ok": true,
+      "output_path": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s3/2026-04-04T05-48-29/work/computer-use/computer-use-20260403T204829.txt",
+      "char_count": 56,
+      "content_type": "text/html",
+      "preview": "Phase15 Computer Use Scenario\ncomputer-use evidence test"
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "playwright CLI screenshot failed; fallback rendered snapshot was used"
+  ],
+  "note": "Evidence collector only. Final PASS/PARTIAL/FAIL judgment remains with verifier."
+}

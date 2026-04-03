@@ -1,0 +1,42 @@
+{
+  "ts": "2026-04-03T20:48:27.597334+00:00",
+  "helper": "task_update_notify_helper",
+  "mode": "fail-open",
+  "ok": false,
+  "error": {
+    "step": "resolve_inputs",
+    "reason": "task_id is required (use --task-id or --input-json)"
+  },
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s1/2026-04-04T05-48-27/store",
+  "input": {
+    "input_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s1/2026-04-04T05-48-27/work/01-session-helper.json",
+    "task_id": null,
+    "team_id": null,
+    "from_member_id": null,
+    "to_member_id": "worker_daily_driver",
+    "message_text": "task moved to in_progress",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "task_idempotency_key": null,
+    "message_idempotency_key": null
+  },
+  "task_update": {
+    "executed": false
+  },
+  "send_message": {
+    "executed": false
+  },
+  "next": {
+    "task_get_example": {
+      "task_id": null
+    },
+    "message_list_example": {
+      "team_id": null
+    },
+    "reconcile_all_example": {}
+  }
+}

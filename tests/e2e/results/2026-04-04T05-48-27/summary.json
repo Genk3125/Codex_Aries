@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-04-04T05-48-27",
+  "pass_count": 3,
+  "fail_count": 2,
+  "results": [
+    {"scenario": "S1_single_agent_gate_success", "status": "FAIL", "note": "gate flow did not produce ok=true", "artifacts": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/S1_single_agent_gate_success.log"}
+    ,
+    {"scenario": "S2_fail_then_resume", "status": "PASS", "note": "strict failure recovered by resume flow", "artifacts": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/S2_fail_then_resume-resume.log"}
+    ,
+    {"scenario": "S3_single_agent_computer_use", "status": "PASS", "note": "computer_use evidence step succeeded", "artifacts": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s3/2026-04-04T05-48-29"}
+    ,
+    {"scenario": "S4_three_agent_team_runtime", "status": "PASS", "note": "3-member team runtime scenario passed", "artifacts": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/S4_three_agent_team_runtime.log"}
+    ,
+    {"scenario": "S5_long_running_context_compaction", "status": "FAIL", "note": "resume did not prefer context-compacted.json", "artifacts": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/S5_long_running_context_compaction-resume.log"}
+  ]
+}

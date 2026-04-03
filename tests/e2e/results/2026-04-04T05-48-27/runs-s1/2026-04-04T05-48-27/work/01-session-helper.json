@@ -1,0 +1,57 @@
+{
+  "ts": "2026-04-03T20:48:27.572345+00:00",
+  "helper": "session_helper",
+  "flow": "team_create->team_member_add->task_create->send_message",
+  "mode": "fail-open",
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s1/2026-04-04T05-48-27/store",
+  "ok": false,
+  "error": {
+    "step": "team_create",
+    "reason": "team_create failed"
+  },
+  "ids": {
+    "team_id": null,
+    "leader_id": null,
+    "member_id": "worker_daily_driver",
+    "task_id": null,
+    "message_id": null
+  },
+  "steps": [
+    {
+      "step": "team_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "team-create",
+        "team-s1-single-agent-gate-suc"
+      ],
+      "exit_code": 2,
+      "operation": null,
+      "operation_ok": null,
+      "error": null,
+      "result": null,
+      "parse_error": "empty runtime output"
+    }
+  ],
+  "next": {
+    "team_id": null,
+    "leader_id": null,
+    "member_id": "worker_daily_driver",
+    "task_id": null,
+    "message_id": null,
+    "task_update_example": {
+      "task_id": null,
+      "state": "in_progress",
+      "idempotency_key": "<task-update-idempotency-key>"
+    },
+    "followup_send_message_example": {
+      "team_id": null,
+      "from_member_id": null,
+      "to_member_id": "worker_daily_driver",
+      "text": "<next-message>",
+      "idempotency_key": "<message-idempotency-key>"
+    }
+  }
+}

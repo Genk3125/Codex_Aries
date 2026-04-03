@@ -1,0 +1,85 @@
+{
+  "ts": "2026-04-03T20:48:31.488788+00:00",
+  "helper": "verifier_gate_helper",
+  "mode": "fail-open",
+  "ok": false,
+  "input": {
+    "input_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-31-resume-01/work/03-post-step-check-helper.json",
+    "task_id": null,
+    "task_id_source": null,
+    "team_id": null,
+    "team_id_source": null,
+    "expected_task_state": null,
+    "verifier_cmd": null,
+    "computer_use_evidence_json": null
+  },
+  "gate_result": {
+    "ts": "2026-04-03T20:48:31.488674+00:00",
+    "requires_verifier": true,
+    "trigger_count": 5,
+    "trigger_codes": [
+      "RECONCILE_FAILED",
+      "TASK_GET_FAILED",
+      "MESSAGE_LIST_FAILED",
+      "MISSING_TASK_ID",
+      "MISSING_TEAM_ID"
+    ],
+    "triggers": [
+      {
+        "code": "RECONCILE_FAILED",
+        "severity": "high",
+        "detail": "reconcile step did not succeed"
+      },
+      {
+        "code": "TASK_GET_FAILED",
+        "severity": "high",
+        "detail": "task_get step did not succeed"
+      },
+      {
+        "code": "MESSAGE_LIST_FAILED",
+        "severity": "high",
+        "detail": "message_list step did not succeed"
+      },
+      {
+        "code": "MISSING_TASK_ID",
+        "severity": "high",
+        "detail": "task_id could not be resolved from input JSON or --task-id"
+      },
+      {
+        "code": "MISSING_TEAM_ID",
+        "severity": "high",
+        "detail": "team_id could not be resolved from input JSON or --team-id"
+      }
+    ],
+    "checks": {
+      "reconcile_ok": false,
+      "task_get_ok": false,
+      "message_list_ok": false,
+      "message_scan": {
+        "messages_scanned": 0,
+        "problematic_count": 0,
+        "problematic": []
+      },
+      "expected_task_state": null,
+      "observed_task_state": null,
+      "task_id": null,
+      "task_id_source": null,
+      "team_id": null,
+      "team_id_source": null
+    },
+    "note": "Gate result is only a trigger decision. Final PASS/PARTIAL/FAIL must come from verifier."
+  },
+  "verifier_next": {
+    "required": true,
+    "reason_codes": [
+      "RECONCILE_FAILED",
+      "TASK_GET_FAILED",
+      "MESSAGE_LIST_FAILED",
+      "MISSING_TASK_ID",
+      "MISSING_TEAM_ID"
+    ],
+    "input_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-31-resume-01/work/03-post-step-check-helper.json",
+    "verifier_contract": "/Users/kondogenki/Codex_Aries/verifier-contract.md",
+    "hint": "Run verifier with the gate triggers as context and return contract-formatted PASS/PARTIAL/FAIL."
+  }
+}

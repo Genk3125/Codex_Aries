@@ -1,0 +1,144 @@
+{
+  "contract_name": "runtime_shared_contract_phase20_22",
+  "version": 1,
+  "frozen_at": "2026-04-04",
+  "applies_to": [
+    "m3-2_trigger-layer-mvp",
+    "m3-3_worktree-runtime-tools-mvp",
+    "m3-4_verifier-queue-standardization"
+  ],
+  "out_of_scope": [
+    "deep_trigger_fire_due_implementation",
+    "expanded_worktree_enter_exit_implementation",
+    "verifier_queue_retry",
+    "verifier_queue_priority",
+    "runtime_reconcile_all_changes",
+    "daily_driver_phase19_behavior_changes"
+  ],
+  "store_layout": {
+    "existing_roots": [
+      "control-plane",
+      "message-bus",
+      "task-bus"
+    ],
+    "new_roots": {
+      "trigger-layer": [
+        "triggers/",
+        "idempotency.json",
+        "trigger-events.log"
+      ],
+      "worktree-runtime": [
+        "worktrees/",
+        "idempotency.json",
+        "worktree-events.log"
+      ],
+      "verifier-queue": [
+        "requests/",
+        "idempotency.json",
+        "claim-index.json",
+        "verifier-queue-events.log"
+      ]
+    }
+  },
+  "schema_version": {
+    "value": 1,
+    "required_for": [
+      "trigger_records",
+      "worktree_records",
+      "verifier_request_records",
+      "idempotency_maps",
+      "claim_indexes"
+    ]
+  },
+  "idempotency": {
+    "format": "<domain>:<operation>:<scope>:<request_token>",
+    "regex": "^(trigger|worktree|verifier_queue):[a-z][a-z0-9_]{2,31}:[a-z0-9][a-z0-9._-]{1,63}:[a-z0-9][a-z0-9._-]{7,63}$",
+    "domains": [
+      "trigger",
+      "worktree",
+      "verifier_queue"
+    ]
+  },
+  "strict_fail_open": {
+    "default_mode": "fail-open",
+    "fail_open": {
+      "envelope_ok": false,
+      "exit_code_on_error": 0
+    },
+    "strict": {
+      "envelope_ok": false,
+      "exit_code_on_error": 2
+    },
+    "note": "Use adapter envelope contract; do not add per-feature behavior drift."
+  },
+  "adapter_operations": {
+    "trigger": [
+      "trigger_create",
+      "trigger_list",
+      "trigger_delete",
+      "trigger_fire_due"
+    ],
+    "worktree": [
+      "worktree_enter",
+      "worktree_exit",
+      "worktree_cleanup",
+      "worktree_list"
+    ],
+    "verifier_queue": [
+      "verifier_request_create",
+      "verifier_request_get",
+      "verifier_request_list",
+      "verifier_request_claim_once"
+    ],
+    "naming_rule": "snake_case with domain prefix; no aliases"
+  },
+  "responsibility_boundary": {
+    "trigger": {
+      "owns": [
+        "trigger_definition",
+        "due_fire_entrypoint"
+      ],
+      "does_not_own": [
+        "retry_policy",
+        "priority_policy",
+        "auth_engine"
+      ]
+    },
+    "worktree": {
+      "owns": [
+        "worktree_enter_exit_cleanup",
+        "path_branch_safety"
+      ],
+      "does_not_own": [
+        "task_ownership_policy",
+        "auto_merge_policy"
+      ]
+    },
+    "verifier_queue": {
+      "owns": [
+        "enqueue_get_list_claim_once"
+      ],
+      "does_not_own": [
+        "verifier_judgement_logic",
+        "retry_policy",
+        "priority_policy",
+        "auto_fix_policy"
+      ]
+    }
+  },
+  "review_invariants": [
+    "operation_names_match_contract",
+    "schema_version_is_1_for_new_artifacts",
+    "store_layout_matches_contract",
+    "idempotency_key_matches_regex",
+    "strict_fail_open_behavior_matches_adapter_contract",
+    "runtime_reconcile_all_is_unchanged",
+    "no_out_of_scope_feature_injection",
+    "daily_driver_phase19_is_not_broken"
+  ],
+  "implementation_order": [
+    "phase20_trigger",
+    "phase21_worktree",
+    "phase22_verifier_queue"
+  ]
+}

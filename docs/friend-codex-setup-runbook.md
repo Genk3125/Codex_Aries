@@ -73,3 +73,7 @@ source "$HOME/.codex/runtime-adapter-amax-friend/runtime-adapter-amax-friend.env
    - `echo "$AMAX_RUNTIME_STORE_ROOT"`
 4. manifest 確認:
    - `cat "$HOME/.codex/runtime-adapter-<profile>/install-manifest.json"`
+
+## 6. Distribution Synchronization Note
+
+`~/.codex` に wrapper、slash command、skill、agent を直接追加した場合は、友人配布前に `bootstrap-friend-codex.sh` と関連 runbook へ同じ導線を反映する。`~/.codex` の手元追加だけで共有完了と扱わない。

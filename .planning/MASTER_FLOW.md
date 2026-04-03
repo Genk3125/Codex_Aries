@@ -118,17 +118,17 @@ Milestone 3 は「新しい判断主体を増やさずに、既存 runtime kerne
 
 | Phase | Status | subplan |
 |-------|--------|--------|
-| 20 | `not_started` | `m3-2_trigger-layer-mvp` |
-| 21 | `not_started` | `m3-3_worktree-runtime-tools-mvp` |
-| 22 | `not_started` | `m3-4_verifier-queue-standardization` |
+| 20 | `done` | `m3-2_trigger-layer-mvp` |
+| 21 | `done` | `m3-3_worktree-runtime-tools-mvp` |
+| 22 | `done` | `m3-4_verifier-queue-standardization` |
 
 ### Track C: Scope / Release Discipline（Phase 23-25）
 
 | Phase | Status | subplan |
 |-------|--------|--------|
-| 23 | `not_started` | `m3-5_team-runtime-deferred-priority` |
-| 24 | `not_started` | `m3-6_docs-status-release-sync` |
-| 25 | `not_started` | `m3-7_ts-boundary-decision` |
+| 23 | `done` | `m3-5_team-runtime-deferred-priority` |
+| 24 | `done` | `m3-6_docs-status-release-sync` |
+| 25 | `done` | `m3-7_ts-boundary-decision` |
 
 **次の最優先**: Phase 19 `m3-1_real-world-30day-dogfood`
 - **準備状態**: `ready_to_run`（Step 1 完了、Day 1 = 2026-04-06 JST）

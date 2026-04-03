@@ -39,17 +39,23 @@ _Updated: 2026-04-03_
 
 ## Milestone 3（95% 仕上げ）
 
-### Planned Phases
-- Phase 19: `m3-1_real-world-30day-dogfood`
-- Phase 20: `m3-2_trigger-layer-mvp`
-- Phase 21: `m3-3_worktree-runtime-tools-mvp`
-- Phase 22: `m3-4_verifier-queue-standardization`
-- Phase 23: `m3-5_team-runtime-deferred-priority`
-- Phase 24: `m3-6_docs-status-release-sync`
-- Phase 25: `m3-7_ts-boundary-decision`
+### Done（Track B/C 実装完了）
+- ~~Phase 20: trigger-layer-mvp — E2E PASS~~
+- ~~Phase 21: worktree-runtime-tools-mvp — E2E 8/8 PASS~~
+- ~~Phase 22: verifier-queue-standardization — E2E 6/6 PASS~~
+- ~~Phase 23: team-runtime-deferred-priority — docs作成済み~~
+- ~~Phase 24: docs-status-release-sync — check-status-sync.sh OK~~
+- ~~Phase 25: ts-boundary-decision — Stay Python 確定~~
+
+### Pending（Track A — 時間依存）
+- Phase 19: real-world 30-day dogfood（Day 1 = 2026-04-06）
+
+### Next（Phase 26 候補）
+- Verifier Queue gate/chain opt-in（docs/team-runtime-deferred-priority.md D7）
 
 ## Not Now
 
 - Codex 本体 fork
 - full auto loop（multi-pass自動再試行）
 - memory の本格実装
+- TypeScript 移行（ts-boundary-decision.md で Stay Python 確定）

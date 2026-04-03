@@ -1,0 +1,34 @@
+{
+  "model_presets": {
+    "quality": {
+      "description": "High-quality planning and coordination",
+      "intended_use": "main"
+    },
+    "balanced": {
+      "description": "Balanced quality and speed",
+      "intended_use": "main_or_sub"
+    },
+    "fast": {
+      "description": "Fast delegated execution",
+      "intended_use": "sub"
+    }
+  },
+  "reasoning_presets": {
+    "low": {
+      "description": "Fast response with light reasoning",
+      "intended_use": "sub"
+    },
+    "medium": {
+      "description": "Default balanced reasoning",
+      "intended_use": "main_or_sub"
+    },
+    "high": {
+      "description": "Deep reasoning for complex tasks",
+      "intended_use": "main_or_sub"
+    },
+    "xhigh": {
+      "description": "Maximum reasoning depth",
+      "intended_use": "main"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "ts": "2026-04-03T20:48:31.151334+00:00",
+  "helper": "context_compactor",
+  "ok": true,
+  "input": {
+    "runs_dir": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5",
+    "orchestrator_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/orch.json",
+    "latest_orchestrator_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/orch.json",
+    "latest_compact_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/compact.json"
+  },
+  "compact_state": {
+    "current_status": "failed",
+    "last_successful_step": "chain_helper",
+    "failed_step": {
+      "step": "session_helper",
+      "exit_code": 0,
+      "detail": "helper_step_failed"
+    },
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 7,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/session_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/store --team-name team-s5-long-running-context- --member-id worker_daily_driver --task-title S5_long_running_context_compaction --message-text daily-driver start: S5_long_running_context_compaction --output-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/01-session-helper.json"
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/task_update_notify_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/store --input-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/01-session-helper.json --state in_progress --to-member-id worker_daily_driver --message-text task moved to in_progress --output-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/02-task-update-notify-helper.json"
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/post_step_check_helper.py --store-root /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/store --input-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/02-task-update-notify-helper.json --output-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/03-post-step-check-helper.json"
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/verifier_gate_helper.py --input-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/03-post-step-check-helper.json --output-json /Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/work/05-verifier-gate-helper.json --verifier-timeout-sec 180 --verifier-contract-path /Users/kondogenki/Codex_Aries/verifier-contract.md"
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 7,
+      "succeeded_steps": 2,
+      "failed_steps": [
+        "session_helper",
+        "task_update_notify_helper",
+        "post_step_check_helper",
+        "verifier_gate_helper",
+        "bridge_helper"
+      ],
+      "skipped_steps": [
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "guard_hint",
+      "hint": "Continue only with a new run request; no automatic retry is performed.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": null,
+      "task_id": null,
+      "member_id": "worker_daily_driver",
+      "leader_id": null
+    }
+  },
+  "evidence_index": {
+    "run_count_included": 1,
+    "runs": [
+      {
+        "run_id": "2026-04-04T05-48-30",
+        "current_status": "failed",
+        "failed_step": {
+          "step": "session_helper",
+          "exit_code": 0,
+          "detail": "helper_step_failed"
+        },
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/orch.json",
+          "compact.json": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/compact.json",
+          "compact.md": "/Users/kondogenki/Codex_Aries/tests/e2e/results/2026-04-04T05-48-27/runs-s5/2026-04-04T05-48-30/compact.md"
+        },
+        "orch_size_bytes": 24971
+      }
+    ]
+  },
+  "history": [
+    {
+      "run_id": "2026-04-04T05-48-30",
+      "current_status": "failed",
+      "last_successful_step": "chain_helper"
+    }
+  ],
+  "meta": {
+    "schema_version": 1,
+    "max_context_tokens": 1200,
+    "estimated_tokens": 1150,
+    "within_budget": true
+  },
+  "warnings": [
+    "Compactor pruned optional evidence fields to fit token budget."
+  ]
+}
