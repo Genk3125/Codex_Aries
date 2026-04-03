@@ -1,0 +1,68 @@
+{
+  "ts": "2026-04-03T21:18:56.158798+00:00",
+  "helper": "compact_state_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-18-55-resume-01/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "ok",
+    "last_successful_step": "verifier_gate_helper",
+    "failed_step": null,
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/session_helper.py --store-root /Users/kondogenki/Codex_Aries/runs/2026-04-04T06-18-55-resume-01/store --team-name team-debug-verificati..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/task_update_notify_helper.py --store-root /Users/kondogenki/Codex_Aries/runs/2026-04-04T06-18-55-resume-01/store --input-json /Users/ko..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/post_step_check_helper.py --store-root /Users/kondogenki/Codex_Aries/runs/2026-04-04T06-18-55-resume-01/store --input-json /Users/kondo..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 /Users/kondogenki/Codex_Aries/poc/verifier_gate_helper.py --input-json /Users/kondogenki/Codex_Aries/runs/2026-04-04T06-18-55-resume-01/work/03-post-step-check-helper.js..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 4,
+      "succeeded_steps": 4,
+      "failed_steps": [],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper",
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "proceed",
+      "hint": "Proceed to the next task or finalize this run.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": "team_dc474027f425",
+      "task_id": "task_985587be0cac",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_64a96905"
+    },
+    "meta": {
+      "run_id": "20260403211855",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}

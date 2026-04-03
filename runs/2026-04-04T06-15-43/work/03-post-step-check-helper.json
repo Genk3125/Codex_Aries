@@ -1,0 +1,51 @@
+{
+  "ts": "2026-04-03T21:15:43.173726+00:00",
+  "helper": "post_step_check_helper",
+  "mode": "fail-open",
+  "ok": false,
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+  "input": {
+    "input_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/02-task-update-notify-helper.json",
+    "task_id": null,
+    "task_id_source": null,
+    "team_id": null,
+    "team_id_source": null
+  },
+  "reconcile": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "runtime_reconcile_all",
+      "--args-json",
+      "{}"
+    ],
+    "exit_code": 2,
+    "operation_ok": null,
+    "parse_error": "empty runtime output",
+    "envelope": null,
+    "ok": false
+  },
+  "task_get": {
+    "executed": false,
+    "skipped_reason": "task_id_unresolved"
+  },
+  "message_list": {
+    "executed": false,
+    "skipped_reason": "team_id_unresolved"
+  },
+  "next": {
+    "task_update_notify_example": {
+      "task_id": null,
+      "team_id": null,
+      "state": "<next-state>",
+      "to_member_id": "<member-id>",
+      "message_text": "<message>"
+    },
+    "team_list_example": {}
+  }
+}

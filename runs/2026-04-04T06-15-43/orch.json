@@ -1,0 +1,434 @@
+{
+  "ts": "2026-04-03T21:15:43.202585+00:00",
+  "helper": "one_shot_orchestrator",
+  "mode": "fail-open",
+  "flow_mode": "gate",
+  "ok": false,
+  "single_pass": true,
+  "run_id": "20260403211543",
+  "input": {
+    "team_name": "team-debug-verification-test",
+    "member_id": "worker_daily_driver",
+    "notify_member_id": "worker_daily_driver",
+    "task_title": "debug-verification-test",
+    "task_update_state": "in_progress",
+    "gate_expected_task_state": null,
+    "computer_use_url": null,
+    "computer_use_operation": null,
+    "verifier_cmd": null,
+    "store_root": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store"
+  },
+  "paths": {
+    "work_dir": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work"
+  },
+  "preflight_guard": {
+    "enabled": true,
+    "ts": "2026-04-03T21:15:43.084709+00:00",
+    "decision": "allow",
+    "attempt_count": 0,
+    "max_retries": 3,
+    "stop_condition": [
+      "max_retries",
+      "strict_failure",
+      "manual_stop",
+      "escalated"
+    ],
+    "stop_reasons": [],
+    "strict_mode": false,
+    "state_last_decision": null,
+    "recovery_playbook_ref": "/Users/kondogenki/Codex_Aries/docs/recovery-playbook.md",
+    "note": "Preflight guard decides run start eligibility only.",
+    "next_action_hint": "Run is allowed to start; post-run guard will evaluate outcome.",
+    "state_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/guard-state.json",
+    "ok": true
+  },
+  "results": {
+    "session_helper": {
+      "executed": true,
+      "step": "session_helper",
+      "command": [
+        "python3",
+        "/Users/kondogenki/Codex_Aries/poc/session_helper.py",
+        "--store-root",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "--team-name",
+        "team-debug-verification-test",
+        "--member-id",
+        "worker_daily_driver",
+        "--task-title",
+        "debug-verification-test",
+        "--message-text",
+        "daily-driver start: debug-verification-test",
+        "--output-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/01-session-helper.json"
+      ],
+      "exit_code": 0,
+      "ok": false,
+      "operation_ok": false,
+      "output_json_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/01-session-helper.json",
+      "parse_error_stdout": null,
+      "parse_error_file": null,
+      "stderr": "",
+      "output": {
+        "ts": "2026-04-03T21:15:43.116620+00:00",
+        "helper": "session_helper",
+        "flow": "team_create->team_member_add->task_create->send_message",
+        "mode": "fail-open",
+        "runtime_cmd": [
+          "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+        ],
+        "store_root": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "ok": false,
+        "error": {
+          "step": "team_create",
+          "reason": "team_create failed"
+        },
+        "ids": {
+          "team_id": null,
+          "leader_id": null,
+          "member_id": "worker_daily_driver",
+          "task_id": null,
+          "message_id": null
+        },
+        "steps": [
+          {
+            "step": "team_create",
+            "command": [
+              "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+              "team-create",
+              "team-debug-verification-test"
+            ],
+            "exit_code": 2,
+            "operation": null,
+            "operation_ok": null,
+            "error": null,
+            "result": null,
+            "parse_error": "empty runtime output"
+          }
+        ],
+        "next": {
+          "team_id": null,
+          "leader_id": null,
+          "member_id": "worker_daily_driver",
+          "task_id": null,
+          "message_id": null,
+          "task_update_example": {
+            "task_id": null,
+            "state": "in_progress",
+            "idempotency_key": "<task-update-idempotency-key>"
+          },
+          "followup_send_message_example": {
+            "team_id": null,
+            "from_member_id": null,
+            "to_member_id": "worker_daily_driver",
+            "text": "<next-message>",
+            "idempotency_key": "<message-idempotency-key>"
+          }
+        }
+      }
+    },
+    "task_update_notify_helper": {
+      "executed": true,
+      "step": "task_update_notify_helper",
+      "command": [
+        "python3",
+        "/Users/kondogenki/Codex_Aries/poc/task_update_notify_helper.py",
+        "--store-root",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "--input-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/01-session-helper.json",
+        "--state",
+        "in_progress",
+        "--to-member-id",
+        "worker_daily_driver",
+        "--message-text",
+        "task moved to in_progress",
+        "--output-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/02-task-update-notify-helper.json"
+      ],
+      "exit_code": 0,
+      "ok": false,
+      "operation_ok": false,
+      "output_json_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/02-task-update-notify-helper.json",
+      "parse_error_stdout": null,
+      "parse_error_file": null,
+      "stderr": "",
+      "output": {
+        "ts": "2026-04-03T21:15:43.143812+00:00",
+        "helper": "task_update_notify_helper",
+        "mode": "fail-open",
+        "ok": false,
+        "error": {
+          "step": "resolve_inputs",
+          "reason": "task_id is required (use --task-id or --input-json)"
+        },
+        "runtime_cmd": [
+          "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+        ],
+        "store_root": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "input": {
+          "input_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/01-session-helper.json",
+          "task_id": null,
+          "team_id": null,
+          "from_member_id": null,
+          "to_member_id": "worker_daily_driver",
+          "message_text": "task moved to in_progress",
+          "state": "in_progress",
+          "blocked_reason": null,
+          "result_reference": null,
+          "task_idempotency_key": null,
+          "message_idempotency_key": null
+        },
+        "task_update": {
+          "executed": false
+        },
+        "send_message": {
+          "executed": false
+        },
+        "next": {
+          "task_get_example": {
+            "task_id": null
+          },
+          "message_list_example": {
+            "team_id": null
+          },
+          "reconcile_all_example": {}
+        }
+      }
+    },
+    "post_step_check_helper": {
+      "executed": true,
+      "step": "post_step_check_helper",
+      "command": [
+        "python3",
+        "/Users/kondogenki/Codex_Aries/poc/post_step_check_helper.py",
+        "--store-root",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "--input-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/02-task-update-notify-helper.json",
+        "--output-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/03-post-step-check-helper.json"
+      ],
+      "exit_code": 0,
+      "ok": false,
+      "operation_ok": false,
+      "output_json_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/03-post-step-check-helper.json",
+      "parse_error_stdout": null,
+      "parse_error_file": null,
+      "stderr": "",
+      "output": {
+        "ts": "2026-04-03T21:15:43.173726+00:00",
+        "helper": "post_step_check_helper",
+        "mode": "fail-open",
+        "ok": false,
+        "runtime_cmd": [
+          "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+        ],
+        "store_root": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/store",
+        "input": {
+          "input_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/02-task-update-notify-helper.json",
+          "task_id": null,
+          "task_id_source": null,
+          "team_id": null,
+          "team_id_source": null
+        },
+        "reconcile": {
+          "executed": true,
+          "command": [
+            "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+            "op",
+            "--name",
+            "runtime_reconcile_all",
+            "--args-json",
+            "{}"
+          ],
+          "exit_code": 2,
+          "operation_ok": null,
+          "parse_error": "empty runtime output",
+          "envelope": null,
+          "ok": false
+        },
+        "task_get": {
+          "executed": false,
+          "skipped_reason": "task_id_unresolved"
+        },
+        "message_list": {
+          "executed": false,
+          "skipped_reason": "team_id_unresolved"
+        },
+        "next": {
+          "task_update_notify_example": {
+            "task_id": null,
+            "team_id": null,
+            "state": "<next-state>",
+            "to_member_id": "<member-id>",
+            "message_text": "<message>"
+          },
+          "team_list_example": {}
+        }
+      }
+    },
+    "computer_use_helper": {
+      "executed": false,
+      "step": "computer_use_helper",
+      "ok": true,
+      "skipped_reason": "computer_use_url_not_set"
+    },
+    "verifier_gate_helper": {
+      "executed": true,
+      "step": "verifier_gate_helper",
+      "command": [
+        "python3",
+        "/Users/kondogenki/Codex_Aries/poc/verifier_gate_helper.py",
+        "--input-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/03-post-step-check-helper.json",
+        "--output-json",
+        "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/05-verifier-gate-helper.json",
+        "--verifier-timeout-sec",
+        "180",
+        "--verifier-contract-path",
+        "/Users/kondogenki/Codex_Aries/verifier-contract.md"
+      ],
+      "exit_code": 0,
+      "ok": false,
+      "operation_ok": false,
+      "output_json_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/05-verifier-gate-helper.json",
+      "parse_error_stdout": null,
+      "parse_error_file": null,
+      "stderr": "",
+      "output": {
+        "ts": "2026-04-03T21:15:43.199266+00:00",
+        "helper": "verifier_gate_helper",
+        "mode": "fail-open",
+        "ok": false,
+        "input": {
+          "input_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/03-post-step-check-helper.json",
+          "task_id": null,
+          "task_id_source": null,
+          "team_id": null,
+          "team_id_source": null,
+          "expected_task_state": null,
+          "verifier_cmd": null,
+          "computer_use_evidence_json": null
+        },
+        "gate_result": {
+          "ts": "2026-04-03T21:15:43.199128+00:00",
+          "requires_verifier": true,
+          "trigger_count": 5,
+          "trigger_codes": [
+            "RECONCILE_FAILED",
+            "TASK_GET_FAILED",
+            "MESSAGE_LIST_FAILED",
+            "MISSING_TASK_ID",
+            "MISSING_TEAM_ID"
+          ],
+          "triggers": [
+            {
+              "code": "RECONCILE_FAILED",
+              "severity": "high",
+              "detail": "reconcile step did not succeed"
+            },
+            {
+              "code": "TASK_GET_FAILED",
+              "severity": "high",
+              "detail": "task_get step did not succeed"
+            },
+            {
+              "code": "MESSAGE_LIST_FAILED",
+              "severity": "high",
+              "detail": "message_list step did not succeed"
+            },
+            {
+              "code": "MISSING_TASK_ID",
+              "severity": "high",
+              "detail": "task_id could not be resolved from input JSON or --task-id"
+            },
+            {
+              "code": "MISSING_TEAM_ID",
+              "severity": "high",
+              "detail": "team_id could not be resolved from input JSON or --team-id"
+            }
+          ],
+          "checks": {
+            "reconcile_ok": false,
+            "task_get_ok": false,
+            "message_list_ok": false,
+            "message_scan": {
+              "messages_scanned": 0,
+              "problematic_count": 0,
+              "problematic": []
+            },
+            "expected_task_state": null,
+            "observed_task_state": null,
+            "task_id": null,
+            "task_id_source": null,
+            "team_id": null,
+            "team_id_source": null
+          },
+          "note": "Gate result is only a trigger decision. Final PASS/PARTIAL/FAIL must come from verifier."
+        },
+        "verifier_next": {
+          "required": true,
+          "reason_codes": [
+            "RECONCILE_FAILED",
+            "TASK_GET_FAILED",
+            "MESSAGE_LIST_FAILED",
+            "MISSING_TASK_ID",
+            "MISSING_TEAM_ID"
+          ],
+          "input_json": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/work/03-post-step-check-helper.json",
+          "verifier_contract": "/Users/kondogenki/Codex_Aries/verifier-contract.md",
+          "hint": "Run verifier with the gate triggers as context and return contract-formatted PASS/PARTIAL/FAIL."
+        }
+      }
+    },
+    "bridge_helper": {
+      "executed": false,
+      "step": "bridge_helper",
+      "ok": true,
+      "skipped_reason": "flow_mode_gate"
+    },
+    "loopback_helper": {
+      "executed": false,
+      "step": "loopback_helper",
+      "ok": true,
+      "skipped_reason": "flow_mode_gate"
+    },
+    "chain_helper": {
+      "executed": false,
+      "step": "chain_helper",
+      "ok": true,
+      "skipped_reason": "flow_mode_gate"
+    }
+  },
+  "guard": {
+    "enabled": true,
+    "ts": "2026-04-03T21:15:43.202416+00:00",
+    "decision": "continue",
+    "attempt_count": 1,
+    "consecutive_failures": 1,
+    "max_retries": 3,
+    "escalate_after_n": 2,
+    "escalation_triggered": false,
+    "stop_condition": [
+      "max_retries",
+      "strict_failure",
+      "manual_stop",
+      "escalated"
+    ],
+    "stop_reasons": [],
+    "strict_mode": false,
+    "run_ok": false,
+    "recovery_playbook_ref": "/Users/kondogenki/Codex_Aries/docs/recovery-playbook.md",
+    "note": "Guard only decides continue/stop/escalate. It does not run retries or implement fixes.",
+    "next_action_hint": "Continue only with a new run request; no automatic retry is performed.",
+    "state_path": "/Users/kondogenki/Codex_Aries/runs/2026-04-04T06-15-43/guard-state.json",
+    "ok": true
+  },
+  "notes": {
+    "orchestrator_scope": "wires existing helpers only",
+    "looping": "single pass only; no recursion/retry/auto-loop",
+    "preflight_guard_scope": "run start eligibility decision only",
+    "guard_scope": "stop/continue/escalate decision only; no auto-retry"
+  }
+}

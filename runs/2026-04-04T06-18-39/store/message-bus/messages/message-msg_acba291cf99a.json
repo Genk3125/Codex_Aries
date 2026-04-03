@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T21:18:39.680241+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T21:18:39.680642+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T21:18:39.680638+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_ef0efe61",
+  "idempotency_key": "",
+  "message_id": "msg_acba291cf99a",
+  "payload": {
+    "text": "daily-driver start: debug-verification-test-2"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_7e9b17e25de2",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T21:18:39.680660+00:00",
+  "version": 2
+}

@@ -77,3 +77,5 @@ source "$HOME/.codex/runtime-adapter-amax-friend/runtime-adapter-amax-friend.env
 ## 6. Distribution Synchronization Note
 
 `~/.codex` に wrapper、slash command、skill、agent を直接追加した場合は、友人配布前に `bootstrap-friend-codex.sh` と関連 runbook へ同じ導線を反映する。`~/.codex` の手元追加だけで共有完了と扱わない。
+
+追加の導入 caveat は [codex-integration-caveats.md](/Users/kondogenki/Codex_Aries/docs/codex-integration-caveats.md) を参照。

@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T21:18:55.770955+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_985587be0cac",
+  "team_id": "team_dc474027f425",
+  "title": "debug-verification-test-2",
+  "updated_at": "2026-04-03T21:18:55.898983+00:00",
+  "version": 2
+}
