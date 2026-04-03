@@ -8,7 +8,7 @@
 - **主対象ファイル**: `verifier-contract.md`
 - **副対象**: `poc/verifier_gate_helper.py`, `docs/one-shot-orchestrator-experiment-report.md`
 - **推定ワークロード**: 1-2 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 

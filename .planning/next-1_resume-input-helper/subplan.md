@@ -8,7 +8,7 @@
 - **主対象ファイル**: 新規 `poc/resume_input_helper.py` or `poc/compact_state_helper.py` 拡張
 - **副対象**: `poc/recovery_next_helper.py`, `poc/handoff_helper.py`
 - **推定ワークロード**: 1 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 

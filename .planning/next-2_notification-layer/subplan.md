@@ -8,7 +8,7 @@
 - **主対象ファイル**: 新規 `poc/notify_helper.py`（仮称）
 - **副対象**: `poc/loop_guard.py`, `poc/post_step_check_helper.py`, `docs/preflight-guard-check.md`
 - **推定ワークロード**: 1 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
