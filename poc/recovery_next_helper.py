@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -178,7 +180,7 @@ def main() -> int:
     parser.add_argument("--from-compact", default="", help="compact_state_helper output json; auto-resolves orchestrator path")
     parser.add_argument(
         "--recovery-playbook-path",
-        default="/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md",
+        default=str(REPO_ROOT / "docs" / "recovery-playbook.md"),
     )
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--output-json", default="")

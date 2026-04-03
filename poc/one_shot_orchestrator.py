@@ -19,6 +19,8 @@ from loop_guard import (
     save_state,
 )
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -180,7 +182,7 @@ def main() -> int:
     parser.add_argument("--flow-mode", choices=["gate", "chain"], default="chain")
     parser.add_argument("--verifier-cmd", default="")
     parser.add_argument("--verifier-timeout-sec", type=int, default=180)
-    parser.add_argument("--verifier-contract-path", default="/Users/kondogenki/AI Agent Maximizer/verifier-contract.md")
+    parser.add_argument("--verifier-contract-path", default=str(REPO_ROOT / "verifier-contract.md"))
     parser.add_argument("--team-idempotency-key", default="")
     parser.add_argument("--member-add-idempotency-key", default="")
     parser.add_argument("--task-idempotency-key", default="")
@@ -206,20 +208,20 @@ def main() -> int:
     )
     parser.add_argument(
         "--recovery-playbook-path",
-        default="/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md",
+        default=str(REPO_ROOT / "docs" / "recovery-playbook.md"),
     )
     parser.add_argument("--output-json", default="")
     args = parser.parse_args()
 
     script_paths = {
-        "session_helper": os.environ.get("CODEX_ORCH_SESSION_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py"),
-        "task_update_notify_helper": os.environ.get("CODEX_ORCH_TASK_UPDATE_NOTIFY_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py"),
-        "post_step_check_helper": os.environ.get("CODEX_ORCH_POST_CHECK_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py"),
-        "computer_use_helper": os.environ.get("CODEX_ORCH_COMPUTER_USE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/computer_use_helper.py"),
-        "verifier_gate_helper": os.environ.get("CODEX_ORCH_VERIFIER_GATE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py"),
-        "bridge_helper": os.environ.get("CODEX_ORCH_BRIDGE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/bridge_helper.py"),
-        "loopback_helper": os.environ.get("CODEX_ORCH_LOOPBACK_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/loopback_helper.py"),
-        "chain_helper": os.environ.get("CODEX_ORCH_CHAIN_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/chain_helper.py"),
+        "session_helper": os.environ.get("CODEX_ORCH_SESSION_SCRIPT", str(REPO_ROOT / "poc" / "session_helper.py")),
+        "task_update_notify_helper": os.environ.get("CODEX_ORCH_TASK_UPDATE_NOTIFY_SCRIPT", str(REPO_ROOT / "poc" / "task_update_notify_helper.py")),
+        "post_step_check_helper": os.environ.get("CODEX_ORCH_POST_CHECK_SCRIPT", str(REPO_ROOT / "poc" / "post_step_check_helper.py")),
+        "computer_use_helper": os.environ.get("CODEX_ORCH_COMPUTER_USE_SCRIPT", str(REPO_ROOT / "poc" / "computer_use_helper.py")),
+        "verifier_gate_helper": os.environ.get("CODEX_ORCH_VERIFIER_GATE_SCRIPT", str(REPO_ROOT / "poc" / "verifier_gate_helper.py")),
+        "bridge_helper": os.environ.get("CODEX_ORCH_BRIDGE_SCRIPT", str(REPO_ROOT / "poc" / "bridge_helper.py")),
+        "loopback_helper": os.environ.get("CODEX_ORCH_LOOPBACK_SCRIPT", str(REPO_ROOT / "poc" / "loopback_helper.py")),
+        "chain_helper": os.environ.get("CODEX_ORCH_CHAIN_SCRIPT", str(REPO_ROOT / "poc" / "chain_helper.py")),
     }
 
     work_dir_path = Path(args.work_dir) if args.work_dir else Path(tempfile.mkdtemp(prefix="one-shot-orchestrator-"))

@@ -11,6 +11,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -202,7 +204,7 @@ def main() -> int:
         "--verifier-gate-script",
         default=os.environ.get(
             "CODEX_CHAIN_VERIFIER_GATE_SCRIPT",
-            "/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py",
+            str(REPO_ROOT / "poc" / "verifier_gate_helper.py"),
         ),
         help="verifier_gate_helper script path",
     )
@@ -211,7 +213,7 @@ def main() -> int:
     parser.add_argument("--verifier-timeout-sec", type=int, default=180)
     parser.add_argument(
         "--verifier-contract-path",
-        default="/Users/kondogenki/AI Agent Maximizer/verifier-contract.md",
+        default=str(REPO_ROOT / "verifier-contract.md"),
     )
     parser.add_argument(
         "--computer-use-evidence-json",
