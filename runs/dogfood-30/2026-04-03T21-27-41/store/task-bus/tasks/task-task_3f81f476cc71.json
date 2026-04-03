@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:27:41.470439+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_3f81f476cc71",
+  "team_id": "team_f443a2b8a140",
+  "title": "dogfood-computer-21",
+  "updated_at": "2026-04-03T12:27:41.578269+00:00",
+  "version": 2
+}

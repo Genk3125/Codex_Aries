@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:25:26.058848+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_7790278f",
+  "members": [
+    {
+      "agent_id": "leader_7790278f",
+      "joined_at": "2026-04-03T12:25:26.058848+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:25:26.090744+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_55624ec23a15",
+  "team_name": "team-s2-fail-then-resume",
+  "updated_at": "2026-04-03T12:25:26.091050+00:00",
+  "version": 2
+}

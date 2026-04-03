@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:27:51.596804+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_3b9fcb29d268",
+  "team_id": "team_510419875ab2",
+  "title": "dogfood-recovery-28",
+  "updated_at": "2026-04-03T12:27:51.708372+00:00",
+  "version": 2
+}

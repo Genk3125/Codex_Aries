@@ -1,0 +1,118 @@
+{
+  "ts": "2026-04-03T12:37:00.093557+00:00",
+  "helper": "task_update_notify_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "error": null,
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s3/2026-04-03T21-36-59/store",
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s3/2026-04-03T21-36-59/work/01-session-helper.json",
+    "task_id": "task_c0626ae5dc79",
+    "team_id": "team_10de56b9f2d1",
+    "from_member_id": "leader_5db3737f",
+    "to_member_id": "worker_daily_driver",
+    "message_text": "task moved to in_progress",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "task_idempotency_key": null,
+    "message_idempotency_key": null
+  },
+  "task_update": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "task_update",
+      "--args-json",
+      "{\"task_id\": \"task_c0626ae5dc79\", \"state\": \"in_progress\"}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:37:00.060689+00:00",
+      "operation": "task_update",
+      "args": {
+        "task_id": "task_c0626ae5dc79",
+        "state": "in_progress"
+      },
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "task_id": "task_c0626ae5dc79",
+        "team_id": "team_10de56b9f2d1",
+        "title": "S3_single_agent_computer_use",
+        "owner_member_id": "worker_daily_driver",
+        "state": "in_progress",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 2,
+        "updated_at": "2026-04-03T12:37:00.060059+00:00"
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "send_message": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "send_message",
+      "--args-json",
+      "{\"team_id\": \"team_10de56b9f2d1\", \"from_member_id\": \"leader_5db3737f\", \"to_member_id\": \"worker_daily_driver\", \"message_type\": \"direct\", \"payload\": {\"text\": \"task moved to in_progress\"}}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:37:00.089996+00:00",
+      "operation": "send_message",
+      "args": {
+        "team_id": "team_10de56b9f2d1",
+        "from_member_id": "leader_5db3737f",
+        "to_member_id": "worker_daily_driver",
+        "message_type": "direct",
+        "payload": {
+          "text": "task moved to in_progress"
+        }
+      },
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "message_id": "msg_4cdbf3ce9a22",
+        "team_id": "team_10de56b9f2d1",
+        "type": "direct",
+        "subtype": "text",
+        "status": "delivered",
+        "delivery": {
+          "worker_daily_driver": {
+            "state": "delivered",
+            "attempt_count": 1,
+            "last_attempt_at": "2026-04-03T12:37:00.089722+00:00",
+            "delivered_at": "2026-04-03T12:37:00.089726+00:00",
+            "error": null
+          }
+        },
+        "created_at": "2026-04-03T12:37:00.089311+00:00"
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "next": {
+    "task_get_example": {
+      "task_id": "task_c0626ae5dc79"
+    },
+    "message_list_example": {
+      "team_id": "team_10de56b9f2d1"
+    },
+    "reconcile_all_example": {}
+  }
+}

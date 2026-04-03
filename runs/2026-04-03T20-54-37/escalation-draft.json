@@ -1,0 +1,157 @@
+{
+  "ts": "2026-04-03T11:54:38.288488+00:00",
+  "helper": "escalation_draft_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/orch.json",
+    "recovery_json": "/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/recovery-next.json"
+  },
+  "escalation_draft": {
+    "required": true,
+    "executed": true,
+    "failed_step": {
+      "step": "session_helper",
+      "detail": "helper_step_failed",
+      "exit_code": 0
+    },
+    "stop_reasons": [
+      "max_retries",
+      "escalated"
+    ],
+    "stop_reason_details": [
+      {
+        "reason": "max_retries",
+        "source": "post_run_guard"
+      },
+      {
+        "reason": "escalated",
+        "source": "post_run_guard"
+      }
+    ],
+    "executed_commands": [
+      {
+        "step": "session_helper",
+        "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --team-name team-phase8-daily-driver-task --member-id worker_daily_driver --task-title phase8-daily-driver-task-5 --message-text 'daily-driver start: phase8-daily-driver-task-5' --output-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/01-session-helper.json'"
+      },
+      {
+        "step": "task_update_notify_helper",
+        "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --input-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/01-session-helper.json' --state in_progress --to-member-id worker_daily_driver --message-text 'task moved to in_progress' --output-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/02-task-update-notify-helper.json'"
+      },
+      {
+        "step": "post_step_check_helper",
+        "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --input-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/02-task-update-notify-helper.json' --output-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/03-post-step-check-helper.json'"
+      },
+      {
+        "step": "verifier_gate_helper",
+        "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py' --input-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/03-post-step-check-helper.json' --output-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/04-verifier-gate-helper.json' --verifier-timeout-sec 180 --verifier-contract-path '/Users/kondogenki/AI Agent Maximizer/verifier-contract.md'"
+      }
+    ],
+    "actual_outputs": {
+      "failed_count": 4,
+      "skipped_count": 3,
+      "step_summaries": [
+        {
+          "step": "session_helper",
+          "status": "failed",
+          "ok": false,
+          "exit_code": 0,
+          "operation_ok": false,
+          "parse_error_stdout": null,
+          "parse_error_file": null,
+          "stderr_excerpt": null
+        },
+        {
+          "step": "task_update_notify_helper",
+          "status": "failed",
+          "ok": false,
+          "exit_code": 0,
+          "operation_ok": false,
+          "parse_error_stdout": null,
+          "parse_error_file": null,
+          "stderr_excerpt": null
+        },
+        {
+          "step": "post_step_check_helper",
+          "status": "failed",
+          "ok": false,
+          "exit_code": 0,
+          "operation_ok": false,
+          "parse_error_stdout": null,
+          "parse_error_file": null,
+          "stderr_excerpt": null
+        },
+        {
+          "step": "verifier_gate_helper",
+          "status": "failed",
+          "ok": false,
+          "exit_code": 0,
+          "operation_ok": false,
+          "parse_error_stdout": null,
+          "parse_error_file": null,
+          "stderr_excerpt": null
+        },
+        {
+          "step": "bridge_helper",
+          "status": "skipped",
+          "ok": true,
+          "detail": "flow_mode_gate"
+        },
+        {
+          "step": "loopback_helper",
+          "status": "skipped",
+          "ok": true,
+          "detail": "flow_mode_gate"
+        },
+        {
+          "step": "chain_helper",
+          "status": "skipped",
+          "ok": true,
+          "detail": "flow_mode_gate"
+        }
+      ]
+    },
+    "suggested_next_action": {
+      "branch_ids": [
+        "max-retries-escalate",
+        "escalated-review"
+      ],
+      "playbook_refs": [
+        {
+          "path": "/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md",
+          "sections": [
+            "3.3 Escalate",
+            "4. Failure Taxonomy",
+            "5. Stop Conditions"
+          ]
+        },
+        {
+          "path": "/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md",
+          "sections": [
+            "3.3 Escalate",
+            "6. Coordinator / Verifier 接続"
+          ]
+        }
+      ],
+      "action_items": [
+        "失敗を taxonomy で分類する。",
+        "試した修正・実行コマンド・実出力を添えて escalation パッケージを作る。",
+        "coordinator が次の打ち手を決めるまで run を再開しない。",
+        "第2失敗以降として escalation を確定する。",
+        "coordinator に仮説と次の打ち手を渡す。",
+        "verifier 実行の要否を分離して判断する。"
+      ],
+      "handoff_template": {
+        "required_fields": [
+          "executed_commands",
+          "actual_outputs_summary",
+          "failed_step",
+          "stop_reasons",
+          "suggested_next_action"
+        ],
+        "note": "Draft fields only. Coordinator/verifier decide final handling."
+      }
+    },
+    "note": "Material preparation only. No retry, no verdict, no side-effect operations."
+  }
+}

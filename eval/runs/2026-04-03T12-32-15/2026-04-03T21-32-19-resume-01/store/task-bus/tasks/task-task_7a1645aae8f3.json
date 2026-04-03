@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:32:20.048506+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_7a1645aae8f3",
+  "team_id": "team_4030e51abeb5",
+  "title": "eval-h01-strict-recovery",
+  "updated_at": "2026-04-03T12:32:20.144335+00:00",
+  "version": 2
+}

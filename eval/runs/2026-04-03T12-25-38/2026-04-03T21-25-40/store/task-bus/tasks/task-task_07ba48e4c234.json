@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:25:40.387658+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_07ba48e4c234",
+  "team_id": "team_73b44af9f045",
+  "title": "eval-e03-verify-report-shape",
+  "updated_at": "2026-04-03T12:25:40.497636+00:00",
+  "version": 2
+}

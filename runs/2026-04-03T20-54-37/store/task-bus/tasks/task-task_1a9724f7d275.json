@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T11:54:37.231353+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_1a9724f7d275",
+  "team_id": "team_a26f3a59b20f",
+  "title": "phase8-daily-driver-task-3",
+  "updated_at": "2026-04-03T11:54:37.333620+00:00",
+  "version": 2
+}

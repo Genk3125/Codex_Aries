@@ -8,7 +8,7 @@
 - **主対象ファイル**: `docs/rfc-agent-team-control-plane.md`, `docs/team-runtime-state-model.md`
 - **アウトプット**: `.planning/scope-1_team-runtime-boundary/boundary-decision.md`
 - **推定ワークロード**: 1 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -63,10 +63,10 @@
 
 ## 4. 完了判定（Exit Criteria）
 
-- [ ] 既存 PoC の公開インターフェースが列挙されている
-- [ ] runtime-adapter との重複/ギャップが特定されている
-- [ ] In-Scope / Out-of-Scope / Deferred が明文化されている
-- [ ] Phase 13 の入力として使える粒度で scope が確定している
+- [x] 既存 PoC の公開インターフェースが列挙されている
+- [x] runtime-adapter との重複/ギャップが特定されている
+- [x] In-Scope / Out-of-Scope / Deferred が明文化されている
+- [x] Phase 13 の入力として使える粒度で scope が確定している
 
 ## 5. リスク・注意
 
@@ -77,4 +77,5 @@
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 | `poc/team_control_plane.py`, `poc/team_message_bus.py`, `poc/team_task_bus.py`, `poc/codex_runtime_adapter.py` の公開 API を棚卸し | adapter operation と 1:1 対応を確認 | boundary 文書化 |
+| 2026-04-03 | `.planning/scope-1_team-runtime-boundary/boundary-decision.md` を作成 | In-Scope / Out-of-Scope / Deferred を確定し、Phase 13 入力を固定 | Phase 11 へ |

@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:24:07.887375+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:24:07.887820+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:24:07.887817+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_da7c80b6",
+  "idempotency_key": "",
+  "message_id": "msg_5b0260bc7349",
+  "payload": {
+    "text": "daily-driver start: S2_fail_then_resume"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_1057a479ef8e",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:24:07.887823+00:00",
+  "version": 2
+}

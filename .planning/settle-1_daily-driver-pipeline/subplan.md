@@ -7,7 +7,7 @@
 - **依存先**: Phase 1-7（全 done）
 - **主対象ファイル**: `poc/one_shot_orchestrator.py`, 新規 `scripts/run-task.sh`
 - **推定ワークロード**: 2 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -67,10 +67,10 @@ runs/
 
 ## 4. 完了判定（Exit Criteria）
 
-- [ ] `scripts/run-task.sh` が 1 コマンドで orchestrator パイプライン全体を起動する
-- [ ] `scripts/resume-task.sh` が compact.json から自動再開する
-- [ ] runs/ ディレクトリに全出力が構造化保存される
-- [ ] 5 回の実タスク使用で 3 回以上手動介入なしで完走
+- [x] `scripts/run-task.sh` が 1 コマンドで orchestrator パイプライン全体を起動する
+- [x] `scripts/resume-task.sh` が compact.json から自動再開する
+- [x] runs/ ディレクトリに全出力が構造化保存される
+- [x] 5 回の実タスク使用で 3 回以上手動介入なしで完走
 
 ## 5. リスク・注意
 
@@ -81,4 +81,6 @@ runs/
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 | `scripts/run-task.sh` / `scripts/resume-task.sh` を実装し、`runs/` へ成果物保存フローを固定化 | 実行可能化 + fail-open/strict 透過を維持 | 5回の run-task 実行で日常運用性を確認 |
+| 2026-04-03 | `run-task.sh` を 5 回連続実行して成果物保存を検証（`logs/daily-driver-journal.md` 記録） | 5/5 で手動追加引数なし完走 | Step 4 完了、status を `done` へ更新 |
+| 2026-04-03 | `resume-task.sh` で latest compact から recovery→handoff→再実行を確認 | `exit=0`、再開フローが成立 | Phase 9 `settle-2_context-reduction` へ移行 |

@@ -1,0 +1,120 @@
+{
+  "ts": "2026-04-03T12:30:16.531245+00:00",
+  "helper": "task_update_notify_helper",
+  "mode": "strict",
+  "ok": true,
+  "error": null,
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "runs/dogfood-30/2026-04-03T21-30-16/store",
+  "input": {
+    "input_json": "runs/dogfood-30/2026-04-03T21-30-16/work/01-session-helper.json",
+    "task_id": "task_df7d9fcdbe4a",
+    "team_id": "team_feecc94fe2dc",
+    "from_member_id": "leader_2510789f",
+    "to_member_id": "worker_daily_driver",
+    "message_text": "task moved to in_progress",
+    "state": "in_progress",
+    "blocked_reason": null,
+    "result_reference": null,
+    "task_idempotency_key": null,
+    "message_idempotency_key": null
+  },
+  "task_update": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "--strict",
+      "op",
+      "--name",
+      "task_update",
+      "--args-json",
+      "{\"task_id\": \"task_df7d9fcdbe4a\", \"state\": \"in_progress\"}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:30:16.494311+00:00",
+      "operation": "task_update",
+      "args": {
+        "task_id": "task_df7d9fcdbe4a",
+        "state": "in_progress"
+      },
+      "ok": true,
+      "fail_open": false,
+      "result": {
+        "task_id": "task_df7d9fcdbe4a",
+        "team_id": "team_feecc94fe2dc",
+        "title": "dogfood-recovery-refined-5",
+        "owner_member_id": "worker_daily_driver",
+        "state": "in_progress",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 2,
+        "updated_at": "2026-04-03T12:30:16.493490+00:00"
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "send_message": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "--strict",
+      "op",
+      "--name",
+      "send_message",
+      "--args-json",
+      "{\"team_id\": \"team_feecc94fe2dc\", \"from_member_id\": \"leader_2510789f\", \"to_member_id\": \"worker_daily_driver\", \"message_type\": \"direct\", \"payload\": {\"text\": \"task moved to in_progress\"}}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:30:16.527217+00:00",
+      "operation": "send_message",
+      "args": {
+        "team_id": "team_feecc94fe2dc",
+        "from_member_id": "leader_2510789f",
+        "to_member_id": "worker_daily_driver",
+        "message_type": "direct",
+        "payload": {
+          "text": "task moved to in_progress"
+        }
+      },
+      "ok": true,
+      "fail_open": false,
+      "result": {
+        "message_id": "msg_3953cf5e0f83",
+        "team_id": "team_feecc94fe2dc",
+        "type": "direct",
+        "subtype": "text",
+        "status": "delivered",
+        "delivery": {
+          "worker_daily_driver": {
+            "state": "delivered",
+            "attempt_count": 1,
+            "last_attempt_at": "2026-04-03T12:30:16.526935+00:00",
+            "delivered_at": "2026-04-03T12:30:16.526939+00:00",
+            "error": null
+          }
+        },
+        "created_at": "2026-04-03T12:30:16.526473+00:00"
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "next": {
+    "task_get_example": {
+      "task_id": "task_df7d9fcdbe4a"
+    },
+    "message_list_example": {
+      "team_id": "team_feecc94fe2dc"
+    },
+    "reconcile_all_example": {}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:32:19.440332+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:32:19.440858+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:32:19.440854+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_648df95d",
+  "idempotency_key": "",
+  "message_id": "msg_0366b5284f0c",
+  "payload": {
+    "text": "daily-driver start: eval-h01-strict-recovery"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_0fb9f549909d",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:32:19.440862+00:00",
+  "version": 2
+}

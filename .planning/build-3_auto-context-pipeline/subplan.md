@@ -7,7 +7,7 @@
 - **依存先**: Phase 8（daily-driver）, Phase 9（context-reduction）
 - **主対象ファイル**: `scripts/run-task.sh` 拡張, `poc/context_compactor.py`
 - **推定ワークロード**: 1-2 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -41,9 +41,9 @@ Phase 8 の daily-driver パイプラインと Phase 9 の context_compactor を
 
 ## 4. 完了判定（Exit Criteria）
 
-- [ ] context 膨張時に自動で compactor が呼ばれる
-- [ ] 圧縮後に resume が自動で正しい context を使う
-- [ ] 手動介入なしで「膨張 → 圧縮 → 継続」が動作する
+- [x] context 膨張時に自動で compactor が呼ばれる
+- [x] 圧縮後に resume が自動で正しい context を使う
+- [x] 手動介入なしで「膨張 → 圧縮 → 継続」が動作する
 
 ## 5. リスク・注意
 
@@ -54,4 +54,6 @@ Phase 8 の daily-driver パイプラインと Phase 9 の context_compactor を
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 | `scripts/run-task.sh` に `--context-threshold-bytes`, `--context-max-tokens` を追加 | `orch.json` 閾値超過時に `context_compactor` を自動実行 | resume 側優先読込へ |
+| 2026-04-03 | `scripts/resume-task.sh` を `context-compacted.json` 優先で自動解決するよう更新 | latest run から圧縮済み context を自動再利用。`compact.json` は fallback | 連結テスト |
+| 2026-04-03 | 実行確認（閾値1 byteで強制トリガ） | `context-compacted.json/md` 生成と resume 成立を確認 | Harden Phase へ |

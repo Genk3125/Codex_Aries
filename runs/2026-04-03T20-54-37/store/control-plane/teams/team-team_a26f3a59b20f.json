@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T11:54:37.155528+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_32e09d8c",
+  "members": [
+    {
+      "agent_id": "leader_32e09d8c",
+      "joined_at": "2026-04-03T11:54:37.155528+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T11:54:37.188403+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_a26f3a59b20f",
+  "team_name": "team-phase8-daily-driver-task",
+  "updated_at": "2026-04-03T11:54:37.188509+00:00",
+  "version": 2
+}

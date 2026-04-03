@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:27:29.686084+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:27:29.686541+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:27:29.686538+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_fe0b14d3",
+  "idempotency_key": "",
+  "message_id": "msg_226cacb5c60c",
+  "payload": {
+    "text": "daily-driver start: dogfood-basic-4"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_9bc575654fa2",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:27:29.686544+00:00",
+  "version": 2
+}

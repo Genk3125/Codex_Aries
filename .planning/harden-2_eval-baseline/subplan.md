@@ -7,7 +7,7 @@
 - **依存先**: Phase 15（E2E テスト通過後）
 - **主対象ファイル**: 新規 `eval/` ディレクトリ
 - **推定ワークロード**: 1-2 セッション
-- **ステータス**: `not_started`
+- **ステータス**: `done`
 
 ---
 
@@ -48,9 +48,9 @@ CODEX_MAX_COMBINED_PLAN の Stream F (Eval) で定義された指標を実測し
 
 ## 4. 完了判定（Exit Criteria）
 
-- [ ] 10 件のタスクセットが `eval/tasks/` に固定されている
-- [ ] 6 指標のベースライン値が測定されている
-- [ ] 各指標が目標値を上回っている、または改善策が明確
+- [x] 10 件のタスクセットが `eval/tasks/` に固定されている
+- [x] 6 指標のベースライン値が測定されている
+- [x] 各指標が目標値を上回っている、または改善策が明確
 
 ## 5. リスク・注意
 
@@ -61,4 +61,6 @@ CODEX_MAX_COMBINED_PLAN の Stream F (Eval) で定義された指標を実測し
 
 | 日時 | 何をしたか | 結果 | 次アクション |
 |------|-----------|------|-------------|
-| | | | |
+| 2026-04-03 | `eval/tasks/manifest.json`（10タスク）と `eval/run_baseline.py` を実装 | easy/medium/hard + team runtime を含む固定ベースラインを実行可能化 | 初回測定 |
+| 2026-04-03 | 初回測定で `self_recovery_rate` が未達 | `scripts/resume-task.sh` の gate_expected 引き継ぎを opt-in 化（`--carry-gate-expected`） | 再測定 |
+| 2026-04-03 | 再測定で 6 指標すべて target 達成 | `eval/baseline-results.json`, `eval/baseline-results.md` を更新 | Phase 17 へ |

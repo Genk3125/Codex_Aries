@@ -1,0 +1,17 @@
+{
+  "ts": "2026-04-03T12:27:38.936216+00:00",
+  "helper": "escalation_draft_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "runs/dogfood-30/2026-04-03T21-27-38/orch.json",
+    "recovery_json": "runs/dogfood-30/2026-04-03T21-27-38/recovery-next.json"
+  },
+  "escalation_draft": {
+    "required": false,
+    "executed": false,
+    "skipped_reason": "no_escalation_branch",
+    "stop_reasons": [],
+    "note": "Recovery mapping indicates no escalation branch. Draft generation is skipped."
+  }
+}

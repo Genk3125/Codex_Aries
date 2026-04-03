@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:27:50.070551+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_528415bc",
+  "members": [
+    {
+      "agent_id": "leader_528415bc",
+      "joined_at": "2026-04-03T12:27:50.070551+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:27:50.104369+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_89249a16d404",
+  "team_name": "team-dogfood-recovery-27",
+  "updated_at": "2026-04-03T12:27:50.104509+00:00",
+  "version": 2
+}

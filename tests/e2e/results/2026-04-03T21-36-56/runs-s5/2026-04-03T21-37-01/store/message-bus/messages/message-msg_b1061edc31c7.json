@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:37:01.457602+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:37:01.458072+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:37:01.458068+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_b176554f",
+  "idempotency_key": "",
+  "message_id": "msg_b1061edc31c7",
+  "payload": {
+    "text": "daily-driver start: S5_long_running_context_compaction"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_939df976230e",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:37:01.458075+00:00",
+  "version": 2
+}

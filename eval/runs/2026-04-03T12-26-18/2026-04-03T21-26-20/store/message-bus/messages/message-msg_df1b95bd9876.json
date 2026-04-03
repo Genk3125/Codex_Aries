@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:26:20.236630+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:26:20.237127+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:26:20.237123+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_1aa6f2dc",
+  "idempotency_key": "",
+  "message_id": "msg_df1b95bd9876",
+  "payload": {
+    "text": "daily-driver start: eval-m01-multi-file-sync"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_db13c70b3561",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:26:20.237130+00:00",
+  "version": 2
+}

@@ -1,0 +1,68 @@
+{
+  "ts": "2026-04-03T12:30:14.696639+00:00",
+  "helper": "compact_state_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "runs/dogfood-30/2026-04-03T21-30-14-resume-01/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "ok",
+    "last_successful_step": "verifier_gate_helper",
+    "failed_step": null,
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py' --store-root runs/dogfood-30/2026-04-03T21-30-14-resume-01/store --team-name team-dogfood-recovery-refined -..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py' --store-root runs/dogfood-30/2026-04-03T21-30-14-resume-01/store --input-json runs/dogfood-30/202..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py' --store-root runs/dogfood-30/2026-04-03T21-30-14-resume-01/store --input-json runs/dogfood-30/2026-0..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py' --input-json runs/dogfood-30/2026-04-03T21-30-14-resume-01/work/03-post-step-check-helper.json --outpu..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 4,
+      "succeeded_steps": 4,
+      "failed_steps": [],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper",
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "proceed",
+      "hint": "Proceed to the next task or finalize this run.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": "team_9c64145b4093",
+      "task_id": "task_de62b4063252",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_b720b0c4"
+    },
+    "meta": {
+      "run_id": "20260403123014",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}

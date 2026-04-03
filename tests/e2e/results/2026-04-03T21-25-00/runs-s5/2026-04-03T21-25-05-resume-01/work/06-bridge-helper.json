@@ -1,0 +1,57 @@
+{
+  "ts": "2026-04-03T12:25:06.260982+00:00",
+  "helper": "bridge_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-00/runs-s5/2026-04-03T21-25-05-resume-01/work/05-verifier-gate-helper.json",
+    "task_id": "task_db1a95a51276",
+    "task_id_source": "input.task_id",
+    "team_id": "team_c2220761366c",
+    "team_id_source": "input.team_id",
+    "from_member_id": "leader_e6d8236f",
+    "from_member_id_source": "--from-member-id",
+    "to_member_id": "worker_daily_driver",
+    "message_text": "verifier gate triggered; task moved to blocked",
+    "blocked_state": "blocked",
+    "blocked_reason": "verifier gate triggered",
+    "task_idempotency_key": null,
+    "message_idempotency_key": null,
+    "task_update_notify_script": "/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py",
+    "store_root": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-00/runs-s5/2026-04-03T21-25-05-resume-01/store"
+  },
+  "gate_result": {
+    "ts": "2026-04-03T12:25:06.235815+00:00",
+    "requires_verifier": false,
+    "trigger_count": 0,
+    "trigger_codes": [],
+    "triggers": [],
+    "checks": {
+      "reconcile_ok": true,
+      "task_get_ok": true,
+      "message_list_ok": true,
+      "message_scan": {
+        "messages_scanned": 2,
+        "problematic_count": 0,
+        "problematic": []
+      },
+      "expected_task_state": null,
+      "observed_task_state": "in_progress",
+      "task_id": "task_db1a95a51276",
+      "task_id_source": "--task-id",
+      "team_id": "team_c2220761366c",
+      "team_id_source": "--team-id"
+    },
+    "note": "Gate result is only a trigger decision. Final PASS/PARTIAL/FAIL must come from verifier."
+  },
+  "bridge_result": {
+    "executed": false,
+    "skipped_reason": "requires_verifier_false",
+    "ok": true
+  },
+  "upstream_context": {
+    "post_step_path": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-00/runs-s5/2026-04-03T21-25-05-resume-01/work/03-post-step-check-helper.json",
+    "task_update_path": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-00/runs-s5/2026-04-03T21-25-05-resume-01/work/02-task-update-notify-helper.json",
+    "session_path": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-00/runs-s5/2026-04-03T21-25-05-resume-01/work/01-session-helper.json"
+  }
+}

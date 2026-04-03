@@ -1,0 +1,25 @@
+{
+  "ts": "2026-04-03T12:25:31.198404+00:00",
+  "helper": "loopback_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-25/runs-s5/2026-04-03T21-25-30-resume-01/work/06-bridge-helper.json",
+    "task_id": "task_953e3ed170bc",
+    "task_id_source": "input.task_id",
+    "team_id": "team_4a11a8699631",
+    "team_id_source": "input.team_id",
+    "post_check_script": "/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py",
+    "store_root": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-25-25/runs-s5/2026-04-03T21-25-30-resume-01/store"
+  },
+  "bridge_result": {
+    "executed": false,
+    "skipped_reason": "requires_verifier_false",
+    "ok": true
+  },
+  "post_check_result": {
+    "executed": false,
+    "skipped_reason": "bridge_not_executed",
+    "ok": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "ts": "2026-04-03T12:27:52.556007+00:00",
+  "helper": "verifier_gate_helper",
+  "mode": "strict",
+  "ok": false,
+  "input": {
+    "input_json": "runs/dogfood-30/2026-04-03T21-27-52/work/03-post-step-check-helper.json",
+    "task_id": "task_28a05f4bfec6",
+    "task_id_source": "--task-id",
+    "team_id": "team_9120a5475846",
+    "team_id_source": "--team-id",
+    "expected_task_state": "done",
+    "verifier_cmd": null,
+    "computer_use_evidence_json": null
+  },
+  "gate_result": {
+    "ts": "2026-04-03T12:27:52.555882+00:00",
+    "requires_verifier": true,
+    "trigger_count": 1,
+    "trigger_codes": [
+      "TASK_STATE_MISMATCH"
+    ],
+    "triggers": [
+      {
+        "code": "TASK_STATE_MISMATCH",
+        "severity": "medium",
+        "detail": "expected state 'done' but observed 'in_progress'"
+      }
+    ],
+    "checks": {
+      "reconcile_ok": true,
+      "task_get_ok": true,
+      "message_list_ok": true,
+      "message_scan": {
+        "messages_scanned": 2,
+        "problematic_count": 0,
+        "problematic": []
+      },
+      "expected_task_state": "done",
+      "observed_task_state": "in_progress",
+      "task_id": "task_28a05f4bfec6",
+      "task_id_source": "--task-id",
+      "team_id": "team_9120a5475846",
+      "team_id_source": "--team-id"
+    },
+    "note": "Gate result is only a trigger decision. Final PASS/PARTIAL/FAIL must come from verifier."
+  },
+  "verifier_next": {
+    "required": true,
+    "reason_codes": [
+      "TASK_STATE_MISMATCH"
+    ],
+    "input_json": "runs/dogfood-30/2026-04-03T21-27-52/work/03-post-step-check-helper.json",
+    "verifier_contract": "/Users/kondogenki/AI Agent Maximizer/verifier-contract.md",
+    "hint": "Run verifier with the gate triggers as context and return contract-formatted PASS/PARTIAL/FAIL."
+  }
+}

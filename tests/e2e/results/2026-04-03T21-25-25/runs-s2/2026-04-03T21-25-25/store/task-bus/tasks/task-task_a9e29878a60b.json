@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:25:26.136387+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_a9e29878a60b",
+  "team_id": "team_55624ec23a15",
+  "title": "S2_fail_then_resume",
+  "updated_at": "2026-04-03T12:25:26.238784+00:00",
+  "version": 2
+}

@@ -12,6 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -325,8 +327,13 @@ def main() -> int:
     parser.add_argument("--verifier-timeout-sec", type=int, default=180, help="timeout for verifier command")
     parser.add_argument(
         "--verifier-contract-path",
-        default="/Users/kondogenki/AI Agent Maximizer/verifier-contract.md",
+        default=str(REPO_ROOT / "verifier-contract.md"),
         help="verifier contract reference",
+    )
+    parser.add_argument(
+        "--computer-use-evidence-json",
+        default="",
+        help="optional computer_use_helper output json path; forwarded to verifier env",
     )
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--output-json", default="")
@@ -362,6 +369,7 @@ def main() -> int:
                 "expected_task_state": args.expected_task_state or None,
                 "gate_result": gate_result,
                 "verifier_contract_path": args.verifier_contract_path,
+                "computer_use_evidence_json": args.computer_use_evidence_json or None,
             }
             verifier_env = os.environ.copy()
             verifier_env["VERIFIER_GATE_MODE"] = "strict" if args.strict else "fail-open"
@@ -370,6 +378,7 @@ def main() -> int:
             verifier_env["VERIFIER_GATE_TASK_ID"] = resolved_task_id or ""
             verifier_env["VERIFIER_GATE_TEAM_ID"] = resolved_team_id or ""
             verifier_env["VERIFIER_GATE_TRIGGER_CODES"] = json.dumps(gate_result["trigger_codes"], ensure_ascii=False)
+            verifier_env["VERIFIER_GATE_COMPUTER_USE_EVIDENCE_JSON"] = args.computer_use_evidence_json or ""
             verifier_result = run_verifier(
                 verifier_cmd=args.verifier_cmd,
                 payload=verifier_payload,
@@ -409,6 +418,7 @@ def main() -> int:
             "team_id_source": team_id_source,
             "expected_task_state": args.expected_task_state or None,
             "verifier_cmd": args.verifier_cmd or None,
+            "computer_use_evidence_json": args.computer_use_evidence_json or None,
         },
         "gate_result": gate_result,
     }

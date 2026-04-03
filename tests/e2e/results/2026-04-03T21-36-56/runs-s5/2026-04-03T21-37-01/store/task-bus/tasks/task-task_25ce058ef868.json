@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:37:01.415902+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_25ce058ef868",
+  "team_id": "team_939df976230e",
+  "title": "S5_long_running_context_compaction",
+  "updated_at": "2026-04-03T12:37:01.511192+00:00",
+  "version": 2
+}

@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "team_id": "team_96260d01ce0c",
+  "leader_id": "leader_phase13",
+  "members": [
+    "member_alpha",
+    "member_bravo",
+    "member_charlie"
+  ],
+  "task_ids": [
+    "task_300c3ca892df",
+    "task_22a92213dfe2",
+    "task_90c0489e88b9"
+  ],
+  "reconcile_summary": {
+    "control_plane": {
+      "reconciled_at": "2026-04-03T12:37:01.238387+00:00",
+      "cleaned_count": 1,
+      "error_count": 0,
+      "cleaned": [
+        {
+          "team_id": "team_96260d01ce0c",
+          "status": "deleted",
+          "deleted_at": "2026-04-03T12:37:01.237970+00:00",
+          "cleanup_summary": {
+            "members_closed": 4,
+            "orphans_detected": 0,
+            "errors": [],
+            "mode": "graceful"
+          }
+        }
+      ],
+      "errors": []
+    },
+    "message_bus": {
+      "reconciled_at": "2026-04-03T12:37:01.238537+00:00",
+      "updated_message_count": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "delivered_count": 0,
+      "failed_or_rejected_count": 0,
+      "updated_messages": []
+    },
+    "task_bus": {
+      "reconciled_at": "2026-04-03T12:37:01.239513+00:00",
+      "scanned": 3,
+      "orphaned": 3,
+      "moved_to_ready": 0,
+      "updated_tasks": [
+        "task_22a92213dfe2",
+        "task_300c3ca892df",
+        "task_90c0489e88b9"
+      ],
+      "errors": []
+    }
+  },
+  "store_root": "/var/folders/mh/xl5vkd0j4qb1t3625kwc_cg80000gn/T/team-runtime-mvp-sjpbb1re/store"
+}

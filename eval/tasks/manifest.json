@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "E01",
+      "size": "easy",
+      "kind": "orchestrator",
+      "flow": "gate",
+      "title": "eval-e01-doc-sync"
+    },
+    {
+      "id": "E02",
+      "size": "easy",
+      "kind": "orchestrator",
+      "flow": "gate",
+      "title": "eval-e02-small-bugfix"
+    },
+    {
+      "id": "E03",
+      "size": "easy",
+      "kind": "orchestrator",
+      "flow": "gate",
+      "title": "eval-e03-verify-report-shape"
+    },
+    {
+      "id": "M01",
+      "size": "medium",
+      "kind": "orchestrator",
+      "flow": "chain",
+      "title": "eval-m01-multi-file-sync"
+    },
+    {
+      "id": "M02",
+      "size": "medium",
+      "kind": "orchestrator",
+      "flow": "chain",
+      "title": "eval-m02-refactor-path"
+    },
+    {
+      "id": "M03",
+      "size": "medium",
+      "kind": "orchestrator",
+      "flow": "chain",
+      "title": "eval-m03-recovery-lite"
+    },
+    {
+      "id": "M04",
+      "size": "medium",
+      "kind": "team_runtime",
+      "title": "eval-m04-team-runtime-mvp"
+    },
+    {
+      "id": "H01",
+      "size": "hard",
+      "kind": "orchestrator",
+      "flow": "gate",
+      "title": "eval-h01-strict-recovery",
+      "strict_fail_then_resume": true
+    },
+    {
+      "id": "H02",
+      "size": "hard",
+      "kind": "orchestrator",
+      "flow": "chain",
+      "title": "eval-h02-context-compaction",
+      "context_threshold_bytes": 1
+    },
+    {
+      "id": "H03",
+      "size": "hard",
+      "kind": "team_runtime",
+      "title": "eval-h03-team-runtime-resume"
+    }
+  ]
+}
+

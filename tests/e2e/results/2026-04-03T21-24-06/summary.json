@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-04-03T21-24-06",
+  "pass_count": 4,
+  "fail_count": 1,
+  "results": [
+    {"scenario": "S1_single_agent_gate_success", "status": "PASS", "note": "gate flow completed", "artifacts": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-24-06/runs-s1/2026-04-03T21-24-06"}
+    ,
+    {"scenario": "S2_fail_then_resume", "status": "PASS", "note": "strict failure recovered by resume flow", "artifacts": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-24-06/S2_fail_then_resume-resume.log"}
+    ,
+    {"scenario": "S3_single_agent_computer_use", "status": "PASS", "note": "computer_use evidence step succeeded", "artifacts": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-24-06/runs-s3/2026-04-03T21-24-10"}
+    ,
+    {"scenario": "S4_three_agent_team_runtime", "status": "PASS", "note": "3-member team runtime scenario passed", "artifacts": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-24-06/S4_three_agent_team_runtime.log"}
+    ,
+    {"scenario": "S5_long_running_context_compaction", "status": "FAIL", "note": "resume did not prefer context-compacted.json", "artifacts": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-24-06/S5_long_running_context_compaction-resume.log"}
+  ]
+}

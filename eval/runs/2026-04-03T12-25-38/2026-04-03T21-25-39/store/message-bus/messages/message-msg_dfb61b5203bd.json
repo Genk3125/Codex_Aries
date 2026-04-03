@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:25:39.639626+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:25:39.640178+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:25:39.640172+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_0ef7a16e",
+  "idempotency_key": "",
+  "message_id": "msg_dfb61b5203bd",
+  "payload": {
+    "text": "daily-driver start: eval-e02-small-bugfix"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_2a53c7091db8",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:25:39.640182+00:00",
+  "version": 2
+}

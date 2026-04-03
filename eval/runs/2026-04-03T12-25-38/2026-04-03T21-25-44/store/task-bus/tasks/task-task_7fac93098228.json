@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:25:44.546171+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_7fac93098228",
+  "team_id": "team_e52bc75ad3b8",
+  "title": "eval-h02-context-compaction",
+  "updated_at": "2026-04-03T12:25:44.653833+00:00",
+  "version": 2
+}

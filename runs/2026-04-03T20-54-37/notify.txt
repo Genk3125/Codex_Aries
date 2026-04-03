@@ -1,0 +1,15 @@
+[NOTIFY][post_run_guard] STOP (stop)
+  reason: max_retries
+  severity: high
+  timestamp: 2026-04-03T11:54:38.188696+00:00
+  action_required: yes
+  message: Maximum retries reached — escalation required.
+  suggested_next: Prepare escalation package with failure evidence.
+
+[NOTIFY][post_run_guard] STOP (stop)
+  reason: escalated
+  severity: critical
+  timestamp: 2026-04-03T11:54:38.188696+00:00
+  action_required: yes
+  message: Consecutive failures triggered escalation.
+  suggested_next: Route to coordinator with hypothesis and evidence.

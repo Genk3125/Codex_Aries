@@ -1,0 +1,5 @@
+{"ts": "2026-04-03T12:27:51.515599+00:00", "event_type": "message_bus_stub", "payload": {"team_id": "team_510419875ab2", "event_type": "team_create", "todo": "Connect to Message Bus RFC implementation."}}
+{"ts": "2026-04-03T12:27:51.515644+00:00", "event_type": "task_bus_stub", "payload": {"team_id": "team_510419875ab2", "event_type": "team_create", "todo": "Connect to Task Bus RFC implementation."}}
+{"ts": "2026-04-03T12:27:51.515676+00:00", "event_type": "team_create", "payload": {"team_id": "team_510419875ab2", "team_name": "team-dogfood-recovery-28", "leader_agent_id": "leader_e915d526", "status": "active", "created_at": "2026-04-03T12:27:51.515156+00:00"}}
+{"ts": "2026-04-03T12:27:51.550098+00:00", "event_type": "team_member_add", "payload": {"team_id": "team_510419875ab2", "agent_id": "worker_daily_driver", "role": "member", "lifecycle": "running", "joined_at": "2026-04-03T12:27:51.549611+00:00"}}
+{"ts": "2026-04-03T12:27:51.802938+00:00", "event_type": "startup_reconcile", "payload": {"reconciled_at": "2026-04-03T12:27:51.802812+00:00", "cleaned_count": 0, "error_count": 0, "cleaned": [], "errors": []}}

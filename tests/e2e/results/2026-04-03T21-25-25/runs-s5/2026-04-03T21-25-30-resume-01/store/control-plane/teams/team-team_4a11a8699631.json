@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:25:30.775024+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_b4eaefed",
+  "members": [
+    {
+      "agent_id": "leader_b4eaefed",
+      "joined_at": "2026-04-03T12:25:30.775024+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:25:30.809034+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_4a11a8699631",
+  "team_name": "team-s5-long-running-context-",
+  "updated_at": "2026-04-03T12:25:30.809158+00:00",
+  "version": 2
+}

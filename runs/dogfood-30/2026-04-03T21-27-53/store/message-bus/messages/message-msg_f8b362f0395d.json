@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:27:53.721430+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:27:53.721887+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:27:53.721884+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_89845847",
+  "idempotency_key": "",
+  "message_id": "msg_f8b362f0395d",
+  "payload": {
+    "text": "daily-driver start: dogfood-recovery-30"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_4e1cdfc7d663",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:27:53.721891+00:00",
+  "version": 2
+}

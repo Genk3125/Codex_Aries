@@ -1,0 +1,7 @@
+[NOTIFY][post_run_guard] STOP (stop)
+  reason: strict_failure
+  severity: high
+  timestamp: 2026-04-03T12:27:48.251521+00:00
+  action_required: yes
+  message: Strict mode failure — run halted, evidence needs fixation.
+  suggested_next: Fix evidence, run verifier read-only check, prepare minimal fix.

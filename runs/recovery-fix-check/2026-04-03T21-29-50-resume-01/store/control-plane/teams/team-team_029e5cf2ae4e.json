@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:29:50.829475+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_c20d2f30",
+  "members": [
+    {
+      "agent_id": "leader_c20d2f30",
+      "joined_at": "2026-04-03T12:29:50.829475+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:29:50.863760+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_029e5cf2ae4e",
+  "team_name": "team-recovery-fix-check",
+  "updated_at": "2026-04-03T12:29:50.863908+00:00",
+  "version": 2
+}

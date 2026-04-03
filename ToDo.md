@@ -8,40 +8,48 @@ _Updated: 2026-04-03_
 - 上位方針: `docs/CODEX_MAX_COMBINED_PLAN.md`
 - 実行フローの親: `.planning/MASTER_FLOW.md`
 
-## Done (Milestone 1: Phase 1-7)
+## 状態ラベルの定義
 
-- ~~`compact_state_helper` を実運用フローへ組み込み、次ターン開始時の入力テンプレートを固定する~~
-- ~~`handoff_helper` の Markdown を `verifier-contract.md` に寄せた貼り付けテンプレートへ整える~~
-- ~~`one_shot_orchestrator` を実タスクで継続 dogfood して、手動介入点を記録する~~
-- ~~`compact_state` から各 helper へ渡す `--from-compact` 変換を追加する~~
-- ~~通知層 `notify_helper` を追加する~~
-- ~~`verifier-cmd` の運用ルール固定 (exit code 0/1/2/3+)~~
-- ~~loop guard の整合確認 + auto-retry 非混入保証~~
+- `実装完了`: コード/テスト/文書が揃っている状態
+- `実運用完了`: real-world 運用証跡まで揃っている状態
+- `provisional`: 実装完了だが、実運用完了の証跡が未充足
 
-## Now (Milestone 2: Settle)
+## Now（最優先）
 
-- daily-driver パイプライン（run-task.sh / resume-task.sh）を作り、毎日使う状態にする（Phase 8）
-- context reduction を実装し、context 膨張の自動圧縮を可能にする（Phase 9）
+- Phase 19 `m3-1_real-world-30day-dogfood` を開始し、Milestone 2 Ship を `final` 化する
+- Phase 19 は `ready_to_run`（Step 1 完了）。Day 1 は 2026-04-06 JST、Step 2（日次運用記録）待ち
 
-## Next (Milestone 2: Scope + Build)
+## Milestone 2（実装完了 / Ship provisional）
 
-- Team Runtime 本実装化の境界を決定する（Phase 10）
-- computer-use の scope を凍結する（Phase 11）
-- computer-use MCP PoC を実装する（Phase 12）
-- Team Runtime MVP を本実装する（Phase 13）
-- auto-context パイプラインを daily-driver に統合する（Phase 14）
+### Done
+- ~~daily-driver パイプライン（run-task.sh / resume-task.sh）を作り、毎日使う状態にする（Phase 8）~~
+- ~~context reduction を実装し、context 膨張の自動圧縮を可能にする（Phase 9）~~
+- ~~Team Runtime 本実装化の境界を決定する（Phase 10）~~
+- ~~computer-use の scope を凍結する（Phase 11）~~
+- ~~computer-use MCP PoC を実装する（Phase 12）~~
+- ~~Team Runtime MVP を本実装する（Phase 13）~~
+- ~~auto-context パイプラインを daily-driver に統合する（Phase 14）~~
+- ~~E2E 統合テスト 5 シナリオ（Phase 15）~~
+- ~~eval ベースライン 6 指標測定（Phase 16）~~
+- ~~compressed 30 cycles dogfood（Phase 17 provisional）~~
+- ~~Milestone 2 provisional closeout（Phase 18 provisional）~~
 
-## Later (Milestone 2: Harden + Ship)
+### Pending（Ship finalization）
+- real-world 30-day dogfood（calendar days）で最終 Ship 判定を確定する
 
-- E2E 統合テスト 5 シナリオ（Phase 15）
-- eval ベースライン 6 指標測定（Phase 16）
-- 30 日間 daily dogfood（Phase 17）
-- Milestone 2 クローズアウト（Phase 18）
+## Milestone 3（95% 仕上げ）
+
+### Planned Phases
+- Phase 19: `m3-1_real-world-30day-dogfood`
+- Phase 20: `m3-2_trigger-layer-mvp`
+- Phase 21: `m3-3_worktree-runtime-tools-mvp`
+- Phase 22: `m3-4_verifier-queue-standardization`
+- Phase 23: `m3-5_team-runtime-deferred-priority`
+- Phase 24: `m3-6_docs-status-release-sync`
+- Phase 25: `m3-7_ts-boundary-decision`
 
 ## Not Now
 
 - Codex 本体 fork
-- full auto loop
-- trigger / worktree の本実装
+- full auto loop（multi-pass自動再試行）
 - memory の本格実装
-- cron / remote trigger / sleep

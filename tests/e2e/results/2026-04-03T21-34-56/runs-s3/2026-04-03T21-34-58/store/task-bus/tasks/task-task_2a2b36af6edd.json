@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:34:59.117252+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_2a2b36af6edd",
+  "team_id": "team_1bc99d023ae8",
+  "title": "S3_single_agent_computer_use",
+  "updated_at": "2026-04-03T12:34:59.210697+00:00",
+  "version": 2
+}

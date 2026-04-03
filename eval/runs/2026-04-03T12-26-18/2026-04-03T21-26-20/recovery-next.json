@@ -1,0 +1,33 @@
+{
+  "ts": "2026-04-03T12:26:20.658761+00:00",
+  "helper": "recovery_next_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/orch.json",
+    "recovery_playbook_path": "/Users/kondogenki/AI Agent Maximizer/docs/recovery-playbook.md"
+  },
+  "guard_summary": {
+    "preflight_guard": {
+      "enabled": true,
+      "ok": true,
+      "decision": "allow",
+      "stop_reasons": []
+    },
+    "post_run_guard": {
+      "enabled": true,
+      "ok": true,
+      "decision": "continue",
+      "stop_reasons": []
+    },
+    "stop_detected": false,
+    "stop_reason_details": [],
+    "note": "Guard summary mirrors orchestrator output; this helper does not create new stop criteria."
+  },
+  "recovery_next": {
+    "required": false,
+    "branch_count": 0,
+    "branches": [],
+    "note": "Mapping only. Execution and final judgment remain with operator/coordinator/verifier."
+  }
+}

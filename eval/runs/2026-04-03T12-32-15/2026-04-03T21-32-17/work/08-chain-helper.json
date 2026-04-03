@@ -1,0 +1,50 @@
+{
+  "ts": "2026-04-03T12:32:17.842805+00:00",
+  "helper": "chain_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-32-15/2026-04-03T21-32-17/work/07-loopback-helper.json",
+    "task_id": "task_0788966063de",
+    "task_id_source": "--task-id",
+    "team_id": "team_5c6d5b3ff127",
+    "team_id_source": "--team-id",
+    "verifier_gate_script": "/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py",
+    "verifier_cmd": null,
+    "expected_task_state": null,
+    "computer_use_evidence_json": null
+  },
+  "loopback_result": {
+    "ts": "2026-04-03T12:32:17.820469+00:00",
+    "helper": "loopback_helper",
+    "mode": "fail-open",
+    "ok": true,
+    "input": {
+      "input_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-32-15/2026-04-03T21-32-17/work/06-bridge-helper.json",
+      "task_id": "task_0788966063de",
+      "task_id_source": "input.task_id",
+      "team_id": "team_5c6d5b3ff127",
+      "team_id_source": "input.team_id",
+      "post_check_script": "/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py",
+      "store_root": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-32-15/2026-04-03T21-32-17/store"
+    },
+    "bridge_result": {
+      "executed": false,
+      "skipped_reason": "requires_verifier_false",
+      "ok": true
+    },
+    "post_check_result": {
+      "executed": false,
+      "skipped_reason": "bridge_not_executed",
+      "ok": true
+    }
+  },
+  "verifier_gate_result": {
+    "executed": false,
+    "skipped_reason": "post_check_not_executed",
+    "ok": true
+  },
+  "tmp": {
+    "gate_input_json": null
+  }
+}

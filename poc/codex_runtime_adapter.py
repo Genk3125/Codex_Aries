@@ -8,9 +8,26 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, Tuple
 
-from team_control_plane import ControlPlaneError, TeamControlPlane, utc_now_iso
-from team_message_bus import MessageBusError, TeamMessageBus
-from team_task_bus import TASK_STATES, TaskBusError, TeamTaskBus, UNSET
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+try:
+    from src.team_runtime import (
+        TASK_STATES,
+        UNSET,
+        ControlPlaneError,
+        MessageBusError,
+        TaskBusError,
+        TeamControlPlane,
+        TeamMessageBus,
+        TeamTaskBus,
+        utc_now_iso,
+    )
+except Exception:  # noqa: BLE001
+    from team_control_plane import ControlPlaneError, TeamControlPlane, utc_now_iso
+    from team_message_bus import MessageBusError, TeamMessageBus
+    from team_task_bus import TASK_STATES, TaskBusError, TeamTaskBus, UNSET
 
 
 class AdapterError(Exception):

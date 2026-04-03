@@ -1,6 +1,15 @@
 # Codex CLI Maximizer 統合プラン v2.0
 
-_Date: 2026-04-02_
+_Date: 2026-04-03_
+
+## Milestone 2 Closeout Snapshot (2026-04-03)
+
+- closeout report: `docs/milestone-2-closeout.md`
+- baseline metrics: `eval/baseline-results.md`（6/6 target 達成）
+- daily dogfood: `logs/daily-dogfood-30.md`（compressed 30 cycles で PASS / Ship provisional）
+- e2e integration: `tests/e2e/results/2026-04-03T21-25-25/summary.md`（5/5 PASS）
+
+次フェーズは Milestone 3 として Trigger / Worktree / Automation 拡張を優先する。
 
 ## 0) 結論
 

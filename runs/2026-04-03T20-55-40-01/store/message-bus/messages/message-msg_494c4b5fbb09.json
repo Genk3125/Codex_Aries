@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T11:55:40.913953+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T11:55:40.914433+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T11:55:40.914430+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_9998e124",
+  "idempotency_key": "",
+  "message_id": "msg_494c4b5fbb09",
+  "payload": {
+    "text": "daily-driver start: phase8-daily-driver-task-9"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_62dfbc00e3ea",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T11:55:40.914436+00:00",
+  "version": 2
+}

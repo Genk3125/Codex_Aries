@@ -111,6 +111,7 @@ def all_orchestrator_steps() -> List[str]:
         "session_helper",
         "task_update_notify_helper",
         "post_step_check_helper",
+        "computer_use_helper",
         "verifier_gate_helper",
         "bridge_helper",
         "loopback_helper",
@@ -166,6 +167,16 @@ def main() -> int:
     parser.add_argument("--task-update-blocked-reason", default="")
     parser.add_argument("--gate-expected-task-state", default="")
     parser.add_argument("--bridge-message", default="verifier gate triggered; task moved to blocked")
+    parser.add_argument("--computer-use-url", default="")
+    parser.add_argument(
+        "--computer-use-operation",
+        choices=["screenshot", "extract_text", "both"],
+        default="both",
+    )
+    parser.add_argument("--computer-use-timeout-sec", type=int, default=20)
+    parser.add_argument("--computer-use-timeout-ms", type=int, default=15000)
+    parser.add_argument("--computer-use-output-dir", default="")
+    parser.add_argument("--computer-use-screenshot-path", default="")
     parser.add_argument("--flow-mode", choices=["gate", "chain"], default="chain")
     parser.add_argument("--verifier-cmd", default="")
     parser.add_argument("--verifier-timeout-sec", type=int, default=180)
@@ -204,6 +215,7 @@ def main() -> int:
         "session_helper": os.environ.get("CODEX_ORCH_SESSION_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py"),
         "task_update_notify_helper": os.environ.get("CODEX_ORCH_TASK_UPDATE_NOTIFY_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py"),
         "post_step_check_helper": os.environ.get("CODEX_ORCH_POST_CHECK_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py"),
+        "computer_use_helper": os.environ.get("CODEX_ORCH_COMPUTER_USE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/computer_use_helper.py"),
         "verifier_gate_helper": os.environ.get("CODEX_ORCH_VERIFIER_GATE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py"),
         "bridge_helper": os.environ.get("CODEX_ORCH_BRIDGE_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/bridge_helper.py"),
         "loopback_helper": os.environ.get("CODEX_ORCH_LOOPBACK_SCRIPT", "/Users/kondogenki/AI Agent Maximizer/poc/loopback_helper.py"),
@@ -348,11 +360,43 @@ def main() -> int:
         )
         results["post_step_check_helper"] = run_helper_step("post_step_check_helper", post_check_cmd, post_check_output_path)
 
+        computer_use_output_path = make_step_output_path(work_dir_path, "04-computer-use-helper")
+        computer_use_evidence_json = ""
+        if args.computer_use_url:
+            computer_use_output_dir = args.computer_use_output_dir or str(work_dir_path / "computer-use")
+            computer_use_cmd = [args.python_cmd, script_paths["computer_use_helper"]]
+            if args.strict:
+                computer_use_cmd.append("--strict")
+            computer_use_cmd.extend(
+                [
+                    "--url",
+                    args.computer_use_url,
+                    "--operation",
+                    args.computer_use_operation,
+                    "--timeout-sec",
+                    str(args.computer_use_timeout_sec),
+                    "--timeout-ms",
+                    str(args.computer_use_timeout_ms),
+                    "--output-dir",
+                    computer_use_output_dir,
+                    "--output-json",
+                    str(computer_use_output_path),
+                ]
+            )
+            if args.computer_use_screenshot_path:
+                computer_use_cmd.extend(["--screenshot-path", args.computer_use_screenshot_path])
+            results["computer_use_helper"] = run_helper_step("computer_use_helper", computer_use_cmd, computer_use_output_path)
+            if computer_use_output_path.exists():
+                computer_use_evidence_json = str(computer_use_output_path)
+        else:
+            results["computer_use_helper"] = skipped_step("computer_use_helper", "computer_use_url_not_set")
+            computer_use_evidence_json = ""
+
         task_id = pick_task_id(results)
         team_id = pick_team_id(results)
         from_member_id = pick_from_member_id(results)
 
-        verifier_gate_output_path = make_step_output_path(work_dir_path, "04-verifier-gate-helper")
+        verifier_gate_output_path = make_step_output_path(work_dir_path, "05-verifier-gate-helper")
         verifier_gate_cmd = [args.python_cmd, script_paths["verifier_gate_helper"]]
         if args.strict:
             verifier_gate_cmd.append("--strict")
@@ -361,6 +405,8 @@ def main() -> int:
             verifier_gate_cmd.extend(["--task-id", task_id])
         if team_id:
             verifier_gate_cmd.extend(["--team-id", team_id])
+        if computer_use_evidence_json:
+            verifier_gate_cmd.extend(["--computer-use-evidence-json", computer_use_evidence_json])
         if args.verifier_cmd:
             verifier_gate_cmd.extend(["--verifier-cmd", args.verifier_cmd])
         if args.gate_expected_task_state:
@@ -373,7 +419,7 @@ def main() -> int:
             results["loopback_helper"] = skipped_step("loopback_helper", "flow_mode_gate")
             results["chain_helper"] = skipped_step("chain_helper", "flow_mode_gate")
         else:
-            bridge_output_path = make_step_output_path(work_dir_path, "05-bridge-helper")
+            bridge_output_path = make_step_output_path(work_dir_path, "06-bridge-helper")
             bridge_cmd = build_cmd(
                 python_cmd=args.python_cmd,
                 script_path=script_paths["bridge_helper"],
@@ -398,7 +444,7 @@ def main() -> int:
                 bridge_cmd.extend(["--message-idempotency-key", args.bridge_message_idempotency_key])
             results["bridge_helper"] = run_helper_step("bridge_helper", bridge_cmd, bridge_output_path)
 
-            loopback_output_path = make_step_output_path(work_dir_path, "06-loopback-helper")
+            loopback_output_path = make_step_output_path(work_dir_path, "07-loopback-helper")
             loopback_cmd = build_cmd(
                 python_cmd=args.python_cmd,
                 script_path=script_paths["loopback_helper"],
@@ -413,7 +459,7 @@ def main() -> int:
             )
             results["loopback_helper"] = run_helper_step("loopback_helper", loopback_cmd, loopback_output_path)
 
-            chain_output_path = make_step_output_path(work_dir_path, "07-chain-helper")
+            chain_output_path = make_step_output_path(work_dir_path, "08-chain-helper")
             chain_cmd = [args.python_cmd, script_paths["chain_helper"]]
             if args.strict:
                 chain_cmd.append("--strict")
@@ -422,6 +468,8 @@ def main() -> int:
                 chain_cmd.extend(["--task-id", task_id])
             if team_id:
                 chain_cmd.extend(["--team-id", team_id])
+            if computer_use_evidence_json:
+                chain_cmd.extend(["--computer-use-evidence-json", computer_use_evidence_json])
             if args.verifier_cmd:
                 chain_cmd.extend(["--verifier-cmd", args.verifier_cmd])
             if args.gate_expected_task_state:
@@ -519,6 +567,8 @@ def main() -> int:
             "task_title": args.task_title,
             "task_update_state": args.task_update_state,
             "gate_expected_task_state": args.gate_expected_task_state or None,
+            "computer_use_url": args.computer_use_url or None,
+            "computer_use_operation": args.computer_use_operation if args.computer_use_url else None,
             "verifier_cmd": args.verifier_cmd or None,
             "store_root": args.store_root or None,
         },

@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:37:07.653023+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:37:07.653422+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:37:07.653419+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_3554956e",
+  "idempotency_key": "",
+  "message_id": "msg_77c205ce0b27",
+  "payload": {
+    "text": "daily-driver start: eval-e01-doc-sync"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_8e28f466c133",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:37:07.653425+00:00",
+  "version": 2
+}

@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:27:27.947732+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:27:27.948178+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:27:27.948175+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_94447980",
+  "idempotency_key": "",
+  "message_id": "msg_3deea356887c",
+  "payload": {
+    "text": "task moved to in_progress"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_e43264d1467f",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:27:27.948181+00:00",
+  "version": 2
+}

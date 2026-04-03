@@ -1,0 +1,77 @@
+{
+  "ts": "2026-04-03T12:27:53.342592+00:00",
+  "helper": "compact_state_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "runs/dogfood-30/2026-04-03T21-27-52-resume-01/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "failed",
+    "last_successful_step": "post_step_check_helper",
+    "failed_step": {
+      "step": "verifier_gate_helper",
+      "exit_code": 0,
+      "detail": "helper_step_failed"
+    },
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py' --store-root runs/dogfood-30/2026-04-03T21-27-52-resume-01/store --team-name team-dogfood-recovery-29 --memb..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py' --store-root runs/dogfood-30/2026-04-03T21-27-52-resume-01/store --input-json runs/dogfood-30/202..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py' --store-root runs/dogfood-30/2026-04-03T21-27-52-resume-01/store --input-json runs/dogfood-30/2026-0..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py' --input-json runs/dogfood-30/2026-04-03T21-27-52-resume-01/work/03-post-step-check-helper.json --outpu..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 4,
+      "succeeded_steps": 3,
+      "failed_steps": [
+        "verifier_gate_helper"
+      ],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper",
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "inspect_failure",
+      "hint": "Inspect failed_step and summarize evidence before the next attempt.",
+      "action_items": [
+        "check compact_state.failed_step",
+        "collect minimal evidence"
+      ]
+    },
+    "ids": {
+      "team_id": "team_6a50ada64067",
+      "task_id": "task_d141e329797d",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_a59b6dbf"
+    },
+    "meta": {
+      "run_id": "20260403122752",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}

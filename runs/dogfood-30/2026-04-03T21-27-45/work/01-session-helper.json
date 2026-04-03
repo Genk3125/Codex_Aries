@@ -1,0 +1,143 @@
+{
+  "ts": "2026-04-03T12:27:45.568477+00:00",
+  "helper": "session_helper",
+  "flow": "team_create->team_member_add->task_create->send_message",
+  "mode": "fail-open",
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "runs/dogfood-30/2026-04-03T21-27-45/store",
+  "ok": true,
+  "error": null,
+  "ids": {
+    "team_id": "team_9c0ef32b2888",
+    "leader_id": "leader_b9938ee2",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_65d900f3bfad",
+    "message_id": "msg_f006d7916a15"
+  },
+  "steps": [
+    {
+      "step": "team_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "team-create",
+        "team-dogfood-computer-24"
+      ],
+      "exit_code": 0,
+      "operation": "team_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_9c0ef32b2888",
+        "team_name": "team-dogfood-computer-24",
+        "leader_agent_id": "leader_b9938ee2",
+        "status": "active",
+        "created_at": "2026-04-03T12:27:45.434813+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "team_member_add",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "op",
+        "--name",
+        "team_member_add",
+        "--args-json",
+        "{\"team_id\": \"team_9c0ef32b2888\", \"agent_id\": \"worker_daily_driver\", \"role\": \"member\"}"
+      ],
+      "exit_code": 0,
+      "operation": "team_member_add",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_9c0ef32b2888",
+        "agent_id": "worker_daily_driver",
+        "role": "member",
+        "lifecycle": "running",
+        "joined_at": "2026-04-03T12:27:45.468951+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "task_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "task-create",
+        "team_9c0ef32b2888",
+        "dogfood-computer-24",
+        "worker_daily_driver",
+        "ready"
+      ],
+      "exit_code": 0,
+      "operation": "task_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "task_id": "task_65d900f3bfad",
+        "team_id": "team_9c0ef32b2888",
+        "title": "dogfood-computer-24",
+        "owner_member_id": "worker_daily_driver",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-03T12:27:45.516267+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "send_message",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "send-message",
+        "team_9c0ef32b2888",
+        "leader_b9938ee2",
+        "worker_daily_driver",
+        "daily-driver start: dogfood-computer-24"
+      ],
+      "exit_code": 0,
+      "operation": "send_message",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "message_id": "msg_f006d7916a15",
+        "team_id": "team_9c0ef32b2888",
+        "type": "direct",
+        "subtype": "text",
+        "status": "delivered",
+        "delivery": {
+          "worker_daily_driver": {
+            "state": "delivered",
+            "attempt_count": 1,
+            "last_attempt_at": "2026-04-03T12:27:45.564070+00:00",
+            "delivered_at": "2026-04-03T12:27:45.564075+00:00",
+            "error": null
+          }
+        },
+        "created_at": "2026-04-03T12:27:45.563558+00:00"
+      },
+      "parse_error": null
+    }
+  ],
+  "next": {
+    "team_id": "team_9c0ef32b2888",
+    "leader_id": "leader_b9938ee2",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_65d900f3bfad",
+    "message_id": "msg_f006d7916a15",
+    "task_update_example": {
+      "task_id": "task_65d900f3bfad",
+      "state": "in_progress",
+      "idempotency_key": "<task-update-idempotency-key>"
+    },
+    "followup_send_message_example": {
+      "team_id": "team_9c0ef32b2888",
+      "from_member_id": "leader_b9938ee2",
+      "to_member_id": "worker_daily_driver",
+      "text": "<next-message>",
+      "idempotency_key": "<message-idempotency-key>"
+    }
+  }
+}

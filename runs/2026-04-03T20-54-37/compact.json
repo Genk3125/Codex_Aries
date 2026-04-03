@@ -1,0 +1,83 @@
+{
+  "ts": "2026-04-03T11:54:38.211354+00:00",
+  "helper": "compact_state_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "stopped_post_run",
+    "last_successful_step": null,
+    "failed_step": {
+      "step": "session_helper",
+      "exit_code": 0,
+      "detail": "helper_step_failed"
+    },
+    "stop_reasons": [
+      "max_retries",
+      "escalated"
+    ],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --team-name team-phase8-d..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --input-json '..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py' --store-root '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store' --input-json '/Us..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py' --input-json '/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/03-post-step-check-he..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 7,
+      "executed_steps": 4,
+      "succeeded_steps": 0,
+      "failed_steps": [
+        "session_helper",
+        "task_update_notify_helper",
+        "post_step_check_helper",
+        "verifier_gate_helper"
+      ],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "prepare_escalation",
+      "hint": "Run escalation flow and prepare coordinator/verifier packet before next run.",
+      "action_items": [
+        "run recovery_next_helper",
+        "run escalation_draft_helper",
+        "optionally run handoff_helper"
+      ]
+    },
+    "ids": {
+      "team_id": null,
+      "task_id": null,
+      "member_id": "worker_daily_driver",
+      "leader_id": null
+    },
+    "meta": {
+      "run_id": "20260403115438",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "ts": "2026-04-03T12:25:43.592614+00:00",
+  "helper": "escalation_draft_helper",
+  "mode": "strict",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-25-38/2026-04-03T21-25-42-01/orch.json",
+    "recovery_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-25-38/2026-04-03T21-25-42-01/recovery-next.json"
+  },
+  "escalation_draft": {
+    "required": false,
+    "executed": false,
+    "skipped_reason": "no_escalation_branch",
+    "stop_reasons": [
+      "strict_failure"
+    ],
+    "note": "Recovery mapping indicates no escalation branch. Draft generation is skipped."
+  }
+}

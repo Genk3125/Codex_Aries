@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "attempt_count": 1,
+  "consecutive_failures": 1,
+  "manual_stop": false,
+  "last_ok": false,
+  "last_decision": "continue",
+  "last_reasons": [],
+  "updated_at": "2026-04-03T12:27:53.318161+00:00"
+}

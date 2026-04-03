@@ -1,0 +1,143 @@
+{
+  "ts": "2026-04-03T12:37:10.426065+00:00",
+  "helper": "session_helper",
+  "flow": "team_create->team_member_add->task_create->send_message",
+  "mode": "fail-open",
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-10/store",
+  "ok": true,
+  "error": null,
+  "ids": {
+    "team_id": "team_b7c7a808bb7d",
+    "leader_id": "leader_f3498297",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_d480023cd92b",
+    "message_id": "msg_b38f4de76f52"
+  },
+  "steps": [
+    {
+      "step": "team_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "team-create",
+        "team-eval-m03-recovery-lite"
+      ],
+      "exit_code": 0,
+      "operation": "team_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_b7c7a808bb7d",
+        "team_name": "team-eval-m03-recovery-lite",
+        "leader_agent_id": "leader_f3498297",
+        "status": "active",
+        "created_at": "2026-04-03T12:37:10.310092+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "team_member_add",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "op",
+        "--name",
+        "team_member_add",
+        "--args-json",
+        "{\"team_id\": \"team_b7c7a808bb7d\", \"agent_id\": \"worker_daily_driver\", \"role\": \"member\"}"
+      ],
+      "exit_code": 0,
+      "operation": "team_member_add",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_b7c7a808bb7d",
+        "agent_id": "worker_daily_driver",
+        "role": "member",
+        "lifecycle": "running",
+        "joined_at": "2026-04-03T12:37:10.339124+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "task_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "task-create",
+        "team_b7c7a808bb7d",
+        "eval-m03-recovery-lite",
+        "worker_daily_driver",
+        "ready"
+      ],
+      "exit_code": 0,
+      "operation": "task_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "task_id": "task_d480023cd92b",
+        "team_id": "team_b7c7a808bb7d",
+        "title": "eval-m03-recovery-lite",
+        "owner_member_id": "worker_daily_driver",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-03T12:37:10.380405+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "send_message",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "send-message",
+        "team_b7c7a808bb7d",
+        "leader_f3498297",
+        "worker_daily_driver",
+        "daily-driver start: eval-m03-recovery-lite"
+      ],
+      "exit_code": 0,
+      "operation": "send_message",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "message_id": "msg_b38f4de76f52",
+        "team_id": "team_b7c7a808bb7d",
+        "type": "direct",
+        "subtype": "text",
+        "status": "delivered",
+        "delivery": {
+          "worker_daily_driver": {
+            "state": "delivered",
+            "attempt_count": 1,
+            "last_attempt_at": "2026-04-03T12:37:10.422278+00:00",
+            "delivered_at": "2026-04-03T12:37:10.422282+00:00",
+            "error": null
+          }
+        },
+        "created_at": "2026-04-03T12:37:10.421811+00:00"
+      },
+      "parse_error": null
+    }
+  ],
+  "next": {
+    "team_id": "team_b7c7a808bb7d",
+    "leader_id": "leader_f3498297",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_d480023cd92b",
+    "message_id": "msg_b38f4de76f52",
+    "task_update_example": {
+      "task_id": "task_d480023cd92b",
+      "state": "in_progress",
+      "idempotency_key": "<task-update-idempotency-key>"
+    },
+    "followup_send_message_example": {
+      "team_id": "team_b7c7a808bb7d",
+      "from_member_id": "leader_f3498297",
+      "to_member_id": "worker_daily_driver",
+      "text": "<next-message>",
+      "idempotency_key": "<message-idempotency-key>"
+    }
+  }
+}

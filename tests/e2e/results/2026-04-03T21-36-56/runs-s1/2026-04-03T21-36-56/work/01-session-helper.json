@@ -1,0 +1,143 @@
+{
+  "ts": "2026-04-03T12:36:57.210373+00:00",
+  "helper": "session_helper",
+  "flow": "team_create->team_member_add->task_create->send_message",
+  "mode": "fail-open",
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s1/2026-04-03T21-36-56/store",
+  "ok": true,
+  "error": null,
+  "ids": {
+    "team_id": "team_3bf4dd62f5e5",
+    "leader_id": "leader_d1836141",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_2a1b9733bc8e",
+    "message_id": "msg_ff79334dad74"
+  },
+  "steps": [
+    {
+      "step": "team_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "team-create",
+        "team-s1-single-agent-gate-suc"
+      ],
+      "exit_code": 0,
+      "operation": "team_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_3bf4dd62f5e5",
+        "team_name": "team-s1-single-agent-gate-suc",
+        "leader_agent_id": "leader_d1836141",
+        "status": "active",
+        "created_at": "2026-04-03T12:36:57.088892+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "team_member_add",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "op",
+        "--name",
+        "team_member_add",
+        "--args-json",
+        "{\"team_id\": \"team_3bf4dd62f5e5\", \"agent_id\": \"worker_daily_driver\", \"role\": \"member\"}"
+      ],
+      "exit_code": 0,
+      "operation": "team_member_add",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "team_id": "team_3bf4dd62f5e5",
+        "agent_id": "worker_daily_driver",
+        "role": "member",
+        "lifecycle": "running",
+        "joined_at": "2026-04-03T12:36:57.121361+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "task_create",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "task-create",
+        "team_3bf4dd62f5e5",
+        "S1_single_agent_gate_success",
+        "worker_daily_driver",
+        "ready"
+      ],
+      "exit_code": 0,
+      "operation": "task_create",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "task_id": "task_2a1b9733bc8e",
+        "team_id": "team_3bf4dd62f5e5",
+        "title": "S1_single_agent_gate_success",
+        "owner_member_id": "worker_daily_driver",
+        "state": "ready",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 1,
+        "updated_at": "2026-04-03T12:36:57.165154+00:00"
+      },
+      "parse_error": null
+    },
+    {
+      "step": "send_message",
+      "command": [
+        "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+        "send-message",
+        "team_3bf4dd62f5e5",
+        "leader_d1836141",
+        "worker_daily_driver",
+        "daily-driver start: S1_single_agent_gate_success"
+      ],
+      "exit_code": 0,
+      "operation": "send_message",
+      "operation_ok": true,
+      "error": null,
+      "result": {
+        "message_id": "msg_ff79334dad74",
+        "team_id": "team_3bf4dd62f5e5",
+        "type": "direct",
+        "subtype": "text",
+        "status": "delivered",
+        "delivery": {
+          "worker_daily_driver": {
+            "state": "delivered",
+            "attempt_count": 1,
+            "last_attempt_at": "2026-04-03T12:36:57.206443+00:00",
+            "delivered_at": "2026-04-03T12:36:57.206447+00:00",
+            "error": null
+          }
+        },
+        "created_at": "2026-04-03T12:36:57.205989+00:00"
+      },
+      "parse_error": null
+    }
+  ],
+  "next": {
+    "team_id": "team_3bf4dd62f5e5",
+    "leader_id": "leader_d1836141",
+    "member_id": "worker_daily_driver",
+    "task_id": "task_2a1b9733bc8e",
+    "message_id": "msg_ff79334dad74",
+    "task_update_example": {
+      "task_id": "task_2a1b9733bc8e",
+      "state": "in_progress",
+      "idempotency_key": "<task-update-idempotency-key>"
+    },
+    "followup_send_message_example": {
+      "team_id": "team_3bf4dd62f5e5",
+      "from_member_id": "leader_d1836141",
+      "to_member_id": "worker_daily_driver",
+      "text": "<next-message>",
+      "idempotency_key": "<message-idempotency-key>"
+    }
+  }
+}

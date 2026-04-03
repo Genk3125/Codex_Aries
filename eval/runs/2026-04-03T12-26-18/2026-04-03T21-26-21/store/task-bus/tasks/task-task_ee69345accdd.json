@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:26:21.570852+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_ee69345accdd",
+  "team_id": "team_abe8ad0a1ff4",
+  "title": "eval-m03-recovery-lite",
+  "updated_at": "2026-04-03T12:26:21.677486+00:00",
+  "version": 2
+}

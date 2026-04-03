@@ -1,0 +1,9 @@
+{
+  "ts": "2026-04-03T12:27:51.982217+00:00",
+  "helper": "notify_helper",
+  "ok": true,
+  "notification_count": 0,
+  "notifications": [],
+  "formatted_count": 0,
+  "note": "Best-effort notification only. Failures are swallowed."
+}

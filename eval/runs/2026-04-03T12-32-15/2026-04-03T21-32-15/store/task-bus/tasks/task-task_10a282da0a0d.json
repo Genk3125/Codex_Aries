@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:32:15.894773+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_10a282da0a0d",
+  "team_id": "team_bada818cb88b",
+  "title": "eval-e01-doc-sync",
+  "updated_at": "2026-04-03T12:32:15.989571+00:00",
+  "version": 2
+}

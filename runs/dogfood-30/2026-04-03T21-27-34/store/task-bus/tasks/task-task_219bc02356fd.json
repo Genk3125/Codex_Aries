@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:27:34.748679+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_219bc02356fd",
+  "team_id": "team_4a396533339e",
+  "title": "dogfood-basic-12",
+  "updated_at": "2026-04-03T12:27:34.855884+00:00",
+  "version": 2
+}

@@ -1,0 +1,94 @@
+{
+  "ts": "2026-04-03T12:37:01.826019+00:00",
+  "helper": "context_compactor",
+  "ok": true,
+  "input": {
+    "runs_dir": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5",
+    "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/orch.json",
+    "latest_orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/orch.json",
+    "latest_compact_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/compact.json"
+  },
+  "compact_state": {
+    "current_status": "ok",
+    "last_successful_step": "chain_helper",
+    "failed_step": null,
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 7,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/session_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/store --team-name team-s5-long-running-context- --member-id worker_daily_driver --task-title S5_long_running_context_compaction --message-text daily-driver start: S5_long_running_context_compaction --output-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/01-session-helper.json"
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/store --input-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/01-session-helper.json --state in_progress --to-member-id worker_daily_driver --message-text task moved to in_progress --output-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/02-task-update-notify-helper.json"
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/store --input-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/02-task-update-notify-helper.json --output-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/03-post-step-check-helper.json"
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py --input-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/03-post-step-check-helper.json --output-json /Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/work/05-verifier-gate-helper.json --task-id task_25ce058ef868 --team-id team_939df976230e --verifier-timeout-sec 180 --verifier-contract-path /Users/kondogenki/AI Agent Maximizer/verifier-contract.md"
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 7,
+      "succeeded_steps": 7,
+      "failed_steps": [],
+      "skipped_steps": [
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "guard_hint",
+      "hint": "Continue only with a new run request; no automatic retry is performed.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": "team_939df976230e",
+      "task_id": "task_25ce058ef868",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_b176554f"
+    }
+  },
+  "evidence_index": {
+    "run_count_included": 1,
+    "runs": [
+      {
+        "run_id": "2026-04-03T21-37-01",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/tests/e2e/results/2026-04-03T21-36-56/runs-s5/2026-04-03T21-37-01/compact.md"
+        },
+        "orch_size_bytes": 34966
+      }
+    ]
+  },
+  "history": [
+    {
+      "run_id": "2026-04-03T21-37-01",
+      "current_status": "ok",
+      "last_successful_step": "chain_helper"
+    }
+  ],
+  "meta": {
+    "schema_version": 1,
+    "max_context_tokens": 1200,
+    "estimated_tokens": 1149,
+    "within_budget": true
+  },
+  "warnings": [
+    "Compactor pruned optional evidence fields to fit token budget."
+  ]
+}

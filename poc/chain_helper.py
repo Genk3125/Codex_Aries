@@ -132,6 +132,7 @@ def run_verifier_gate(
     expected_task_state: str,
     verifier_timeout_sec: int,
     verifier_contract_path: str,
+    computer_use_evidence_json: str,
 ) -> Dict[str, Any]:
     cmd: List[str] = [python_cmd, script_path]
     if strict:
@@ -149,6 +150,8 @@ def run_verifier_gate(
         cmd.extend(["--verifier-timeout-sec", str(verifier_timeout_sec)])
     if verifier_contract_path:
         cmd.extend(["--verifier-contract-path", verifier_contract_path])
+    if computer_use_evidence_json:
+        cmd.extend(["--computer-use-evidence-json", computer_use_evidence_json])
 
     proc = subprocess.run(cmd, capture_output=True, text=True, check=False, env=os.environ.copy())
     text = (proc.stdout or "").strip()
@@ -210,6 +213,11 @@ def main() -> int:
         "--verifier-contract-path",
         default="/Users/kondogenki/AI Agent Maximizer/verifier-contract.md",
     )
+    parser.add_argument(
+        "--computer-use-evidence-json",
+        default="",
+        help="optional computer_use_helper output json path passed through to verifier_gate_helper",
+    )
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--output-json", default="")
     args = parser.parse_args()
@@ -260,6 +268,7 @@ def main() -> int:
             expected_task_state=args.expected_task_state,
             verifier_timeout_sec=args.verifier_timeout_sec,
             verifier_contract_path=args.verifier_contract_path,
+            computer_use_evidence_json=args.computer_use_evidence_json,
         )
 
     helper_ok = bool(verifier_gate_result.get("ok"))
@@ -277,6 +286,7 @@ def main() -> int:
             "verifier_gate_script": args.verifier_gate_script,
             "verifier_cmd": args.verifier_cmd or None,
             "expected_task_state": args.expected_task_state or None,
+            "computer_use_evidence_json": args.computer_use_evidence_json or None,
         },
         "loopback_result": source,
         "verifier_gate_result": verifier_gate_result,

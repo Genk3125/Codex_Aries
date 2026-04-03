@@ -1,0 +1,16 @@
+{
+  "ts": "2026-04-03T12:27:52.634857+00:00",
+  "helper": "notify_helper",
+  "ok": true,
+  "notification_count": 1,
+  "notifications": [
+    {
+      "guard_name": "post_run_guard",
+      "verdict": "STOP (stop)",
+      "reason": "strict_failure",
+      "ts": "2026-04-03T12:27:52.560384+00:00"
+    }
+  ],
+  "formatted_count": 1,
+  "note": "Best-effort notification only. Failures are swallowed."
+}

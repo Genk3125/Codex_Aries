@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:26:23.589823+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_8694c82e",
+  "members": [
+    {
+      "agent_id": "leader_8694c82e",
+      "joined_at": "2026-04-03T12:26:23.589823+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:26:23.625881+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_a04d302f797a",
+  "team_name": "team-eval-h02-context-compact",
+  "updated_at": "2026-04-03T12:26:23.626001+00:00",
+  "version": 2
+}

@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:36:57.165029+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_2a1b9733bc8e",
+  "team_id": "team_3bf4dd62f5e5",
+  "title": "S1_single_agent_gate_success",
+  "updated_at": "2026-04-03T12:36:57.258908+00:00",
+  "version": 2
+}

@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-04-03T12:37:12.692774+00:00",
+  "manifest": "/Users/kondogenki/AI Agent Maximizer/eval/tasks/manifest.json",
+  "runs_root": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07",
+  "metrics": {
+    "task_success_rate": 100.0,
+    "first_valid_output_time_sec": 0.564,
+    "self_recovery_rate": 100.0,
+    "rework_cycles_per_task": 0.1,
+    "verification_pass_rate": 100.0,
+    "team_completion_rate": 100.0,
+    "counts": {
+      "total_tasks": 10,
+      "success_tasks": 10,
+      "recovery_candidates": 1,
+      "recovery_success": 1,
+      "orchestrator_tasks": 8,
+      "team_tasks": 2
+    }
+  },
+  "results": [
+    {
+      "task_id": "E01",
+      "size": "easy",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5336072920035804,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-07"
+    },
+    {
+      "task_id": "E02",
+      "size": "easy",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5223648340033833,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-07-01"
+    },
+    {
+      "task_id": "E03",
+      "size": "easy",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5257611249980982,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-08"
+    },
+    {
+      "task_id": "M01",
+      "size": "medium",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5945331670081941,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-09"
+    },
+    {
+      "task_id": "M02",
+      "size": "medium",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5973789999989094,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-09-01"
+    },
+    {
+      "task_id": "M03",
+      "size": "medium",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.5958990000071935,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-10"
+    },
+    {
+      "task_id": "M04",
+      "size": "medium",
+      "kind": "team_runtime",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.03829395900538657,
+      "verification_pass": null,
+      "team_success": true,
+      "note": "team runtime mvp scenario",
+      "artifact": null
+    },
+    {
+      "task_id": "H01",
+      "size": "hard",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 2,
+      "recovered": true,
+      "elapsed_sec": 1.179155042002094,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "strict failure + resume",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-11-resume-01"
+    },
+    {
+      "task_id": "H02",
+      "size": "hard",
+      "kind": "orchestrator",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.6211182499973802,
+      "verification_pass": true,
+      "team_success": null,
+      "note": "single pass",
+      "artifact": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-37-07/2026-04-03T21-37-12"
+    },
+    {
+      "task_id": "H03",
+      "size": "hard",
+      "kind": "team_runtime",
+      "success": true,
+      "attempts": 1,
+      "recovered": false,
+      "elapsed_sec": 0.03837495800689794,
+      "verification_pass": null,
+      "team_success": true,
+      "note": "team runtime mvp scenario",
+      "artifact": null
+    }
+  ]
+}

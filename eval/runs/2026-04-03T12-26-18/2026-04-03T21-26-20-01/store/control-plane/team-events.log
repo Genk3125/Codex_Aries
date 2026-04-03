@@ -1,0 +1,5 @@
+{"ts": "2026-04-03T12:26:20.812629+00:00", "event_type": "message_bus_stub", "payload": {"team_id": "team_577037f3320e", "event_type": "team_create", "todo": "Connect to Message Bus RFC implementation."}}
+{"ts": "2026-04-03T12:26:20.812676+00:00", "event_type": "task_bus_stub", "payload": {"team_id": "team_577037f3320e", "event_type": "team_create", "todo": "Connect to Task Bus RFC implementation."}}
+{"ts": "2026-04-03T12:26:20.812705+00:00", "event_type": "team_create", "payload": {"team_id": "team_577037f3320e", "team_name": "team-eval-m02-refactor-path", "leader_agent_id": "leader_85207f9c", "status": "active", "created_at": "2026-04-03T12:26:20.812197+00:00"}}
+{"ts": "2026-04-03T12:26:20.846430+00:00", "event_type": "team_member_add", "payload": {"team_id": "team_577037f3320e", "agent_id": "worker_daily_driver", "role": "member", "lifecycle": "running", "joined_at": "2026-04-03T12:26:20.845917+00:00"}}
+{"ts": "2026-04-03T12:26:21.089428+00:00", "event_type": "startup_reconcile", "payload": {"reconciled_at": "2026-04-03T12:26:21.089298+00:00", "cleaned_count": 0, "error_count": 0, "cleaned": [], "errors": []}}

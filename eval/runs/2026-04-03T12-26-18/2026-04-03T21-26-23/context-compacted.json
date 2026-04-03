@@ -1,0 +1,290 @@
+{
+  "ts": "2026-04-03T12:26:24.112405+00:00",
+  "helper": "context_compactor",
+  "ok": true,
+  "input": {
+    "runs_dir": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18",
+    "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/orch.json",
+    "latest_orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/orch.json",
+    "latest_compact_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/compact.json"
+  },
+  "compact_state": {
+    "current_status": "ok",
+    "last_successful_step": "chain_helper",
+    "failed_step": null,
+    "stop_reasons": [],
+    "executed_commands_summary": {
+      "count": 7,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/session_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/store --team-name team-eval-h02-context-compact --member-id worker_daily_driver --task-title eval-h02-context-compaction --message-text daily-driver start: eval-h02-context-compaction --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/01-session-helper.json"
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/store --input-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/01-session-helper.json --state in_progress --to-member-id worker_daily_driver --message-text task moved to in_progress --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/02-task-update-notify-helper.json"
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/store --input-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/02-task-update-notify-helper.json --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/03-post-step-check-helper.json"
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py --input-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/03-post-step-check-helper.json --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/05-verifier-gate-helper.json --task-id task_26c4265d7483 --team-id team_a04d302f797a --verifier-timeout-sec 180 --verifier-contract-path /Users/kondogenki/AI Agent Maximizer/verifier-contract.md"
+        },
+        {
+          "step": "bridge_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/bridge_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/store --input-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/05-verifier-gate-helper.json --to-member-id worker_daily_driver --message-text verifier gate triggered; task moved to blocked --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/06-bridge-helper.json --from-member-id leader_8694c82e"
+        },
+        {
+          "step": "loopback_helper",
+          "command": "python3 /Users/kondogenki/AI Agent Maximizer/poc/loopback_helper.py --store-root /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/store --input-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/06-bridge-helper.json --output-json /Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/work/07-loopback-helper.json"
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 7,
+      "succeeded_steps": 7,
+      "failed_steps": [],
+      "skipped_steps": [
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "guard_hint",
+      "hint": "Continue only with a new run request; no automatic retry is performed.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": "team_a04d302f797a",
+      "task_id": "task_26c4265d7483",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_8694c82e"
+    }
+  },
+  "evidence_index": {
+    "run_count_included": 9,
+    "runs": [
+      {
+        "run_id": "2026-04-03T21-26-23",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-23/compact.md"
+        },
+        "orch_size_bytes": 34167
+      },
+      {
+        "run_id": "2026-04-03T21-26-22-resume-01",
+        "current_status": "failed",
+        "failed_step": {
+          "step": "verifier_gate_helper",
+          "exit_code": 0,
+          "detail": "helper_step_failed"
+        },
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/handoff.json",
+          "notify.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/notify.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22-resume-01/notify.txt"
+        },
+        "orch_size_bytes": 26481
+      },
+      {
+        "run_id": "2026-04-03T21-26-22",
+        "current_status": "stopped_post_run",
+        "failed_step": {
+          "step": "verifier_gate_helper",
+          "exit_code": 2,
+          "detail": "helper_step_failed"
+        },
+        "stop_reasons": [
+          "strict_failure"
+        ],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/handoff.json",
+          "notify.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/notify.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-22/notify.txt"
+        },
+        "orch_size_bytes": 26578
+      },
+      {
+        "run_id": "2026-04-03T21-26-21",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-21/notify.txt"
+        },
+        "orch_size_bytes": 34114
+      },
+      {
+        "run_id": "2026-04-03T21-26-20-01",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20-01/notify.txt"
+        },
+        "orch_size_bytes": 34252
+      },
+      {
+        "run_id": "2026-04-03T21-26-20",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-20/notify.txt"
+        },
+        "orch_size_bytes": 34140
+      },
+      {
+        "run_id": "2026-04-03T21-26-19",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-19/notify.txt"
+        },
+        "orch_size_bytes": 25831
+      },
+      {
+        "run_id": "2026-04-03T21-26-18-01",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18-01/notify.txt"
+        },
+        "orch_size_bytes": 25831
+      },
+      {
+        "run_id": "2026-04-03T21-26-18",
+        "current_status": "ok",
+        "failed_step": null,
+        "stop_reasons": [],
+        "orchestrator_json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/orch.json",
+        "artifacts": {
+          "orch.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/orch.json",
+          "compact.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/compact.json",
+          "compact.md": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/compact.md",
+          "recovery-next.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/recovery-next.json",
+          "escalation-draft.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/escalation-draft.json",
+          "handoff.json": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/handoff.json",
+          "notify.txt": "/Users/kondogenki/AI Agent Maximizer/eval/runs/2026-04-03T12-26-18/2026-04-03T21-26-18/notify.txt"
+        },
+        "orch_size_bytes": 25704
+      }
+    ]
+  },
+  "history": [
+    {
+      "run_id": "2026-04-03T21-26-23",
+      "current_status": "ok",
+      "last_successful_step": "chain_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-22-resume-01",
+      "current_status": "failed",
+      "last_successful_step": "post_step_check_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-22",
+      "current_status": "stopped_post_run",
+      "last_successful_step": "post_step_check_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-21",
+      "current_status": "ok",
+      "last_successful_step": "chain_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-20-01",
+      "current_status": "ok",
+      "last_successful_step": "chain_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-20",
+      "current_status": "ok",
+      "last_successful_step": "chain_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-19",
+      "current_status": "ok",
+      "last_successful_step": "verifier_gate_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-18-01",
+      "current_status": "ok",
+      "last_successful_step": "verifier_gate_helper"
+    },
+    {
+      "run_id": "2026-04-03T21-26-18",
+      "current_status": "ok",
+      "last_successful_step": "verifier_gate_helper"
+    }
+  ],
+  "meta": {
+    "schema_version": 1,
+    "max_context_tokens": 4000,
+    "estimated_tokens": 3927,
+    "within_budget": true
+  },
+  "warnings": [
+    "Compactor pruned optional evidence fields to fit token budget."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:27:41.517844+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:27:41.518279+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:27:41.518275+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_a73cb3ee",
+  "idempotency_key": "",
+  "message_id": "msg_1f285bdc6e3f",
+  "payload": {
+    "text": "daily-driver start: dogfood-computer-21"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_f443a2b8a140",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:27:41.518282+00:00",
+  "version": 2
+}

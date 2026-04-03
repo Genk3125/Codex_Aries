@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:25:39.484371+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_0ef7a16e",
+  "members": [
+    {
+      "agent_id": "leader_0ef7a16e",
+      "joined_at": "2026-04-03T12:25:39.484371+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:25:39.524764+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_2a53c7091db8",
+  "team_name": "team-eval-e02-small-bugfix",
+  "updated_at": "2026-04-03T12:25:39.524977+00:00",
+  "version": 2
+}

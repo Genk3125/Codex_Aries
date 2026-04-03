@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:27:53.062605+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:27:53.063065+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:27:53.063062+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_a59b6dbf",
+  "idempotency_key": "",
+  "message_id": "msg_02d9feaa57a4",
+  "payload": {
+    "text": "resume from 2026-04-03T21-27-52"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_6a50ada64067",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:27:53.063068+00:00",
+  "version": 2
+}

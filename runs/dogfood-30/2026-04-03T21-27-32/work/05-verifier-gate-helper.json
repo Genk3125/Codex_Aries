@@ -1,0 +1,46 @@
+{
+  "ts": "2026-04-03T12:27:32.553436+00:00",
+  "helper": "verifier_gate_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "input": {
+    "input_json": "runs/dogfood-30/2026-04-03T21-27-32/work/03-post-step-check-helper.json",
+    "task_id": "task_c6bcbe34467a",
+    "task_id_source": "--task-id",
+    "team_id": "team_59fb485e617e",
+    "team_id_source": "--team-id",
+    "expected_task_state": null,
+    "verifier_cmd": null,
+    "computer_use_evidence_json": null
+  },
+  "gate_result": {
+    "ts": "2026-04-03T12:27:32.553311+00:00",
+    "requires_verifier": false,
+    "trigger_count": 0,
+    "trigger_codes": [],
+    "triggers": [],
+    "checks": {
+      "reconcile_ok": true,
+      "task_get_ok": true,
+      "message_list_ok": true,
+      "message_scan": {
+        "messages_scanned": 2,
+        "problematic_count": 0,
+        "problematic": []
+      },
+      "expected_task_state": null,
+      "observed_task_state": "in_progress",
+      "task_id": "task_c6bcbe34467a",
+      "task_id_source": "--task-id",
+      "team_id": "team_59fb485e617e",
+      "team_id_source": "--team-id"
+    },
+    "note": "Gate result is only a trigger decision. Final PASS/PARTIAL/FAIL must come from verifier."
+  },
+  "verifier_next": {
+    "required": false,
+    "reason_codes": [],
+    "input_json": "runs/dogfood-30/2026-04-03T21-27-32/work/03-post-step-check-helper.json",
+    "hint": "No gate trigger was detected. Verifier run is optional."
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "ts": "2026-04-03T12:27:38.180998+00:00",
+  "helper": "post_step_check_helper",
+  "mode": "fail-open",
+  "ok": true,
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "runs/dogfood-30/2026-04-03T21-27-37-01/store",
+  "input": {
+    "input_json": "runs/dogfood-30/2026-04-03T21-27-37-01/work/02-task-update-notify-helper.json",
+    "task_id": "task_248ca143afb8",
+    "task_id_source": "input.task_id",
+    "team_id": "team_c4e9d839d5f5",
+    "team_id_source": "input.team_id"
+  },
+  "reconcile": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "runtime_reconcile_all",
+      "--args-json",
+      "{}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:27:38.110712+00:00",
+      "operation": "runtime_reconcile_all",
+      "args": {},
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "control_plane": {
+          "reconciled_at": "2026-04-03T12:27:38.110102+00:00",
+          "cleaned_count": 0,
+          "error_count": 0,
+          "cleaned": [],
+          "errors": []
+        },
+        "message_bus": {
+          "reconciled_at": "2026-04-03T12:27:38.110512+00:00",
+          "updated_message_count": 0,
+          "pending_before": 0,
+          "pending_after": 0,
+          "delivered_count": 0,
+          "failed_or_rejected_count": 0,
+          "updated_messages": []
+        },
+        "task_bus": {
+          "reconciled_at": "2026-04-03T12:27:38.110676+00:00",
+          "scanned": 1,
+          "orphaned": 0,
+          "moved_to_ready": 0,
+          "updated_tasks": [],
+          "errors": []
+        }
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "task_get": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "task_get",
+      "--args-json",
+      "{\"task_id\": \"task_248ca143afb8\"}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:27:38.143699+00:00",
+      "operation": "task_get",
+      "args": {
+        "task_id": "task_248ca143afb8"
+      },
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "task_id": "task_248ca143afb8",
+        "team_id": "team_c4e9d839d5f5",
+        "title": "dogfood-basic-17",
+        "owner_member_id": "worker_daily_driver",
+        "state": "in_progress",
+        "blocked_reason": null,
+        "result_reference": null,
+        "version": 2,
+        "updated_at": "2026-04-03T12:27:38.016824+00:00"
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "message_list": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "message_list",
+      "--args-json",
+      "{\"team_id\": \"team_c4e9d839d5f5\"}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T12:27:38.176652+00:00",
+      "operation": "message_list",
+      "args": {
+        "team_id": "team_c4e9d839d5f5"
+      },
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "count": 2,
+        "messages": [
+          {
+            "created_at": "2026-04-03T12:27:38.050395+00:00",
+            "delivery": {
+              "worker_daily_driver": {
+                "attempt_count": 1,
+                "delivered_at": "2026-04-03T12:27:38.050835+00:00",
+                "error": null,
+                "last_attempt_at": "2026-04-03T12:27:38.050830+00:00",
+                "state": "delivered"
+              }
+            },
+            "from_member_id": "leader_e1e3ea19",
+            "idempotency_key": "",
+            "message_id": "msg_72bef63b2544",
+            "payload": {
+              "text": "task moved to in_progress"
+            },
+            "schema_version": 1,
+            "status": "delivered",
+            "subtype": "text",
+            "team_id": "team_c4e9d839d5f5",
+            "to_member_ids": [
+              "worker_daily_driver"
+            ],
+            "type": "direct",
+            "updated_at": "2026-04-03T12:27:38.050838+00:00",
+            "version": 2
+          },
+          {
+            "created_at": "2026-04-03T12:27:37.952494+00:00",
+            "delivery": {
+              "worker_daily_driver": {
+                "attempt_count": 1,
+                "delivered_at": "2026-04-03T12:27:37.952883+00:00",
+                "error": null,
+                "last_attempt_at": "2026-04-03T12:27:37.952880+00:00",
+                "state": "delivered"
+              }
+            },
+            "from_member_id": "leader_e1e3ea19",
+            "idempotency_key": "",
+            "message_id": "msg_742458bf6a6a",
+            "payload": {
+              "text": "daily-driver start: dogfood-basic-17"
+            },
+            "schema_version": 1,
+            "status": "delivered",
+            "subtype": "text",
+            "team_id": "team_c4e9d839d5f5",
+            "to_member_ids": [
+              "worker_daily_driver"
+            ],
+            "type": "direct",
+            "updated_at": "2026-04-03T12:27:37.952886+00:00",
+            "version": 2
+          }
+        ]
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "next": {
+    "task_update_notify_example": {
+      "task_id": "task_248ca143afb8",
+      "team_id": "team_c4e9d839d5f5",
+      "state": "<next-state>",
+      "to_member_id": "<member-id>",
+      "message_text": "<message>"
+    },
+    "team_list_example": {}
+  }
+}

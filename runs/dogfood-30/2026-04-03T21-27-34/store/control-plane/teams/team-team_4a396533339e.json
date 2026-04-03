@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:27:34.664222+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_5f20a3fe",
+  "members": [
+    {
+      "agent_id": "leader_5f20a3fe",
+      "joined_at": "2026-04-03T12:27:34.664222+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:27:34.701567+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_4a396533339e",
+  "team_name": "team-dogfood-basic-12",
+  "updated_at": "2026-04-03T12:27:34.701692+00:00",
+  "version": 2
+}

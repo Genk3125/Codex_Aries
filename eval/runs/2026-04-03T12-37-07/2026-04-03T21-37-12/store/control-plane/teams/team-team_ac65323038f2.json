@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:37:12.127341+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_fcbeebef",
+  "members": [
+    {
+      "agent_id": "leader_fcbeebef",
+      "joined_at": "2026-04-03T12:37:12.127341+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:37:12.156829+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_ac65323038f2",
+  "team_name": "team-eval-h02-context-compact",
+  "updated_at": "2026-04-03T12:37:12.156935+00:00",
+  "version": 2
+}

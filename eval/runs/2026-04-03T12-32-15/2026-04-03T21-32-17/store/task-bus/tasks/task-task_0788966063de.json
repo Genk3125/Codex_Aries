@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:32:17.507269+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_0788966063de",
+  "team_id": "team_5c6d5b3ff127",
+  "title": "eval-m01-multi-file-sync",
+  "updated_at": "2026-04-03T12:32:17.601141+00:00",
+  "version": 2
+}

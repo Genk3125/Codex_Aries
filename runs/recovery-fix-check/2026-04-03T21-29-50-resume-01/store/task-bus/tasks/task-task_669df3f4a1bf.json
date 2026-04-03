@@ -1,0 +1,16 @@
+{
+  "blocked_reason": null,
+  "created_at": "2026-04-03T12:29:50.912428+00:00",
+  "description": "",
+  "idempotency_key_create": "",
+  "orphan_owner": null,
+  "owner_member_id": "worker_daily_driver",
+  "result_reference": null,
+  "schema_version": 1,
+  "state": "in_progress",
+  "task_id": "task_669df3f4a1bf",
+  "team_id": "team_029e5cf2ae4e",
+  "title": "recovery-fix-check",
+  "updated_at": "2026-04-03T12:29:51.021085+00:00",
+  "version": 2
+}

@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:32:15.819805+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_e2b5f8ba",
+  "members": [
+    {
+      "agent_id": "leader_e2b5f8ba",
+      "joined_at": "2026-04-03T12:32:15.819805+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:32:15.851406+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_bada818cb88b",
+  "team_name": "team-eval-e01-doc-sync",
+  "updated_at": "2026-04-03T12:32:15.851544+00:00",
+  "version": 2
+}

@@ -1,0 +1,84 @@
+{
+  "ts": "2026-04-03T11:54:38.158728+00:00",
+  "helper": "post_step_check_helper",
+  "mode": "fail-open",
+  "ok": false,
+  "runtime_cmd": [
+    "/Users/kondogenki/.codex/runtime-adapter/codex-runtime"
+  ],
+  "store_root": "/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/store",
+  "input": {
+    "input_json": "/Users/kondogenki/AI Agent Maximizer/runs/2026-04-03T20-54-37/work/02-task-update-notify-helper.json",
+    "task_id": null,
+    "task_id_source": null,
+    "team_id": null,
+    "team_id_source": null
+  },
+  "reconcile": {
+    "executed": true,
+    "command": [
+      "/Users/kondogenki/.codex/runtime-adapter/codex-runtime",
+      "op",
+      "--name",
+      "runtime_reconcile_all",
+      "--args-json",
+      "{}"
+    ],
+    "exit_code": 0,
+    "operation_ok": true,
+    "parse_error": null,
+    "envelope": {
+      "ts": "2026-04-03T11:54:38.154671+00:00",
+      "operation": "runtime_reconcile_all",
+      "args": {},
+      "ok": true,
+      "fail_open": true,
+      "result": {
+        "control_plane": {
+          "reconciled_at": "2026-04-03T11:54:38.154091+00:00",
+          "cleaned_count": 0,
+          "error_count": 0,
+          "cleaned": [],
+          "errors": []
+        },
+        "message_bus": {
+          "reconciled_at": "2026-04-03T11:54:38.154458+00:00",
+          "updated_message_count": 0,
+          "pending_before": 0,
+          "pending_after": 0,
+          "delivered_count": 0,
+          "failed_or_rejected_count": 0,
+          "updated_messages": []
+        },
+        "task_bus": {
+          "reconciled_at": "2026-04-03T11:54:38.154623+00:00",
+          "scanned": 1,
+          "orphaned": 0,
+          "moved_to_ready": 0,
+          "updated_tasks": [],
+          "errors": []
+        }
+      },
+      "error": null
+    },
+    "ok": true
+  },
+  "task_get": {
+    "executed": false,
+    "skipped_reason": "task_id_unresolved"
+  },
+  "message_list": {
+    "executed": false,
+    "skipped_reason": "team_id_unresolved"
+  },
+  "next": {
+    "task_update_notify_example": {
+      "task_id": null,
+      "team_id": null,
+      "state": "<next-state>",
+      "to_member_id": "<member-id>",
+      "message_text": "<message>"
+    },
+    "team_list_example": {}
+  }
+}

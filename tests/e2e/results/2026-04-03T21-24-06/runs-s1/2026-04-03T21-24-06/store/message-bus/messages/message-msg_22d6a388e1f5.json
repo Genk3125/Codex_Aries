@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:24:07.248232+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:24:07.248704+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:24:07.248699+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_a9c360df",
+  "idempotency_key": "",
+  "message_id": "msg_22d6a388e1f5",
+  "payload": {
+    "text": "daily-driver start: S1_single_agent_gate_success"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_79432ec8b76d",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:24:07.248707+00:00",
+  "version": 2
+}

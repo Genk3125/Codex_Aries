@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "attempt_count": 3,
+  "consecutive_failures": 2,
+  "manual_stop": false,
+  "last_ok": false,
+  "last_decision": "stop",
+  "last_reasons": [
+    "max_retries",
+    "escalated"
+  ],
+  "updated_at": "2026-04-03T11:54:38.188546+00:00"
+}

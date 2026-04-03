@@ -1,0 +1,28 @@
+{
+  "cleanup_summary": null,
+  "created_at": "2026-04-03T12:25:43.087964+00:00",
+  "deleted_at": null,
+  "description": "",
+  "last_delete_reason": null,
+  "leader_agent_id": "leader_56048585",
+  "members": [
+    {
+      "agent_id": "leader_56048585",
+      "joined_at": "2026-04-03T12:25:43.087964+00:00",
+      "lifecycle": "running",
+      "role": "leader"
+    },
+    {
+      "agent_id": "worker_daily_driver",
+      "joined_at": "2026-04-03T12:25:43.122736+00:00",
+      "lifecycle": "running",
+      "role": "member"
+    }
+  ],
+  "schema_version": 1,
+  "status": "active",
+  "team_id": "team_3082c3df4d20",
+  "team_name": "team-eval-h01-strict-recovery",
+  "updated_at": "2026-04-03T12:25:43.122859+00:00",
+  "version": 2
+}

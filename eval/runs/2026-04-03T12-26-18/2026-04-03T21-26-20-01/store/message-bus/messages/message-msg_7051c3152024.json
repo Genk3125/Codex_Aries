@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-04-03T12:26:20.938275+00:00",
+  "delivery": {
+    "worker_daily_driver": {
+      "attempt_count": 1,
+      "delivered_at": "2026-04-03T12:26:20.938731+00:00",
+      "error": null,
+      "last_attempt_at": "2026-04-03T12:26:20.938727+00:00",
+      "state": "delivered"
+    }
+  },
+  "from_member_id": "leader_85207f9c",
+  "idempotency_key": "",
+  "message_id": "msg_7051c3152024",
+  "payload": {
+    "text": "daily-driver start: eval-m02-refactor-path"
+  },
+  "schema_version": 1,
+  "status": "delivered",
+  "subtype": "text",
+  "team_id": "team_577037f3320e",
+  "to_member_ids": [
+    "worker_daily_driver"
+  ],
+  "type": "direct",
+  "updated_at": "2026-04-03T12:26:20.938733+00:00",
+  "version": 2
+}

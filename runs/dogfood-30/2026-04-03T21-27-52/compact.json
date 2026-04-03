@@ -1,0 +1,76 @@
+{
+  "ts": "2026-04-03T12:27:52.584073+00:00",
+  "helper": "compact_state_helper",
+  "mode": "strict",
+  "ok": true,
+  "input": {
+    "orchestrator_json": "runs/dogfood-30/2026-04-03T21-27-52/orch.json",
+    "handoff_json": null
+  },
+  "compact_state": {
+    "current_status": "stopped_post_run",
+    "last_successful_step": "post_step_check_helper",
+    "failed_step": {
+      "step": "verifier_gate_helper",
+      "exit_code": 2,
+      "detail": "helper_step_failed"
+    },
+    "stop_reasons": [
+      "strict_failure"
+    ],
+    "executed_commands_summary": {
+      "count": 4,
+      "items": [
+        {
+          "step": "session_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/session_helper.py' --strict --store-root runs/dogfood-30/2026-04-03T21-27-52/store --team-name team-dogfood-recovery-29 --membe..."
+        },
+        {
+          "step": "task_update_notify_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py' --strict --store-root runs/dogfood-30/2026-04-03T21-27-52/store --input-json runs/dogfood-30/2026..."
+        },
+        {
+          "step": "post_step_check_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py' --strict --store-root runs/dogfood-30/2026-04-03T21-27-52/store --input-json runs/dogfood-30/2026-04..."
+        },
+        {
+          "step": "verifier_gate_helper",
+          "command": "python3 '/Users/kondogenki/AI Agent Maximizer/poc/verifier_gate_helper.py' --strict --input-json runs/dogfood-30/2026-04-03T21-27-52/work/03-post-step-check-helper.json --output..."
+        }
+      ],
+      "omitted_count": 0
+    },
+    "actual_outputs_summary": {
+      "total_steps": 8,
+      "executed_steps": 4,
+      "succeeded_steps": 3,
+      "failed_steps": [
+        "verifier_gate_helper"
+      ],
+      "skipped_steps": [
+        "bridge_helper",
+        "loopback_helper",
+        "chain_helper",
+        "computer_use_helper"
+      ],
+      "parse_error_steps": []
+    },
+    "next_action": {
+      "type": "proceed",
+      "hint": "Proceed to the next task or finalize this run.",
+      "action_items": []
+    },
+    "ids": {
+      "team_id": "team_9120a5475846",
+      "task_id": "task_28a05f4bfec6",
+      "member_id": "worker_daily_driver",
+      "leader_id": "leader_8fe81a73"
+    },
+    "meta": {
+      "run_id": "20260403122752",
+      "flow_mode": "gate",
+      "single_pass": true
+    },
+    "note": "Compacted state only. No detailed logs, no runtime execution, no judgment replacement."
+  }
+}
