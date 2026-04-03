@@ -10,6 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -139,7 +141,7 @@ def main() -> int:
         "--post-check-script",
         default=os.environ.get(
             "CODEX_LOOPBACK_POST_CHECK_SCRIPT",
-            "/Users/kondogenki/AI Agent Maximizer/poc/post_step_check_helper.py",
+            str(REPO_ROOT / "poc" / "post_step_check_helper.py"),
         ),
         help="post_step_check_helper script path",
     )

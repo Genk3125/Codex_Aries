@@ -10,6 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -251,7 +253,7 @@ def main() -> int:
         "--task-update-notify-script",
         default=os.environ.get(
             "CODEX_BRIDGE_TASK_UPDATE_NOTIFY_SCRIPT",
-            "/Users/kondogenki/AI Agent Maximizer/poc/task_update_notify_helper.py",
+            str(REPO_ROOT / "poc" / "task_update_notify_helper.py"),
         ),
         help="task_update_notify_helper script path",
     )
