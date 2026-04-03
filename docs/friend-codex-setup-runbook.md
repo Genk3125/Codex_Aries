@@ -16,7 +16,7 @@ _Updated: 2026-04-03_
 ## 1. 最短導入手順
 
 ```bash
-cd "<friendのclone先>/AI Agent Maximizer"
+cd "<friendのclone先>/Codex_Aries"
 
 ./scripts/bootstrap-friend-codex.sh \
   --codex-home "$HOME/.codex" \
